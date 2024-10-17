@@ -46,3 +46,7 @@ def oirs(request):
         'logorescatemar':'/static/img/logorescatemar.png',
     }
     return render(request, 'oirs.html', data)
+
+# VIEW ADMIN
+def administrador(request):
+    return render(request, 'admin.html')
