@@ -1,0 +1,58 @@
+/* ----   Header NavBar   -----*/
+
+.navbar-custom {
+    background-color: #f1ec92;
+}
+.navbar-custom .nav-link {
+    color: black;
+    font-weight: bold;
+}
+.navbar-custom .nav-link:hover {
+    color: #564e3e;
+}
+.navbar-custom .dropdown-menu {
+    background-color: #f1ec92;
+}
+.logo {
+    max-height: 50px;
+}
+.btn-accessibility {
+    background-color: #f7e9af;
+    border-radius: 10px;
+}
+
+
+
+
+/*----  NavIndex   ----*/
+
+.button-container {
+    background-color: #f8c4cc;
+    padding: 10px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+.btn-custom {
+    background-color: #e9e1fa;
+    border-radius: 10px;
+    padding: 15px 25px;
+    font-size: 18px;
+    height: 100px;
+    width: 300px;
+    margin: 0px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s ease;
+}
+.btn-custom:hover {
+    background-color: #d4c4eb;
+}
+.btn-custom i {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+

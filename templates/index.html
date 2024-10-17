@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,35 +8,51 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'style/estilo.css' %}">
+    <style>
+        
+    </style>
 </head>
 <body>
     <!-- CABEZERA NAVBAR -->
-    <div class="header col-lg-12 col-sm-12">
-        <nav class="navbar bg-body-tertiary p-0">
-            <div class="left-container container-fluid p-3" style="background-color: #FEE9A0;">
-                <a class="navbar-brand" href="#">
-                    <img src="https://valdivia.municipalidad.digital.gob.cl/logos/dQVMhNdDA4eg7HMZQlbK.png" alt="Logo" width="126" height="99" class="d-inline-block align-text-top">
-                </a>
-                <a><svg xmlns="http://www.w3.org/2000/svg" width="37" height="32" fill="currentColor" class="bi bi-universal-access-circle" viewBox="0 0 16 16"> <!-- IGNORAR viewBox-->
-                    <path d="M8 4.143A1.071 1.071 0 1 0 8 2a1.071 1.071 0 0 0 0 2.143m-4.668 1.47 3.24.316v2.5l-.323 4.585A.383.383 0 0 0 7 13.14l.826-4.017c.045-.18.301-.18.346 0L9 13.139a.383.383 0 0 0 .752-.125L9.43 8.43v-2.5l3.239-.316a.38.38 0 0 0-.047-.756H3.379a.38.38 0 0 0-.047.756Z"></path>
-                    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8"></path>
-                  </svg>
-                    Accesibilidad</a>
-                <hr>
-                <hr>
-                <hr>
-                <hr>
-                <a href="sobrenosotros/" style="text-decoration: none; color: black;">Nosotros</a>
-                <a href="" style="text-decoration: none; color: black;">Ubicacion</a>
-                <a href="" style="text-decoration: none; color: black;">Contáctenos</a>
-                <a href="" style="text-decoration: none; color: black;">Trabaje con nosotros</a>
-                <a href="" style="padding: 8px; text-decoration: none; color: black;">OIRS</a>
+    <nav class="navbar navbar-expand-lg navbar-custom p-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="https://valdivia.municipalidad.digital.gob.cl/logos/dQVMhNdDA4eg7HMZQlbK.png" alt="Municipalidad Valdivia" class="logo"> <!-- Añade aquí tu logo -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-accessibility me-2" href="#">
+                            <i class="fas fa-universal-access"></i> Accesibilidad
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-home"></i> Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-map-marker-alt"></i> Ubicación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-briefcase"></i> Trabaja con nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-clipboard"></i> OIRS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tel:+569xxxxxxx"><i class="fas fa-phone"></i> +(56) xxxx xxxx</a>
+                    </li>
+                </ul>
             </div>
-        </nav> 
-    </div>
+        </div>
+    </nav>
 
     <!-- FOTO PRINCIPAL-->
-    <div id="carouselExample" class="carousel slide">
+    <div id="carouselExample" class="carousel slide" style="background-color: #faa14287;">
         <div class="carousel-inner" style="height: 630px; opacity: 0.5;">
           <div class="carousel-item active" >
             <img style="height: 630px;" src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="d-block w-100" alt="...">
@@ -48,7 +66,7 @@
         </div>
         <div class="static-text" style="position: absolute;top: 50%; left: 50%; transform: translate(-50%, -50%);">
             <h1 style="font-size: 5rem">CESFAM Angachilla</h1>
-            <p style="text-align: center; font-size: 2rem;color: gray;"> Centro de Salud Familiar</p>
+            <b><p style="text-align: center; font-size: 2rem;color: rgb(0, 0, 0);"> Centro de Salud Familiar</p></b>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -60,46 +78,72 @@
         </button>
       </div>
 
-    <!-- CONTENIDO a -->
-    <div class="container p-4">
-        <!-- NOTICIAS -->
-        <h1>Noticias</h1>
-        <div class="row p-2" style="overflow-x: auto; white-space: nowrap; height: 25rem; display: flex; flex-wrap: nowrap;">
-            
-            <!-- Card para la informacion -->
-            <div class="card p-3 m-3" style="border: 2px solid black; width: 18rem; display: inline-block; white-space: normal;">
-                <div class="container" style="width: 15rem; height: 10rem;">
-                    <img style="width: 100%; height: 100%;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body" style="height: 7.5rem; overflow: hidden;">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text" style="display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis;overflow: hidden;white-space: normal;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, vel esse voluptas veritatis unde ea odit a dolor dicta corrupti doloremque reprehenderit repellat nobis sint ipsam, consectetur laudantium eligendi illum? Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-
-            
-
+    <!-- CONTENIDO NAVINDEX -->
+    <div class="container mt-4">
+        <div class="button-container">
+            <a href="#Noticias" class="btn btn-custom">
+                <i class="fas fa-bullhorn"></i>
+                Noticias
+            </a>
+            <a href="#" class="btn btn-custom">
+                <i class="fas fa-globe"></i>
+                Campañas
+            </a>
+            <a href="#" class="btn btn-custom">
+                <i class="fas fa-map"></i>
+                Eventos
+            </a>
         </div>
-
-        
     </div>
-    <div class="container p-4">
-        <!-- EVENTOS -->
-        <h1>Eventos</h1>
-        <div class="row p-2" style="overflow-x: auto; white-space: nowrap; height: 25rem; display: flex; flex-wrap: nowrap;">
-            
-            <!-- Card para la información -->
 
-            <div class="card p-3 m-3" style="border: 2px solid black; width: 18rem; display: inline-block; white-space: normal;">
-                <div class="container" style="width: 15rem; height: 10rem;">
-                    <img style="width: 100%; height: 100%;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body" style="height: 7.5rem; overflow: hidden;">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text" style="display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis;overflow: hidden;white-space: normal;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, vel esse voluptas veritatis unde ea odit a dolor dicta corrupti doloremque reprehenderit repellat nobis sint ipsam, consectetur laudantium eligendi illum? Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <!-- NOTICIAS -->
+    <div class="container my-5">
+        <h1 class="text-center mb-3" id="Noticias">Noticias Cesfam</h1>
+        <p class="text-center">Infórmate sobre lo que sucede en nuestra sede</p>
+        
+        <div class="row justify-content-center">
+            <!-- PRIMERA NOTICIA -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="card-img-top" alt="Imagen de la noticia">
+                    <div class="card-body">
+                        <h5 class="card-title">Título de la Noticia 1</h5>
+                        <p class="text-muted">Fecha: 16 de octubre, 2024</p>
+                        <p class="card-text">Esta es una breve descripción de la noticia para que los usuarios se informen rápidamente.</p>
+                        <a href="pagina-noticia1.html" class="btn btn-primary">Leer más</a>
+                    </div>
                 </div>
             </div>
-
+    
+            <!-- SEGUNDA NOTICIA -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="card-img-top" alt="Imagen de la noticia">
+                    <div class="card-body">
+                        <h5 class="card-title">Título de la Noticia 2</h5>
+                        <p class="text-muted">Fecha: 15 de octubre, 2024</p>
+                        <p class="card-text">Esta es una breve descripción de otra noticia para mantener informados a los usuarios.</p>
+                        <a href="pagina-noticia2.html" class="btn btn-primary">Leer más</a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- TERCERA NOTICIA -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="card-img-top" alt="Imagen de la noticia">
+                    <div class="card-body">
+                        <h5 class="card-title">Título de la Noticia 3</h5>
+                        <p class="text-muted">Fecha: 14 de octubre, 2024</p>
+                        <p class="card-text">Breve descripción de una tercera noticia para que los usuarios estén al tanto.</p>
+                        <a href="pagina-noticia3.html" class="btn btn-primary">Leer más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="text-end mt-4">
+            <a href="todas-las-noticias.html" class="btn btn-secondary">Ver Más...</a> <!-- ENLACE PARA VER TODAS LAS NOTICIAS-->
         </div>
     </div>
 
@@ -109,88 +153,35 @@
 
     <!-- FOOTER -->
     <footer style="background-color: #FEE9A0;">
-        <div class="container p-4">
-            <div class="row">
-
-                <div class="col-md-6 col-sm-12 col-lg-3 mb-4">
-
+        <div class="text-center p-3" style="font-size: large; background-color: #FEE9A0;">
+            <div class="row" style="text-align: center;align-items: center; padding-left: 8rem;padding-right: 8rem; padding-top: 2rem;">
+                <div class="col-md-4" style=" text-align: left;"><a class="navbar-brand" href="#">
+                    <img src="https://valdivia.municipalidad.digital.gob.cl/logos/dQVMhNdDA4eg7HMZQlbK.png" alt="Logo" width="126" height="99" class="d-inline-block align-text-top">
+                </a></div>
+                <div class="col-md-4" style=" text-align: center; align-items: center;">
                     <ul class="list-unstyled">
-                        <li>
-                            <a class="navbar-brand" style="text-decoration: none;" href="#">
-                                <img style="text-decoration: none;" src="https://valdivia.municipalidad.digital.gob.cl/logos/dQVMhNdDA4eg7HMZQlbK.png" alt="Logo" width="64" height="50" class="d-inline-block align-text-top">
-                            </a>
-                            <h5 class="text-uppercase">Redes sociales</h5>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com" style="text-decoration: none;" target="_blank">
-                                <img style="height: 25px; width: 25px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
-                            </a>
-                            <a href="https://www.facebook.com" style="text-decoration: none;" target="_blank">
-                                <img style="height: 25px; width: 25px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
-                            </a>
-                            <a href="https://www.facebook.com" style="text-decoration: none;" target="_blank">
-                                <img style="height: 25px; width: 25px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
-                            </a>
-                            <a href="https://www.facebook.com" style="text-decoration: none;" target="_blank">
-                                <img style="height: 25px; width: 25px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
-                            </a>
-                        </li>
-                    </ul>
+                    <li>
+                        <a href="https://www.instagram.com" style="text-decoration: none;" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com" style="text-decoration: none;" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                              </svg>
+                        </a>
+                        <a href="https://www.facebook.com" style="text-decoration: none;" target="_blank">
+                            <img style="height: 48px; width: 48px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
+                        </a>
+                        <a href="https://www.facebook.com" style="text-decoration: none;" target="_blank">
+                            <img style="height: 48px; width: 48px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
+                        </a>
+                    </li></ul>
                 </div>
-                
-                <div class="col-md-6 col-sm-12 col-lg-3 mb-4">
-                    <h5 class="text-uppercase">Campañas</h5>
-                    <p><i class="fas fa-home"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-envelope"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-phone"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-phone"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-phone"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-phone"></i> Texto de ejemplo</p>
-                </div>
-
-                <div class="col-md-6 col-sm-12 col-lg-3 mb-4">
-
-                    <h5 class="text-uppercase">Enlaces de interés</h5>
-                    <p><i class="fas fa-home"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-envelope"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-phone"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-phone"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-phone"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-phone"></i> Texto de ejemplo</p>
-                </div>
-    
-                <div class="col-md-6 col-sm-12 col-lg-3 mb-4">
-
-                    <h5 class="text-uppercase">Emergencias</h5>
-                    <p>
-                        <img style="height: 29px; width: 29px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
-                        131 - Ambulancia
-                    </p>
-                    <p>
-                        <img style="height: 29px; width: 29px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
-                        132 - Bomberos
-                    </p>
-                    <p>
-                        <img style="height: 29px; width: 29px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
-                        133 - Carabineros
-                    </p>
-                    <p>
-                        <img style="height: 29px; width: 29px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
-                        134 - Policía de Investigaciones
-                    </p>
-                    <p>
-                        <img style="height: 29px; width: 29px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
-                        135 - Fono Drogas</p>
-                    <p>
-                        <img style="height: 29px; width: 29px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
-                        137 - Rescate Marítimo
-                    </p>
-                </div>
+                <div class="col-md-4" style=" text-align: right;"><b>© 2024 Cesfam Angachilla.</b></div>
             </div>
-        </div>
-    
-        <div class="text-center p-3" style="background-color: #FEE9A0;">
-            © 2024 Cesfam Angachilla, Todos los derechos reservados.
+            
         </div>
     </footer> 
     
