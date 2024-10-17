@@ -11,6 +11,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'style/estilo.css' %}">
     <style>
+        /* Estilo de Campañas*/
+        body {
+            font-size: larger;
+            color: black;
+        }
+
+        .campaign-section {
+            background-color: #f3e8ff;
+            border-radius: 10px;
+            padding: 40px;
+        }
+        .campaign-header {
+            margin-bottom: 30px;
+        }
+        .campaign-card {
+            background-color: #e3d4f9;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .divider {
+            border-left: 1px solid #ccc;
+            height: 100%;
+        }
         
     </style>
 </head>
@@ -85,11 +108,11 @@
                 <i class="fas fa-bullhorn"></i>
                 Noticias
             </a>
-            <a href="#" class="btn btn-custom">
+            <a href="#Campañas" class="btn btn-custom">
                 <i class="fas fa-globe"></i>
                 Campañas
             </a>
-            <a href="#" class="btn btn-custom">
+            <a href="#Eventos" class="btn btn-custom">
                 <i class="fas fa-map"></i>
                 Eventos
             </a>
@@ -147,7 +170,110 @@
         </div>
     </div>
 
+    <!-- CAMPAÑAS -->
+    <div class="container my-5"  id="Campañas">
+        <div class="campaign-section text-center">
+            <h2 class="campaign-header">Campaña</h2>
+            <p>Conoce y participa en nuevas campañas</p>
+            <div class="row">
+                <!-- Campaña Semestral -->
+                <div class="col-md-5">
+                    <h5 class="mb-3 p-2">Campaña Semestral</h5>
+                    <div class="campaign-card">
+                        <div class="row g-0">
+                            
+                            <div class="col-sm-12 col-md-12 col-lg-4">
+                                <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen campaña" class="img-fluid">
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-8">
+                                <div class="card-body">
+                                    <h5 class="card-title mt-2">Título</h5>
+                                    <p class="text-muted">Fecha: xx-xx-xxxx</p>
+                                    <a href="#" class="text-decoration-none text-black"><p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In commodo pulvinar ligula. Cras eu varius nibh, ut semper nulla.</p></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Separador vertical -->
+                <div class="col-md-2 d-flex justify-content-center align-items-center">
+                    <div class="divider"></div>
+                </div>
+    
+                <!-- Campaña Mensual -->
+                <div class="col-md-5">
+                    <h5 class="mb-3 p-2">Campaña Mensual</h5>
+                    <div class="campaign-card">
+                        <div class="row g-0">
+                            
+                            <div class="col-sm-12 col-md-12 col-lg-4">
+                                <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen campaña" class="img-fluid">
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-8">
+                                <div class="card-body">
+                                    <h5 class="card-title mt-2">Título</h5>
+                                    <p class="text-muted">Fecha: xx-xx-xxxx</p>
+                                    <a href="#" class="text-decoration-none text-black"><p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In commodo pulvinar ligula. Cras eu varius nibh, ut semper nulla.</p></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- EVENTOS -->
+    <div class="container my-5">
+        <h1 class="text-center mb-3" id="Eventos">Eventos</h1>
+        <p class="text-center">Encuentra Eventos o Talleres para asistir y apoyarnos!</p>
+        
+        <div class="row justify-content-center">
+            <!-- PRIMER EVENTO -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="card-img-top" alt="Imagen de la noticia">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Título del Evento</h5>
+                        <p class="card-subtitle">Evento</p>
+                        <p class="card-text">Esta es una breve descripción de la noticia para que los usuarios se informen rápidamente.</p>
+                        <a href="pagina-noticia1.html" class="btn btn-primary">Leer más</a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- SEGUNDO EVENTO -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="card-img-top" alt="Imagen de la noticia">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Título del Taller</h5>
+                        <p class="card-subtitle">Taller</p>
+                        <p class="card-text">Esta es una breve descripción de la noticia para que los usuarios se informen rápidamente.</p>
+                        <a href="pagina-noticia1.html" class="btn btn-primary">Leer más</a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- TERCER EVENTO -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="card-img-top" alt="Imagen de la noticia">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Título del Evento</h5>
+                        <p class="card-subtitle">Evento</p>
+                        <p class="card-text">Esta es una breve descripción de la noticia para que los usuarios se informen rápidamente.</p>
+                        <a href="pagina-noticia1.html" class="btn btn-primary">Leer más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="text-end mt-4">
+            <a href="todos-los-eventos.html" class="btn btn-secondary">Ver Más...</a> <!-- ENLACE PARA VER TODOS LOS EVENTOS-->
+        </div>
+    </div>
 
 
 
