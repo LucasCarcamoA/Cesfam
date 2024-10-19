@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'style/estilo.css' %}"></head>
-    <style>
+    <style>  
         div p{
             width: 35rem; height: 19rem;overflow: hidden; overflow-y: auto;
         }
@@ -21,7 +21,7 @@
         }
 
         .primera-fila {
-            margin: 3rem 0rem 3rem 3rem;
+            margin-top: 3rem;
             border-radius: 3rem 0rem 0rem 0rem;
         }
 
@@ -40,13 +40,13 @@
             width:484px;
         }
         .segunda-fila {
-            margin: 3rem 0rem 3rem 3rem;
             border-radius: 3rem 0rem 0rem 0rem;
         }
 
         .tercera-fila {
             background-color: #FEE9A0;
-            margin: 3rem 3rem 3rem 0rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
             border-radius: 0rem 0rem 3rem 0rem;
         }
         
@@ -92,52 +92,53 @@
     
 
     <!-- CONTENIDO -->
-    <div class="primera-fila" style="background-color: #FEE9A0;">
-        <div class="row m-0">
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
-                <div class="contenedor-texto">
-                    <text>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta culpa voluptatum aliquam laborum ratione dolore at, numquam voluptatibus repellat illo modi tenetur architecto distinctio minima molestiae iusto delectus et. Natus.</text>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 justify-content-center align-items-center">
-                <div class="contenedor-imagen">
-                    <img class="w-100 h-100" src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" style="display:flexbox;">
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="segunda-fila">
-        <div class="row m-0">
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 justify-content-center align-items-center">
-                <div class="contenedor-imagen">
-                    <img class="w-100 h-100" src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" style="display:flexbox;">
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
-                <div class="contenedor-texto">
-                    <text>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta culpa voluptatum aliquam laborum ratione dolore at, numquam voluptatibus repellat illo modi tenetur architecto distinctio minima molestiae iusto delectus et. Natus.</text>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="tercera-fila">
-        <div class="row" style="margin-left: 3rem;">
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 justify-content-center align-items-center">
-                <div class="contenedor-imagen">
-                    <img class="w-100 h-100" src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" style="display:flexbox;">
+    <div class="container-fluid bg-light pr-0 pe-0" style="overflow-x:hidden; overflow-y: hidden ;">
+        <div class="primera-fila pl-1" style="background-color: #FEE9A0;">
+            <div class="row">
+                <div class="col-lg-6 p-5">
+                    <div class="d-flex h-25 align-items-center">
+                        <h1>Sobre Nosotros</h1>
+                    </div>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta culpa voluptatum aliquam laborum ratione dolore at, numquam voluptatibus repellat illo modi tenetur architecto distinctio minima molestiae iusto delectus et. Natus.
                 </div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
-                <div class="contenedor-texto">
-                    <h1>Visión</h1>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta culpa voluptatum aliquam laborum ratione dolore at, numquam voluptatibus repellat illo modi tenetur architecto distinctio minima molestiae iusto delectus et. Natus.</p>
+                <div class="col-lg-6 p-5">
+                    <img class="w-100" src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" style="display:flexbox;">
                 </div>
             </div>
         </div>
+        <div class="segunda-fila">
+            <div class="row h-100">
+                <div class="col-6 p-5">
+                    <img class="w-100 " src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" style="display:flexbox;">
+                </div>
+                <div class="col-6 p-5">
+                    <h1>Mision</h1>
+                    <div class="d-flex h-100 align-items-center">
+                        <p>Lorem ipsum dolor sitdxd, amet consectetur adipisicing elit. Soluta culpa voluptatum aliquam laborum ratione dolore at, numquam voluptatibus repellat illo modi tenetur architecto distinctio minima molestiae iusto delectus et. Natus.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
     </div>
-
+    <div class="container-fluid bg-light pl-0 ps-0 " style="overflow-x:hidden;">
+        <div class="tercera-fila" style="background-color: #FEE9A0;">
+            <div class="row">
+                <div class="col-6 p-5">
+                    <div class="d-flex h-25 align-items-center">
+                        <h1>Vision</h1>
+                    </div>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta culpa voluptatum aliquam laborum ratione dolore at, numquam voluptatibus repellat illo modi tenetur architecto distinctio minima molestiae iusto delectus et. Natus.
+                </div>
+                <div class="col-6 p-5">
+                    <img class="w-100" src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" style="display:flexbox;">
+                </div>
+                
+            </div>
+        </div>
+    </div>
 
 
 
