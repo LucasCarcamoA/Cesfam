@@ -77,8 +77,10 @@ WSGI_APPLICATION = 'Cesfam.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'CESFAM_BD',
+        'USER': 'root',
+        'PASSWORD':'',
     }
 }
 
@@ -107,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Santiago' #Cambiar zona horaria a Chile
 
 USE_I18N = True
 
@@ -124,3 +126,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Define la carpeta media (crearla si es necesario) para guardar las fotos ingresadas en crear noticia y evento
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
