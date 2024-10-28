@@ -11,6 +11,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'style/estilo.css' %}">
     <style>
+    .card:hover {
+        &:hover {
+            transition: all 0.2s ease-out;
+            box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+            top: -4px;
+            border: 1px solid #cccccc;
+            background-color: white;
+       }
+        &:before {
+            position: absolute;
+            z-index: -1;
+            top: -16px;
+            right: -16px;
+            height: 32px;
+            width: 32px;
+            border-radius: 32px;
+            transform: scale(2);
+            transform-origin: 50% 50%;
+            transition: transform 0.15s ease-out;
+        }
+        &:hover:before {
+    transform: scale(2.15);
+  }
+  
+    }
     </style>
 </head>
 <body>
@@ -195,45 +220,33 @@
         <h1 class="text-center mb-3" id="Eventos">Eventos</h1>
         <p class="text-center">Encuentra Eventos o Talleres para asistir y apoyarnos!</p>
         
-        <div class="row justify-content-center">
-            <!-- PRIMER EVENTO -->
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="card-img-top" alt="Imagen de la noticia">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Título del Evento</h5>
-                        <p class="card-subtitle">Evento</p>
-                        <p class="card-text">Esta es una breve descripción de la noticia para que los usuarios se informen rápidamente.</p>
-                        <a href="pagina-noticia1.html" class="btn btn-primary">Leer más</a>
+        <div class="row justify-content-center" >
+            {% if eventos %}
+                {% for e in eventos %}
+                <div class="col-sm-12 col-md-12 col-lg-4">
+                    <div class="card mb-4">
+                        <div class="news-img" style="display:flex; height: 19rem;">
+                            <img src="{{ e.imagen.url }}" style="border-radius: 5px 5px 0 0; width: 100%; height: 100%;" class="img-fluid" alt="Imagen de la noticia">
+                        </div>
+                        <div class="card-body text-center" style="height: 14rem; display: grid;">
+                            <h5 class="card-title">{{ e.titulo }}</h5>
+                            <p class="card-subtitle">{{ e.tipo_evento }}</p>
+                            <p class="card-subtitle">Fecha: {{ e.fecha_inicio }} - {{ e.fecha_termino }}</p>
+                            <div class="contenedor-desc h-100">
+                                <p class="card-text justify-content-center" >{{ e.descripcion }}</p>
+                            </div>
+                            <div class="contenedor-boton align-content-end">
+                                <a href="pagina-noticia1.html" class="btn btn-primary">Leer más</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+                {% endfor %}
+            {% endif %}
+            
     
             <!-- SEGUNDO EVENTO -->
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="card-img-top" alt="Imagen de la noticia">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Título del Taller</h5>
-                        <p class="card-subtitle">Taller</p>
-                        <p class="card-text">Esta es una breve descripción de la noticia para que los usuarios se informen rápidamente.</p>
-                        <a href="pagina-noticia1.html" class="btn btn-primary">Leer más</a>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- TERCER EVENTO -->
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="card-img-top" alt="Imagen de la noticia">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Título del Evento</h5>
-                        <p class="card-subtitle">Evento</p>
-                        <p class="card-text">Esta es una breve descripción de la noticia para que los usuarios se informen rápidamente.</p>
-                        <a href="pagina-noticia1.html" class="btn btn-primary">Leer más</a>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     
         <div class="text-end mt-4">

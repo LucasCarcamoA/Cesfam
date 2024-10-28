@@ -5,7 +5,10 @@ from .models import Noticia, Evento
 # Create your views here.
 
 def index(request):
-    noticias = Noticia.objects.all()[:3:-1]
+    noticias = Noticia.objects.all().order_by('-id')[:3]
+    eventos = Evento.objects.all().order_by('fecha_inicio')[:3]
+    fulleventos = Evento.objects.all()
+    
     data = {
         'logosamu':'/static/img/logosamu.png',
         'logobomberos':'/static/img/logobomberos.png',
@@ -14,6 +17,8 @@ def index(request):
         'logodrogas':'/static/img/logodrogas.png',
         'logorescatemar':'/static/img/logorescatemar.png',
         'noticias': noticias,
+        'eventos' : eventos,
+        'fulleventos': fulleventos,
     }
     return render(request, 'index.html', data)
 
