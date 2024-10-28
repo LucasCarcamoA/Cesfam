@@ -102,43 +102,33 @@
         
         <div class="row justify-content-center">
             <!-- PRIMERA NOTICIA -->
-            <div class="col-md-4">
+            {% if noticias %} 
+            {% for i in noticias %}
+             
+            <div class="col-sm-12 col-md-12 col-lg-4">
                 <div class="card mb-4">
-                    <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="card-img-top" alt="Imagen de la noticia">
-                    <div class="card-body">
-                        <h5 class="card-title">Título de la Noticia 1</h5>
-                        <p class="text-muted">Fecha: 16 de octubre, 2024</p>
-                        <p class="card-text">Esta es una breve descripción de la noticia para que los usuarios se informen rápidamente.</p>
-                        <a href="pagina-noticia1.html" class="btn btn-primary">Leer más</a>
+                    <div class="news-img" style="display:flex; height: 19rem;">
+                        <img src="{{ i.imagen.url }}" style="border-radius: 5px 5px 0 0; width: 100%; height: 100%;" class="img-fluid" alt="Imagen de la noticia">
+                    </div>
+                    <div class="card-body text-center" style="height: 14rem; display: grid;">
+                        <h5 class="card-title">{{ i.titulo }}</h5>
+                        <p class="text-muted">Fecha: {{ i.fecha_creacion}}</p>
+                        <div class="contenedor-desc h-100">
+                            <p class="card-text justify-content-center">{{ i.descripcion }}</p>
+                        </div>
+                        <div class="contenedor-boton align-content-end">
+                            <a href="pagina-noticia1.html" class="btn btn-primary">Leer más</a>
+                        </div>
                     </div>
                 </div>
             </div>
-    
-            <!-- SEGUNDA NOTICIA -->
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="card-img-top" alt="Imagen de la noticia">
-                    <div class="card-body">
-                        <h5 class="card-title">Título de la Noticia 2</h5>
-                        <p class="text-muted">Fecha: 15 de octubre, 2024</p>
-                        <p class="card-text">Esta es una breve descripción de otra noticia para mantener informados a los usuarios.</p>
-                        <a href="pagina-noticia2.html" class="btn btn-primary">Leer más</a>
-                    </div>
-                </div>
+            {% endfor %}
+            {% else %}
+            <div class="bg-warning " style="text-align: center; border-radius: 8px;">
+                <h1> NO HAY NOTICIAS</h1>
+                <p class="text-muted"> Por ahora...</p>
             </div>
-    
-            <!-- TERCERA NOTICIA -->
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="card-img-top" alt="Imagen de la noticia">
-                    <div class="card-body">
-                        <h5 class="card-title">Título de la Noticia 3</h5>
-                        <p class="text-muted">Fecha: 14 de octubre, 2024</p>
-                        <p class="card-text">Breve descripción de una tercera noticia para que los usuarios estén al tanto.</p>
-                        <a href="pagina-noticia3.html" class="btn btn-primary">Leer más</a>
-                    </div>
-                </div>
-            </div>
+            {% endif %}
         </div>
     
         <div class="text-end mt-4">

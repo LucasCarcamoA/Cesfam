@@ -62,6 +62,13 @@ body {
     margin-bottom: 10px;
 }
 
+/*----   Estilo de Cards de Noticias en HTML   ----*/
+
+.news-img {
+    display:flex; 
+    height: 19rem;
+} 
+
 /*----   Estilo de Campañas en HTML   ----*/
 .campaign-section {
     background-color: #f3e8ff;
