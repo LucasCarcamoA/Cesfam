@@ -56,6 +56,13 @@ def oirs(request):
     }
     return render(request, 'oirs.html', data)
 
+def ver_noticias(request):
+    noticias = Noticia.objects.all().order_by('-id')
+    data = {
+        'todas_noticias' : noticias,
+    }
+    return render(request, 'todas_noticias.html',data)
+
 # VIEW ADMIN
 def administrador(request):
     return render(request, 'admin.html')
