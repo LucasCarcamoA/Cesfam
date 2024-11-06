@@ -18,11 +18,11 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from Cesfampage.views import index, sobre_nosotros, ubicacion, oirs, administrador, noticias, crear_noticia, eventos, crear_evento, ver_noticias
+from Cesfampage.views import index, sobre_nosotros, ubicacion, oirs, administrador, noticias, crear_noticia, eventos, crear_evento, ver_noticias, leer_noticia, leer_evento
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index),
+    path('', index, name='index'),
     path('sobrenosotros/', sobre_nosotros),
     path('ubicacion/', ubicacion),
     path('oirs/', oirs),
@@ -32,5 +32,7 @@ urlpatterns = [
     path('eventos/', eventos),
     path('crear_evento/', crear_evento),
     path('todas_noticias/', ver_noticias),
+    path('leer_noticia/<int:id>/', leer_noticia, name='leer_noticia'),
+    path('leer_evento/<int:id>/', leer_evento, name='leer_evento'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # Agrega las imagenes de la base de datos para ser mostradas en noticias.html y eventos.html

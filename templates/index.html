@@ -59,7 +59,7 @@
                         <a class="nav-link" href="sobrenosotros/"><i class="fas fa-home"></i> Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-map-marker-alt"></i> Ubicación</a>
+                        <a class="nav-link" href="ubicacion/"><i class="fas fa-map-marker-alt"></i> Ubicación</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-briefcase"></i> Trabaja con nosotros</a>
@@ -129,7 +129,7 @@
             <!-- PRIMERA NOTICIA -->
             {% if noticias %} 
             {% for i in noticias %}
-             
+
             <div class="col-sm-12 col-md-12 col-lg-4">
                 <div class="card mb-4">
                     <div class="news-img" style="display:flex; height: 19rem;">
@@ -142,7 +142,8 @@
                             <p class="card-text justify-content-center">{{ i.descripcion }}</p>
                         </div>
                         <div class="contenedor-boton align-content-end">
-                            <a href="pagina-noticia1.html" class="btn btn-primary">Leer más</a>
+                            <a href="{% url 'leer_noticia' i.id %}" class="btn btn-primary">Leer más</a>
+
                         </div>
                     </div>
                 </div>
@@ -167,6 +168,7 @@
             <h2 class="campaign-header">Campaña</h2>
             <p>Conoce y participa en nuevas campañas</p>
             <div class="row">
+                
                 <!-- Campaña Semestral -->
                 <div class="col-md-5">
                     <h5 class="mb-3 p-2">Campaña Semestral</h5>
@@ -236,7 +238,7 @@
                                 <p class="card-text justify-content-center" >{{ e.descripcion }}</p>
                             </div>
                             <div class="contenedor-boton align-content-end">
-                                <a href="pagina-noticia1.html" class="btn btn-primary">Leer más</a>
+                                <a href="{% url 'leer_evento' e.id %}" class="btn btn-primary">Leer más</a>
                             </div>
                         </div>
                     </div>

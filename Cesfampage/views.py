@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import NoticiaForm, EventoForm
 from .models import Noticia, Evento
 
@@ -100,3 +100,13 @@ def crear_evento(request):
     else:
         form = EventoForm()
     return render(request, 'crear_evento.html', {'form': form})
+
+def leer_noticia(request, id):
+    noticia = get_object_or_404(Noticia, id=id)
+    ultimas_noticias = Noticia.objects.exclude(id=id).order_by('-fecha_creacion')[:5]
+    return render(request, 'leer_noticia.html', {'noticia': noticia, 'ultimas_noticias': ultimas_noticias})
+
+def leer_evento(request, id):
+    evento = get_object_or_404(Evento, id=id)
+    ultimos_eventos = Evento.objects.exclude(id=id).order_by('-fecha_creacion')[:5]
+    return render(request, 'leer_evento.html', {'evento': evento, 'ultimos_eventos': ultimos_eventos})
