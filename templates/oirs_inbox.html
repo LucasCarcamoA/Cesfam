@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static 'style/estilo_admin.css' %}">
     
 </head>
+
     <body>
         <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
           <symbol id="check2" viewBox="0 0 16 16">
@@ -156,14 +157,14 @@
                 </li>
 
                 <li class="nav-item active">
-                  <a class="nav-link d-flex align-items-center gap-2" href="/noticias">
+                  <a class="nav-link d-flex align-items-center gap-2" href="#">
                     <svg class="bi"><use xlink:href="#file-earmark"/></svg>
                     Noticias
                   </a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center gap-2" href="#">
+                  <a class="nav-link d-flex align-items-center gap-2" href="/eventos">
                     <svg class="bi"><use xlink:href="#cart"/></svg>
                     Eventos
                   </a>
@@ -200,49 +201,38 @@
     
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Crear Evento</h1>
+            <h1 class="h2">OIRS Inbox</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
             </div>
             
           </div>
 
-          <div class="d-grid gap-2">
-            <a href="/crear_evento" class="btn btn-success" type="button">Crear Evento</a>
-          </div>
-
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-              <h1 class="h2">Eventos Publicados</h1>
-              <div class="btn-toolbar mb-2 mb-md-0">
-              </div>
               
-            </div>
+ 
 
-          <!-- Accordion noticias -->
+          <!-- Accordion OIRS -->
           <div class="accordion" id="accordionExample">
-            {% for evento in eventos %}
+            {% for inbox in oirs %}
             <div class="accordion-item">
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ evento.id }}" aria-controls="collapse{{ evento.id }}">
-                        ID: {{ evento.id }} | Título: {{ evento.titulo }} | Fecha de inicio: {{ evento.fecha_inicio }} | Fecha de término: {{ evento.fecha_termino }} | Fecha de publicación: {{ evento.fecha_creacion }}
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ inbox.id }}" aria-controls="collapse{{ inbox.id }}">
+                        ID: {{ inbox.id }} | Motivo: {{ inbox.motivo }} | Nombre: {{ inbox.nombre }} {{ inbox.apellido }} | Fecha de envio: {{ inbox.fecha_envio }} 
                     </button>
                 </h2>
-                <div id="collapse{{ evento.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div id="collapse{{ inbox.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <div class="row">
-                            <div class="col-md-2">
-                                <img src="{{ evento.imagen.url }}" class="img-fluid" alt="Imagen de {{ evento.titulo }}">
+                            <div class="col-md-12">
+                                <p>{{ inbox.nombre }} {{ inbox.apellido }}</p>
+                                <p>{{ inbox.correo }}</p>
+                                <p>{{ inbox.fecha_envio }}</p>
                             </div>
-                            <div class="col-md-8">
-                                <p>{{ evento.descripcion }}</p>
+                            <hr>
+                            <div class="col-md-12">
+                                <p class="text-break">{{ inbox.mensaje }}</p>
                             </div>
                             <div class="d-flex align-items-start my-2">
-                                <strong>Tipo de Evento: {{ evento.tipo_evento }}</strong>
-                            </div>
-
-                            <!-- Agregar funcion editar y eliminar -->
-                            <div class="d-flex justify-content-end align-items-end">
-                                <a href="" class="btn btn-warning ms-3">Editar</a>
-                                <a href="" class="btn btn-danger ms-3">Eliminar</a>
+                                <strong>Motivo: {{ inbox.motivo }}</strong>
                             </div>
                         </div>
                     </div>
@@ -251,7 +241,10 @@
             {% endfor %}
         </div>
 
+
+
           <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+    
           
         </main>
       </div>

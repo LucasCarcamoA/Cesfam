@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import NoticiaForm, EventoForm
-from .models import Noticia, Evento
+from .forms import NoticiaForm, EventoForm, OirsForm
+from .models import Noticia, Evento, Oirs
 
 # Create your views here.
 
@@ -44,17 +44,9 @@ def ubicacion(request):
     }
     return render(request, 'ubicacion.html', data)
 
-def oirs(request):
-    data = {
-        'oirslogo':'/static/img/oirs.png',
-        'logosamu':'/static/img/logosamu.png',
-        'logobomberos':'/static/img/logobomberos.png',
-        'logocarabineros':'/static/img/logocarabineros.png',
-        'logopdi':'/static/img/logopdi.png',
-        'logodrogas':'/static/img/logodrogas.png',
-        'logorescatemar':'/static/img/logorescatemar.png',
-    }
-    return render(request, 'oirs.html', data)
+
+
+
 
 def ver_noticias(request):
     noticias = Noticia.objects.all().order_by('-id')
@@ -70,6 +62,27 @@ def administrador(request):
 def noticias(request):
     noticias = Noticia.objects.all().order_by('-fecha_creacion')  # Obtener las noticias y ordenarlas por fecha de creacion
     return render(request, 'noticias.html', {'noticias': noticias})
+
+def oirs(request):
+    data = {
+        'logosamu':'/static/img/logosamu.png',
+        'logobomberos':'/static/img/logobomberos.png',
+        'logocarabineros':'/static/img/logocarabineros.png',
+        'logopdi':'/static/img/logopdi.png',
+        'logodrogas':'/static/img/logodrogas.png',
+        'logorescatemar':'/static/img/logorescatemar.png',
+    }
+    if request.method == 'POST':
+        form = OirsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'creacion_exitosa.html', {
+                'mensaje_exito': '¡Mensaje enviado correctamente!',
+                'url_volver': '/'  # Redirige a la página de OIRS exitosa despues de la página de creación exitosa
+                })
+    else:
+        form = OirsForm()
+    return render(request, 'oirs.html', {'form': form, 'data': data})
 
 def crear_noticia(request):
     if request.method == 'POST':
@@ -110,3 +123,8 @@ def leer_evento(request, id):
     evento = get_object_or_404(Evento, id=id)
     ultimos_eventos = Evento.objects.exclude(id=id).order_by('-fecha_creacion')[:5]
     return render(request, 'leer_evento.html', {'evento': evento, 'ultimos_eventos': ultimos_eventos})
+
+def oirs_inbox(request):
+    oirs = Oirs.objects.all().order_by('-fecha_envio')
+    return render(request, 'oirs_inbox.html', {'oirs': oirs})
+                

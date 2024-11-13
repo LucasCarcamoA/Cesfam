@@ -41,10 +41,10 @@
                         <a class="nav-link" href="/"><i class="fas fa-home"></i> Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="sobrenosotros/"><i class="fas fa-home"></i> Nosotros</a>
+                        <a class="nav-link" href="/sobrenosotros/"><i class="fas fa-home"></i> Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-map-marker-alt"></i> Ubicación</a>
+                        <a class="nav-link" href="/ubicacion/""><i class="fas fa-map-marker-alt"></i> Ubicación</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-briefcase"></i> Trabaja con nosotros</a>
@@ -75,37 +75,32 @@
                 <h4>¿Tienes alguna duda, reclamo o sugerencia? <br>
                     ¡Llena el formulario y ponte en contacto con nuestro equipo!</h4>
                     <br>
-                <form>
+                <form method="post" class="row">
+                    {% csrf_token %}
                     <div class="mb-3">
                         <label for="form_nombre" class="form-label">Nombre (*)</label>
-                        <input type="text" class="form-control" placeholder="Ingrese su nombre">
+                        {{ form.nombre }}
                     </div>
 
                     <div class="mb-3">
                         <label for="form_apellido" class="form-label">Apellido (*)</label>
-                        <input type="text" class="form-control" placeholder="Ingrese su apellido">
+                        {{ form.apellido }}
                     </div>
 
                     <div class="mb-3">
                         <label for="form_correo" class="form-label">Correo Electrónico (*)</label>
-                        <input type="email" class="form-control" id="form_correo" placeholder="Ingrese su correo electrónico">
+                        {{ form.correo }}
                     </div>
 
-                <div class="mb-3">
-                    <label for="form_motivo" class="form-label">Motivo</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Seleccione el motivo</option>
-                        <option value="1">Reclamo</option>
-                        <option value="2">Consulta</option>
-                        <option value="3">Sugerencia</option>
-                        <option value="4">Felicitaciones</option>
-                    </select>
-                </div>
+                    <div class="mb-3">
+                        <label for="form_motivo" class="form-label">Motivo</label>
+                        {{ form.motivo }}
+                    </div>
 
-                <div class="mb-3">
-                    <label for="form_mensaje" class="form-label">Mensaje</label>
-                    <textarea class="form-control" id="form_mensaje" rows="3" placeholder="Ingrese su mensaje"></textarea>
-                </div>
+                    <div class="mb-3">
+                        <label for="form_mensaje" class="form-label">Mensaje</label>
+                        {{ form.mensaje }}
+                    </div>
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
             </div>
