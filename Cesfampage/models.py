@@ -7,8 +7,8 @@ TIPO_EVENTO = [
     ('', 'Seleccione un tipo de evento'),
     ('Evento', 'Evento'),
     ('Taller', 'Taller'),
-    ('Campaña-Semestral', 'Campaña-Mensual'),
-    ('Campaña-Semestral', 'Campaña-Mensual'),
+    ('Campaña-Semestral', 'Campaña-Semestral'),
+    ('Campaña-Mensual', 'Campaña-Mensual'),
 ]
 
 MOTIVO = [

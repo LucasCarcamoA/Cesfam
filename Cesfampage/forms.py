@@ -5,8 +5,8 @@ from datetime import date
 TIPO_EVENTO = [
     ('Evento', 'Evento'),
     ('Taller', 'Taller'),
-    ('Campaña-Semestral', 'Campaña-Mensual'),
-    ('Campaña-Semestral', 'Campaña-Mensual'),
+    ('Campaña-Semestral', 'Campaña-Semestral'),
+    ('Campaña-Mensual', 'Campaña-Mensual'),
 ]
 
 MOTIVO = [

@@ -127,4 +127,14 @@ def leer_evento(request, id):
 def oirs_inbox(request):
     oirs = Oirs.objects.all().order_by('-fecha_envio')
     return render(request, 'oirs_inbox.html', {'oirs': oirs})
+
+def eliminar_evento(request, id):
+    evento=Evento.objects.get(id=id)
+    evento.delete()
+    return redirect('/eventos')
+
+def eliminar_noticia(request, id):
+    noticia=Noticia.objects.get(id=id)
+    noticia.delete()
+    return redirect('/noticias')
                 
