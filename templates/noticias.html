@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -217,7 +217,7 @@
               </div>
               
             </div>
-
+            {% if noticias %}
           <!-- Accordion noticias -->
           <div class="accordion" id="accordionExample">
             {% for noticia in noticias %}
@@ -230,9 +230,15 @@
                 <div id="collapse{{ noticia.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <div class="row">
-                            <div class="col-md-2">
-                                <img src="{{ noticia.imagen.url }}" class="img-fluid" alt="Imagen de {{ noticia.titulo }}">
-                            </div>
+                          {% if noticia.imagen %}
+                          <div class="col-md-2">
+                              <img src="{{ noticia.imagen.url }}" class="img-fluid" alt="Imagen de {{ noticia.titulo }}">
+                          </div>
+                          {% else %} 
+                          <div class="col-md-2">
+                            <h3 class="alert alert-warning">Imagen no encontrada</h3>
+                          </div>
+                          {% endif %}
                             <div class="col-md-8">
                                 <p>{{ noticia.descripcion }}</p>
                             </div>
@@ -241,8 +247,28 @@
                             </div>
                             <!-- Agregar funcion editar y eliminar -->
                             <div class="d-flex justify-content-end align-items-end">
-                                <a href="" class="btn btn-warning ms-3">Editar</a>
-                                <a href="/eliminar_nt/{{noticia.id}}" class="btn btn-danger ms-3">Eliminar</a>
+                                <a href="/modificar_noticia/{{ noticia.id }}" class="btn btn-warning ms-3">Editar</a>
+                                <button class="btn btn-danger ms-3" data-bs-toggle="modal" data-bs-target="#deleteModal{{ noticia.id }}">
+                                  Eliminar
+                              </button>
+                            <!-- Modal de confirmación de eliminación -->
+                              <div class="modal fade" id="deleteModal{{ noticia.id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ noticia.id }}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel{{ noticia.id }}">Confirmar eliminación</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ¿Estás seguro de que deseas eliminar esta noticia titulada <strong>{{ noticia.titulo }}</strong>?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                            <a href="/eliminar_noticia/{{ noticia.id }}" class="btn btn-danger">Eliminar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -250,6 +276,13 @@
             </div>
             {% endfor %}
         </div>
+
+        {% else %}
+        <div class="alert alert-warning" style="text-align: center; border-radius: 8px;">
+          <h1>NO HAY NOTICIAS PUBLICADAS</h1>
+          <p class="text-muted"> Por ahora...</p>
+      </div>
+        {% endif %}
 
 
 

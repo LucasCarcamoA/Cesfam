@@ -200,6 +200,29 @@
             </div>
           </div>
     
+          <div class="container">
+            
+            <h1>Bienvenido a la página de administrador de CESFAM Angachilla</h1>
+            <!-- Alertas de eventos por terminar -->
+            {% if eventos_por_terminar %}
+                <div class="alert alert-warning" role="alert">
+                    <strong>¡Atención!</strong> Los siguientes eventos están por terminar:
+                    <ul>
+                        {% for evento in eventos_por_terminar %}
+                            <li>{{ evento.titulo }} (termina el {{ evento.fecha_termino }})</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            <!-- Alertas de nuevos mensajes de OIRS -->
+            {% if nuevos_oirs %}
+                <div class="alert alert-info" role="alert">
+                    <strong>¡Nuevos mensajes recibidos!</strong> Tienes {{ nuevos_oirs.count }} nuevos mensajes en el sistema OIRS.
+                </div>
+            {% endif %}
+        </div>
+
           <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
     
 

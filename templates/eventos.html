@@ -216,7 +216,7 @@
               </div>
               
             </div>
-
+            {% if eventos %}
           <!-- Accordion noticias -->
           <div class="accordion" id="accordionExample">
             {% for evento in eventos %}
@@ -229,9 +229,15 @@
                 <div id="collapse{{ evento.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <div class="row">
+                            {% if evento.imagen %}
                             <div class="col-md-2">
                                 <img src="{{ evento.imagen.url }}" class="img-fluid" alt="Imagen de {{ evento.titulo }}">
                             </div>
+                            {% else %} 
+                            <div class="col-md-2">
+                              <h3 class="alert alert-warning">Imagen no encontrada</h3>
+                            </div>
+                            {% endif %}
                             <div class="col-md-8">
                                 <p>{{ evento.descripcion }}</p>
                             </div>
@@ -241,8 +247,27 @@
 
                             <!-- Agregar funcion editar y eliminar -->
                             <div class="d-flex justify-content-end align-items-end">
-                                <a href="" class="btn btn-warning ms-3">Editar</a>
-                                <a href="/eliminar_ev/{{evento.id}}" class="btn btn-danger ms-3">Eliminar</a>
+                              <a href="/modificar_evento/{{ evento.id }}" class="btn btn-warning ms-3">Editar</a>
+                                <button class="btn btn-danger ms-3" data-bs-toggle="modal" data-bs-target="#deleteModal{{ evento.id }}">
+                                  Eliminar
+                              </button>
+                            <!-- Modal de confirmación de eliminación -->
+                              <div class="modal fade" id="deleteModal{{ evento.id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ evento.id }}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel{{ evento.id }}">Confirmar eliminación</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ¿Estás seguro de que deseas eliminar este evento titulado <strong>{{ evento.titulo }}</strong>?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                            <a href="/eliminar_evento/{{ evento.id }}" class="btn btn-danger">Eliminar</a> 
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -250,6 +275,13 @@
             </div>
             {% endfor %}
         </div>
+
+        {% else %}
+        <div class="alert alert-warning" style="text-align: center; border-radius: 8px;">
+          <h1>NO HAY EVENTOS PUBLICADOS</h1>
+          <p class="text-muted"> Por ahora...</p>
+      </div>
+        {% endif %}
 
           <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
           

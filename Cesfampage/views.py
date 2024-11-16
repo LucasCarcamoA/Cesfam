@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import NoticiaForm, EventoForm, OirsForm
 from .models import Noticia, Evento, Oirs
+from django.utils.timezone import now
+from datetime import timedelta
 
 # Create your views here.
 
@@ -57,7 +59,21 @@ def ver_noticias(request):
 
 # VIEW ADMIN
 def administrador(request):
-    return render(request, 'admin.html')
+    #Obtiene los eventos y filtra los que están por terminar en 3 días o menos
+    eventos_por_terminar = Evento.objects.filter(fecha_termino__lte=now().date() + timedelta(days=3), fecha_termino__gte=now().date())
+    #Obtiene la ultima fecha de acceso a la página 
+    ultima_visita = request.session.get('ultima_visita', now())
+    #Filtra los mensajes nuevos de la OIRS desde la última visita
+    nuevos_oirs = Oirs.objects.filter(fecha_envio__gt=ultima_visita)
+    #Actualiza la última visita con la visita actual
+    request.session['ultima_visita'] = str(now())
+    
+    data = {
+        'eventos_por_terminar': eventos_por_terminar,
+        'nuevos_oirs': nuevos_oirs,
+    }
+    
+    return render(request, 'admin.html', data)
 
 def noticias(request):
     noticias = Noticia.objects.all().order_by('-fecha_creacion')  # Obtener las noticias y ordenarlas por fecha de creacion
@@ -97,6 +113,31 @@ def crear_noticia(request):
         form = NoticiaForm()
     return render(request, 'crear_noticia.html', {'form': form})
 
+def modificar_noticia(request, id):
+    noticia = Noticia.objects.get(id=id)
+    form = NoticiaForm(instance=noticia)
+    if request.method == 'POST':
+        form = NoticiaForm(request.POST, request.FILES, instance=noticia)
+        if form.is_valid():
+            form.save()
+        return render(request, 'creacion_exitosa.html', {
+            'mensaje_exito': 'Noticia modificada correctamente!',
+            'url_volver': '/noticias/'  # Redirige a la página de noticias exitosa despues de la página de creación exitosa
+            })
+    data={
+        'form':form,
+        'editar': True
+    }
+    return render(request,'crear_noticia.html', data)
+
+def eliminar_noticia(request, id):
+    noticia = Noticia.objects.get(id=id)
+    noticia.delete()
+    return render(request, 'creacion_exitosa.html', {
+        'mensaje_exito': 'Noticia eliminada correctamente!',
+        'url_volver': '/noticias/'  # Redirige a la página de noticias exitosa despues de la página de creación exitosa
+        })
+
 def eventos(request):
     eventos = Evento.objects.all().order_by('-fecha_creacion')  # Obtener los eventos y ordenarlas por fecha de creacion
     return render(request, 'eventos.html', {'eventos': eventos})
@@ -113,6 +154,31 @@ def crear_evento(request):
     else:
         form = EventoForm()
     return render(request, 'crear_evento.html', {'form': form})
+
+def modificar_evento(request, id):
+    evento = Evento.objects.get(id=id)
+    form = EventoForm(instance=evento)
+    if request.method == 'POST':
+        form = EventoForm(request.POST, request.FILES, instance=evento)
+        if form.is_valid():
+            form.save()
+        return render(request, 'creacion_exitosa.html', {
+            'mensaje_exito': 'Evento modificado correctamente!',
+            'url_volver': '/eventos/'  # Redirige a la página de eventos exitosa despues de la página de creación exitosa
+            })
+    data={
+        'form':form,
+        'editar': True
+    }
+    return render(request,'crear_evento.html', data)
+
+def eliminar_evento(request, id):
+    evento = Evento.objects.get(id=id)
+    evento.delete()
+    return render(request, 'creacion_exitosa.html', {
+        'mensaje_exito': 'Evento eliminado correctamente!',
+        'url_volver': '/eventos/'  # Redirige a la página de eventos exitosa despues de la página de creación exitosa
+        })
 
 def leer_noticia(request, id):
     noticia = get_object_or_404(Noticia, id=id)

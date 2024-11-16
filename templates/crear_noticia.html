@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -200,7 +200,9 @@
     
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Crear Noticia</h1>
+                <h2>
+                  {% if editar %}Modificar Noticia{% else %}Crear Noticia{% endif %}
+                </h2>
                 <div class="btn-toolbar mb-2 mb-md-0">
             </div>
             
@@ -230,7 +232,9 @@
             </div>
         
             <div class="d-grid my-5">
-                <button type="submit" class="btn btn-success">Crear Noticia</button>
+                <button type="submit" class="btn {% if editar %}btn-warning{% else %}btn-success{% endif %}">
+                  {% if editar %}Modificar Noticia{% else %}Crear Noticia{% endif %}
+                </button>
             </div>
         </form>
     </div>

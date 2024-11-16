@@ -16,11 +16,14 @@
       position: -webkit-sticky;
       position: sticky;
       top: 48px;
+      color: #454e9e !important;
+      background-color: #454e9e !important;
     }
     .navbar-search {
       display: block;
     }
   }
+  
   
   .sidebar .nav-link {
     font-size: .875rem;
@@ -34,6 +37,11 @@
   .sidebar-heading {
     font-size: .75rem;
   }
+
+  .sidebar-color {
+    color: #454e9e !important;
+    background-color: #454e9e !important;
+  }
   
   /*
    * Navbar
@@ -42,8 +50,8 @@
   .navbar-brand {
     padding-top: .75rem;
     padding-bottom: .75rem;
-    background-color: #f1ec92;
-    box-shadow: inset -1px 0 0 #f1ec92;
+    background-color: #454e9e;
+    box-shadow: inset -1px 0 0 #454e9e;
   }
   
   .navbar .form-control {
