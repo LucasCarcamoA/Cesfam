@@ -1,0 +1,74 @@
+*Index.html*
+    <!-- CAMPAÑAS -->
+    <div class="container my-5"  id="Campañas">
+        <div class="campaign-section text-center">
+            <h2 class="campaign-header">Campaña</h2>
+            <p>Conoce y participa en nuevas campañas</p>
+            <div class="row">
+                
+                <!-- Campaña Semestral -->
+                <div class="col-md-5">
+                    <h5 class="mb-3 p-2">Campaña Semestral</h5>
+                    <div class="campaign-card">
+                        <div class="row g-0">
+                            
+                            <div class="col-sm-12 col-md-12 col-lg-4">
+                                <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen campaña" class="img-fluid">
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-8">
+                                <div class="card-body">
+                                    <h5 class="card-title mt-2">Título</h5>
+                                    <p class="text-muted">Fecha: xx-xx-xxxx</p>
+                                    <a href="#" class="text-decoration-none text-black"><p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In commodo pulvinar ligula. Cras eu varius nibh, ut semper nulla.</p></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Separador vertical -->
+                <div class="col-md-2 d-flex justify-content-center align-items-center">
+                    <div class="divider"></div>
+                </div>
+    
+                <!-- Campaña Mensual -->
+                <div class="col-md-5">
+                    <h5 class="mb-3 p-2">Campaña Mensual</h5>
+                    <div class="campaign-card">
+                        <div class="row g-0">
+                            
+                            <div class="col-sm-12 col-md-12 col-lg-4">
+                                <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen campaña" class="img-fluid">
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-8">
+                                <div class="card-body">
+                                    <h5 class="card-title mt-2">Título</h5>
+                                    <p class="text-muted">Fecha: xx-xx-xxxx</p>
+                                    <a href="#" class="text-decoration-none text-black"><p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In commodo pulvinar ligula. Cras eu varius nibh, ut semper nulla.</p></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+*views.py*
+def index(request):
+    noticias = Noticia.objects.all().order_by('-id')[:3]
+    eventos = Evento.objects.all().order_by('fecha_inicio')[:3]
+    fulleventos = Evento.objects.all()
+    
+    data = {
+        'logosamu':'/static/img/logosamu.png',
+        'logobomberos':'/static/img/logobomberos.png',
+        'logocarabineros':'/static/img/logocarabineros.png',
+        'logopdi':'/static/img/logopdi.png',
+        'logodrogas':'/static/img/logodrogas.png',
+        'logorescatemar':'/static/img/logorescatemar.png',
+        'noticias': noticias,
+        'eventos' : eventos,
+        'fulleventos': fulleventos,
+    }
+    return render(request, 'index.html', data)
