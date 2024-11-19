@@ -237,9 +237,6 @@ def eliminar_noticia(request, id):
     noticia.delete()
     return redirect('/noticias')
                 
-from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect
-
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -247,7 +244,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None and (user.is_staff or user.is_superuser):
             login(request, user)
-            return redirect(reverse('administrador'))  # Asume que tienes una URL named 'administrador'
+            return redirect(reverse('administrador'))
         else:
             return render(request, 'login.html', {'error': 'Credenciales inválidas o usuario no autorizado'})
     return render(request, 'login.html')
