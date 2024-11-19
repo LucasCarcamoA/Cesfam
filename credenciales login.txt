@@ -1,0 +1,8 @@
+cesfam
+cesfam
+
+py manage.py createsuperuser
+
+pip install django
+pip install mysqlclient
+pip install django-auto-logout
