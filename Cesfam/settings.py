@@ -49,7 +49,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_auto_logout.middleware.auto_logout',
 ]
+
+AUTO_LOGOUT = {
+    'IDLE_TIME': 1800,  # Cierra sesión después de 30 minutos de inactividad
+    'MESSAGE': 'Tu sesión ha expirado. Por favor, inicia sesión nuevamente para continuar.',
+    'REDIRECT_TO_LOGIN_IMMEDIATELY': True,
+}
 
 ROOT_URLCONF = 'Cesfam.urls'
 
@@ -130,3 +137,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Define la carpeta media (crearla si es necesario) para guardar las fotos ingresadas en crear noticia y evento
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Configuración de sesiones
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 1800  # 30 minutos en segundos
+
+LOGIN_URL = 'login'

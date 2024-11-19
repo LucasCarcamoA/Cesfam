@@ -3,6 +3,10 @@ from .forms import NoticiaForm, EventoForm, OirsForm, TrabajaConNosotrosForm
 from .models import Noticia, Evento, Oirs, TrabajaConNosotros
 from django.utils.timezone import now
 from datetime import timedelta
+from .decorators import admin_required
+from django.contrib.auth import authenticate, login, logout
+from django.urls import reverse
+from django.contrib import messages
 
 # Create your views here.
 
@@ -72,6 +76,7 @@ def ver_noticias(request):
     return render(request, 'todas_noticias.html',data)
 
 # VIEW ADMIN
+@admin_required
 def administrador(request):
     #Obtiene los eventos y filtra los que están por terminar en 3 días o menos
     eventos_por_terminar = Evento.objects.filter(fecha_termino__lte=now().date() + timedelta(days=3), fecha_termino__gte=now().date())
@@ -91,10 +96,12 @@ def administrador(request):
     
     return render(request, 'admin.html', data)
 
+@admin_required
 def ver_postulantes(request):
     postulantes = TrabajaConNosotros.objects.all().order_by('-fecha_envio')
     return render(request, 'postulantes.html', {'postulantes': postulantes})
 
+@admin_required
 def noticias(request):
     noticias = Noticia.objects.all().order_by('-fecha_creacion')  # Obtener las noticias y ordenarlas por fecha de creacion
     return render(request, 'noticias.html', {'noticias': noticias})
@@ -175,6 +182,7 @@ def crear_evento(request):
         form = EventoForm()
     return render(request, 'crear_evento.html', {'form': form})
 
+@admin_required
 def modificar_evento(request, id):
     evento = Evento.objects.get(id=id)
     form = EventoForm(instance=evento)
@@ -192,6 +200,7 @@ def modificar_evento(request, id):
     }
     return render(request,'crear_evento.html', data)
 
+@admin_required
 def eliminar_evento(request, id):
     evento = Evento.objects.get(id=id)
     evento.delete()
@@ -211,18 +220,39 @@ def leer_evento(request, id):
     return render(request, 'leer_evento.html', {'evento': evento, 'ultimos_eventos': ultimos_eventos})
 
 
-
+@admin_required
 def oirs_inbox(request):
     oirs = Oirs.objects.all().order_by('-fecha_envio')
     return render(request, 'oirs_inbox.html', {'oirs': oirs})
 
+@admin_required
 def eliminar_evento(request, id):
     evento=Evento.objects.get(id=id)
     evento.delete()
     return redirect('/eventos')
 
+@admin_required
 def eliminar_noticia(request, id):
     noticia=Noticia.objects.get(id=id)
     noticia.delete()
     return redirect('/noticias')
                 
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None and (user.is_staff or user.is_superuser):
+            login(request, user)
+            return redirect(reverse('administrador'))  # Asume que tienes una URL named 'administrador'
+        else:
+            return render(request, 'login.html', {'error': 'Credenciales inválidas o usuario no autorizado'})
+    return render(request, 'login.html')
+
+def logout_view(request):
+    logout(request)
+    messages.success(request, 'Has cerrado sesión exitosamente.')
+    return redirect('login')

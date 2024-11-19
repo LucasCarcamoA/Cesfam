@@ -136,7 +136,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center gap-2" href="#">
+                  <a class="nav-link d-flex align-items-center gap-2" href="{% url 'logout' %}">
                     <svg class="bi"><use xlink:href="#door-closed"/></svg>
                     Cerrar Sesión
                   </a>
@@ -167,13 +167,13 @@
                     </ul>
                 </div>
             {% endif %}
-
-            <!-- Alertas de nuevos mensajes de OIRS -->
-            <!-- if nuevos_oirs  -->
-            <!--     <div class="alert alert-info" role="alert"> -->
-            <!--         <strong>¡Nuevos mensajes recibidos!</strong> Tienes {{ nuevos_oirs.count }} nuevos mensajes en el sistema OIRS. -->
-            <!--     </div> -->
-            <!-- endif  -->
+              
+             Alertas de nuevos mensajes de OIRS 
+             {% if nuevos_oirs  %}
+                 <div class="alert alert-info" role="alert"> 
+                     <strong>¡Nuevos mensajes recibidos!</strong> Tienes {{ nuevos_oirs.count }} nuevos mensajes en el sistema OIRS.
+                 </div> 
+             {% endif %}  
         </div>
 
           <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
