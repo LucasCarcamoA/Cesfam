@@ -20,6 +20,14 @@ MOTIVO = [
     ('Otro','Otro'),
 ]
 
+AREAS = [
+    ('Medicina', 'Medicina'),
+    ('Enfermería', 'Enfermería'),
+    ('Administración', 'Administración'),
+    ('Servicios Generales', 'Servicios Generales'),
+    ('Otro', 'Otro'),
+]
+
 class Evento(models.Model):
     titulo = models.CharField(max_length=100)
     imagen = models.ImageField(upload_to='eventos/', blank=True)
@@ -46,3 +54,14 @@ class Oirs(models.Model):
     motivo = models.CharField(max_length=50, choices=MOTIVO)
     mensaje = models.TextField(max_length=900)
     fecha_envio = models.DateTimeField(default=timezone.now)
+
+class TrabajaConNosotros(models.Model):
+    nombre = models.CharField(max_length=100)
+    correo = models.EmailField()
+    area_postulacion = models.CharField(max_length=50, choices=AREAS)
+    curriculum = models.FileField(upload_to='curriculums/', null=True, blank=True)
+    mensaje = models.TextField()
+    fecha_envio = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.nombre} - {self.area_postulacion}"

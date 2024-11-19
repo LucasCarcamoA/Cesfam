@@ -1,5 +1,5 @@
 from django import forms
-from .models import Noticia, Evento, Oirs
+from .models import Noticia, Evento, Oirs, TrabajaConNosotros
 from datetime import date
 
 TIPO_EVENTO = [
@@ -57,4 +57,14 @@ class OirsForm(forms.ModelForm):
             'correo': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese su correo electrónico'}),
             'motivo': forms.Select(choices=MOTIVO, attrs={'class': 'form-select'}),
             'mensaje': forms.Textarea(attrs={'class': 'form-control', 'rows': 6, 'placeholder': 'Ingrese su mensaje'}),
+        }
+class TrabajaConNosotrosForm(forms.ModelForm):
+    class Meta:
+        model = TrabajaConNosotros
+        fields = ['nombre', 'correo', 'mensaje', 'area_postulacion', 'curriculum']
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese su nombre'}),
+            'correo': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese su correo electrónico'}),
+            'mensaje': forms.Textarea(attrs={'class': 'form-control', 'rows': 6, 'placeholder': 'Ingrese su mensaje'}),
+            'curriculum': forms.FileInput(attrs={'class': 'form-control'}),
         }

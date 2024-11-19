@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import NoticiaForm, EventoForm, OirsForm
-from .models import Noticia, Evento, Oirs
+from .forms import NoticiaForm, EventoForm, OirsForm, TrabajaConNosotrosForm
+from .models import Noticia, Evento, Oirs, TrabajaConNosotros
 from django.utils.timezone import now
 from datetime import timedelta
 
@@ -50,9 +50,19 @@ def ubicacion(request):
     }
     return render(request, 'ubicacion.html', data)
 
-
-
-
+def trabaja_con_nosotros(request):
+    if request.method == 'POST':
+        form = TrabajaConNosotrosForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return render(request, 'creacion_exitosa.html', {
+                'mensaje_exito': '¡Postulación enviada correctamente!',
+                'url_volver': '/'
+            })
+    else:
+        form = TrabajaConNosotrosForm()
+    
+    return render(request, 'trabaja_con_nosotros.html', {'form': form})
 
 def ver_noticias(request):
     noticias = Noticia.objects.all().order_by('-id')
@@ -70,14 +80,20 @@ def administrador(request):
     #Filtra los mensajes nuevos de la OIRS desde la última visita
     nuevos_oirs = Oirs.objects.filter(fecha_envio__gt=ultima_visita)
     #Actualiza la última visita con la visita actual
+    postulantes = TrabajaConNosotros.objects.all().order_by('-fecha_envio')[:5]  # Obtiene los últimos 5 postulantes    
     request.session['ultima_visita'] = str(now())
     
     data = {
         'eventos_por_terminar': eventos_por_terminar,
         'nuevos_oirs': nuevos_oirs,
+        'postulantes': postulantes,
     }
     
     return render(request, 'admin.html', data)
+
+def ver_postulantes(request):
+    postulantes = TrabajaConNosotros.objects.all().order_by('-fecha_envio')
+    return render(request, 'postulantes.html', {'postulantes': postulantes})
 
 def noticias(request):
     noticias = Noticia.objects.all().order_by('-fecha_creacion')  # Obtener las noticias y ordenarlas por fecha de creacion
