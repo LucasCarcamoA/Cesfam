@@ -194,21 +194,37 @@
                 <!-- Campaña Semestral -->
                 <div class="col-md-5">
                     <h5 class="mb-3 p-2">Campaña Semestral</h5>
-                    <div class="campaign-card">
-                        <div class="row g-0">
-                            
-                            <div class="col-sm-12 col-md-12 col-lg-4">
-                                <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen campaña" class="img-fluid">
-                            </div>
-                            <div class="col-sm-12 col-md-12 col-lg-8">
-                                <div class="card-body">
-                                    <h5 class="card-title mt-2">Título</h5>
-                                    <p class="text-muted">Fecha: xx-xx-xxxx</p>
-                                    <a href="#" class="text-decoration-none text-black"><p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In commodo pulvinar ligula. Cras eu varius nibh, ut semper nulla.</p></a>
+                    {% if campañas_semestrales %}
+                    {% for campaña_s in campañas_semestrales %}
+                        <div class="campaign-card">
+                            <div class="row g-0">
+
+                                <div class="col-sm-12 col-md-12 col-lg-4">
+                                    {% if campaña.s.imagen.url is null %}
+                                    <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen campaña" class="img-fluid">
+                                    {% else %}
+                                    <img src="{{ campaña_s.imagen.url }}" alt="Imagen campaña" class="img-fluid">
+                                    {% endif%}
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-8">
+                                    <div class="card-body">
+                                        <a href="{% url 'leer_evento' campaña_s.id %}" class="text-decoration-none text-black">
+                                        <h5 class="card-title mt-2">{{ campaña_s.titulo }}</h5>
+                                        <p class="text-muted">Duración: {{ campaña_s.fecha_inicio|date:"d-M-y" }} // {{ campaña_s.fecha_termino|date:"d-M-y" }}</p>
+                                        <p class="card-text">{{ campaña_s.descripcion }}</p></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    {% endfor %}
+                    {% else %}
+                    <div class="alert alert-info " style="text-align: center; border-radius: 8px;">
+                        <h1> NO HAY CAMPAÑA SEMESTRAL</h1>
+                        <p class="text-muted"> Por ahora...</p>
                     </div>
+                    {% endif %}
+                    
+                    
                 </div>
     
                 <!-- Separador vertical -->
@@ -219,21 +235,35 @@
                 <!-- Campaña Mensual -->
                 <div class="col-md-5">
                     <h5 class="mb-3 p-2">Campaña Mensual</h5>
-                    <div class="campaign-card">
-                        <div class="row g-0">
-                            
-                            <div class="col-sm-12 col-md-12 col-lg-4">
-                                <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen campaña" class="img-fluid">
-                            </div>
-                            <div class="col-sm-12 col-md-12 col-lg-8">
-                                <div class="card-body">
-                                    <h5 class="card-title mt-2">Título</h5>
-                                    <p class="text-muted">Fecha: xx-xx-xxxx</p>
-                                    <a href="#" class="text-decoration-none text-black"><p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In commodo pulvinar ligula. Cras eu varius nibh, ut semper nulla.</p></a>
+                    {% if campañas_mensuales %}
+                    {% for campaña_m in campañas_mensuales %}
+                        <div class="campaign-card">
+                            <div class="row g-0">
+
+                                <div class="col-sm-12 col-md-12 col-lg-4">
+                                    {% if campaña_m.imagen.url is null %}
+                                    <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen campaña" class="img-fluid">
+                                    {% else %}
+                                    <img src="{{ campaña_m.imagen.url }}" alt="Imagen campaña" class="img-fluid">
+                                    {% endif%}
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-8">
+                                    <div class="card-body">
+                                        <a href="{% url 'leer_evento' campaña_m.id %}" class="text-decoration-none text-black">
+                                        <h5 class="card-title mt-2">{{ campaña_m.titulo }}</h5>
+                                        <p class="text-muted">Duración: {{ campaña_m.fecha_inicio|date:"d-M-y" }} // {{ campaña_m.fecha_termino|date:"d-M-y" }}</p>
+                                        <p class="card-text">{{ campaña_m.descripcion }}</p></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    {% endfor %}
+                    {% else %}
+                    <div class="alert alert-info " style="text-align: center; border-radius: 8px;">
+                        <h1> NO HAY CAMPAÑA MENSUAL</h1>
+                        <p class="text-muted"> Por ahora...</p>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

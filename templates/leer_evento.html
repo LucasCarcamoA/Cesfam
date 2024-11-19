@@ -90,7 +90,11 @@
         <div class="col-md-8">
             <h1 class="text-start fw-bold">{{ evento.titulo }}</h1>
             <p class="text-muted text-start">Fecha de publicación: {{ evento.fecha_creacion }}</p>
-            <img src="{{ evento.imagen.url }}" class="img-fluid mb-4" alt="Imagen del evento">
+            {% if evento.imagen.url is not null %}
+            <img src="{{ evento.imagen.url }}" alt="Imagen evento" class="img-fluid">
+            {% else %}
+            <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen evento" class="img-fluid">
+            {% endif %}
             <hr>
             <p class="lh-lg fs-4 text-start">{{ evento.descripcion }}</p>
         </div>
@@ -106,13 +110,24 @@
                     <div class="row g-3">
                         <div class="col-sm-12 col-md-12 col-lg-4">
                             <a href="{% url 'leer_evento' evento.id %}" class="text-decoration-none text-black">
+                            {% if evento.imagen.url is not null %}
                             <img src="{{ evento.imagen.url }}" alt="Imagen evento" class="img-fluid">
+                            {% else %}
+                            <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen evento" class="img-fluid">
+                            {% endif %}
                             </a>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-8">
                             <div class="card-body">
                                 <a href="{% url 'leer_evento' evento.id %}" class="text-decoration-none text-black">
                                 <h5 class="card-title mt-2">{{ evento.titulo }}</h5>
+                                {% if evento.tipo_evento == "Campaña-Mensual" %}
+                                <p class="text-muted">Campaña mensual</p>
+                                {% elif evento.tipo_evento == "Campaña-Semestral" %}
+                                <p class="text-muted">Campaña semestral</p>
+                                {% else %}
+                                <p class="text-muted">{{ evento.tipo_evento }}</p>
+                                {% endif %}
                                 </a>
                                 <p class="text-muted">{{ evento.fecha_creacion }}</p>
                             </div>

@@ -10,6 +10,8 @@ def index(request):
     noticias = Noticia.objects.all().order_by('-id')[:3]
     eventos = Evento.objects.all().order_by('fecha_inicio')[:3]
     fulleventos = Evento.objects.all()
+    campañas_mensuales = Evento.objects.filter(tipo_evento__startswith="Campaña-Mensual").order_by('-id')
+    campañas_semestrales = Evento.objects.filter(tipo_evento__startswith="Campaña-Semestral").order_by('-id')
     
     data = {
         'logosamu':'/static/img/logosamu.png',
@@ -21,6 +23,8 @@ def index(request):
         'noticias': noticias,
         'eventos' : eventos,
         'fulleventos': fulleventos,
+        'campañas_mensuales':campañas_mensuales,
+        'campañas_semestrales':campañas_semestrales,
     }
     return render(request, 'index.html', data)
 
@@ -189,6 +193,8 @@ def leer_evento(request, id):
     evento = get_object_or_404(Evento, id=id)
     ultimos_eventos = Evento.objects.exclude(id=id).order_by('-fecha_creacion')[:5]
     return render(request, 'leer_evento.html', {'evento': evento, 'ultimos_eventos': ultimos_eventos})
+
+
 
 def oirs_inbox(request):
     oirs = Oirs.objects.all().order_by('-fecha_envio')
