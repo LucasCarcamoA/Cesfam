@@ -18,6 +18,15 @@ MOTIVO = [
     ('Otro','Otro'),
 ]
 
+AREAS = [
+    ('', 'Seleccione el area'),
+    ('Medicina', 'Medicina'),
+    ('Enfermería', 'Enfermería'),
+    ('Administración', 'Administración'),
+    ('Servicios Generales', 'Servicios Generales'),
+    ('Otro', 'Otro'),
+]
+
 class EventoForm(forms.ModelForm):
     class Meta:
         model = Evento
@@ -66,5 +75,6 @@ class TrabajaConNosotrosForm(forms.ModelForm):
             'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese su nombre'}),
             'correo': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese su correo electrónico'}),
             'mensaje': forms.Textarea(attrs={'class': 'form-control', 'rows': 6, 'placeholder': 'Ingrese su mensaje'}),
+            'area_postulacion': forms.Select(choices=AREAS, attrs={'class': 'form-select'}),
             'curriculum': forms.FileInput(attrs={'class': 'form-control'}),
         }

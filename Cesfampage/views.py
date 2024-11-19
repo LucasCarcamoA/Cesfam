@@ -34,13 +34,25 @@ def index(request):
 
 def sobre_nosotros(request):
     data = {
-        'logosamu':'/static/img/logosamu.png',
-        'logobomberos':'/static/img/logobomberos.png',
-        'logocarabineros':'/static/img/logocarabineros.png',
-        'logopdi':'/static/img/logopdi.png',
-        'logodrogas':'/static/img/logodrogas.png',
-        'logorescatemar':'/static/img/logorescatemar.png',
-    }    
+        'JuanCarlosOchoa':'/static/img/jefatura/JuanCarlosOchoa.png',
+        'JacquelineVidal':'/static/img/jefatura/JacquelineVidal.png',
+        'PabloFlores':'/static/img/jefatura/PabloFlores.png',
+        'YassnaVargas':'/static/img/jefatura/YassnaVargas.png',
+        'NadyaFarias':'/static/img/jefatura/NadyaFarias.png',
+        'CamiloDelgado':'/static/img/jefatura/CamiloDelgado.png',
+        'CinthiaSoto':'/static/img/jefatura/CinthiaSoto.png',
+        'MartaCifuentes':'/static/img/jefatura/MartaCifuentes.png',
+        'IsabelSoto':'/static/img/jefatura/IsabelSoto.png',
+        'ClaudiaQuichiyao':'/static/img/jefatura/ClaudiaQuichiyao.png',
+        'CamilaCutino':'/static/img/jefatura/CamilaCutino.png',
+        'GloriaJaramillo':'/static/img/jefatura/GloriaJaramillo.png',
+        'RodrigoAlvarez':'/static/img/jefatura/RodrigoAlvarez.png',
+        'SimonSchneider':'/static/img/jefatura/SimonSchneider.png',
+        'ClaudiaFernandez':'/static/img/jefatura/ClaudiaFernandez.png',
+        'LissetteGumera':'/static/img/jefatura/LissetteGumera.png',
+        'DanielaAlderete':'/static/img/jefatura/DanielaAlderete.png',
+        'DanielaUrrutia':'/static/img/jefatura/DanielaUrrutia.png',
+    }  
     return render(request, 'sobre_nosotros.html', data)
 
 def ubicacion(request):
@@ -108,12 +120,7 @@ def noticias(request):
 
 def oirs(request):
     data = {
-        'logosamu':'/static/img/logosamu.png',
-        'logobomberos':'/static/img/logobomberos.png',
-        'logocarabineros':'/static/img/logocarabineros.png',
-        'logopdi':'/static/img/logopdi.png',
-        'logodrogas':'/static/img/logodrogas.png',
-        'logorescatemar':'/static/img/logorescatemar.png',
+        'oirslogo':'/static/img/oirs.png'
     }
     if request.method == 'POST':
         form = OirsForm(request.POST)

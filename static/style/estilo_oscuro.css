@@ -5,7 +5,7 @@ body {
 }
 
 body {
-    background-color: #121212 !important;
+    background-color: #313131 !important;
     color: #ffffff !important;
 }
 
@@ -173,5 +173,23 @@ body {
 }
 
 #fondotodasnoticias {
+    background-color: #444444 !important;
+}
+
+.card {
     background-color: #2c2c2c !important;
+    color: #ffffff !important;
+}
+
+.card-body {
+    background-color: #2c2c2c !important;
+    color: #ffffff !important;
+}
+
+#ultimas_noticias {
+    color: #000000 !important;
+}
+
+#ultimos_eventos {
+    color: #000000 !important;
 }
