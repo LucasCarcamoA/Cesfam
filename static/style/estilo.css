@@ -4,7 +4,6 @@ body {
     margin: 0;
 }
 
-
 /* ----   Header NavBar   -----*/
 
 .navbar-custom {
@@ -97,6 +96,14 @@ body {
     overflow: hidden;
     white-space: normal;
     }
+
+footer {
+    background-color: #FEE9A0;
+}
+
+
+
+
 
 
     
