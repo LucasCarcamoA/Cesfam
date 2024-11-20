@@ -17,9 +17,6 @@
         <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
         <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
       </symbol>
-      <symbol id="cart" viewBox="0 0 16 16">
-        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-      </symbol>
       <symbol id="chevron-right" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
       </symbol>
@@ -67,20 +64,12 @@
     
       <ul class="navbar-nav flex-row d-md-none">
         <li class="nav-item text-nowrap">
-          <button class="nav-link px-3 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle search">
-            <svg class="bi"><use xlink:href="#search"/></svg>
-          </button>
-        </li>
-        <li class="nav-item text-nowrap">
           <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <svg class="bi"><use xlink:href="#list"/></svg>
           </button>
         </li>
       </ul>
     
-      <div id="navbarSearch" class="navbar-search w-100 collapse">
-        <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
-      </div>
     </header>
     
     <div class="container-fluid">
@@ -94,7 +83,7 @@
             
             <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
               <ul class="nav flex-column">
-                <li class="nav-item">
+                <li class="nav-item active">
                   <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
                     <svg class="bi"><use xlink:href="#house-fill"/></svg>
                     Inicio
@@ -108,7 +97,7 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center gap-2" href="/eventos">
-                    <svg class="bi"><use xlink:href="#cart"/></svg>
+                    <svg class="bi"><use xlink:href="#file-earmark"/></svg>
                     Eventos
                   </a>
                 </li>
@@ -129,12 +118,6 @@
               <hr class="my-3">
     
               <ul class="nav flex-column mb-auto">
-                <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center gap-2" href="#">
-                    <svg class="bi"><use xlink:href="#gear-wide-connected"/></svg>
-                    Configuración
-                  </a>
-                </li>
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center gap-2" href="{% url 'logout' %}">
                     <svg class="bi"><use xlink:href="#door-closed"/></svg>
@@ -168,12 +151,18 @@
                 </div>
             {% endif %}
               
-             Alertas de nuevos mensajes de OIRS 
+            <!--Alertas de nuevos mensajes de OIRS -->
              {% if nuevos_oirs  %}
                  <div class="alert alert-info" role="alert"> 
-                     <strong>¡Nuevos mensajes recibidos!</strong> Tienes {{ nuevos_oirs.count }} nuevos mensajes en el sistema OIRS.
+                     <strong>¡Nuevos mensajes recibidos!</strong> Tienes {{ nuevos_oirs.count }} nuevo(s) mensaje(s) en el sistema OIRS.
                  </div> 
              {% endif %}  
+
+             {% if nuevos_postulantes  %}
+             <div class="alert alert-info" role="alert"> 
+                 <strong>¡Nuevos postulantes recibidos!</strong> Tienes {{ nuevos_postulantes.count }} nuevo(s) postulante(s) en el sistema.
+             </div> 
+         {% endif %}  
         </div>
 
           <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>

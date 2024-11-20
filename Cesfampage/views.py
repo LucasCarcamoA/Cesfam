@@ -98,12 +98,15 @@ def administrador(request):
     nuevos_oirs = Oirs.objects.filter(fecha_envio__gt=ultima_visita)
     #Actualiza la última visita con la visita actual
     postulantes = TrabajaConNosotros.objects.all().order_by('-fecha_envio')[:5]  # Obtiene los últimos 5 postulantes    
+    nuevos_postulantes = TrabajaConNosotros.objects.filter(fecha_envio__gt=ultima_visita)
     request.session['ultima_visita'] = str(now())
+    
     
     data = {
         'eventos_por_terminar': eventos_por_terminar,
         'nuevos_oirs': nuevos_oirs,
         'postulantes': postulantes,
+        'nuevos_postulantes': nuevos_postulantes,
     }
     
     return render(request, 'admin.html', data)
