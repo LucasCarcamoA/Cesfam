@@ -28,6 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['cesfamangachilla-atamh6fac8dneuh2.brazilsouth-01.azurewebsites.net']
 
+#Posible solucion CSRF
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+CSRF_COOKIE_SECURE = True  
+SESSION_COOKIE_SECURE = True
 
 
 
