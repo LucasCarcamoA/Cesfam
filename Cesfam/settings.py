@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['cesfamangachilla-atamh6fac8dneuh2.brazilsouth-01.azurewebsites.net']
 
+CSRF_TRUSTED_ORIGINS = ['https://cesfamangachilla-atamh6fac8dneuh2.brazilsouth-01.azurewebsites.net/'] #Problema con CSRF
+
 
 # Application definition
 
