@@ -83,7 +83,7 @@
               <ul class="nav flex-column">
 
                 <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center gap-2" aria-current="page" href="/administrador">
+                  <a class="nav-link d-flex align-items-center gap-2" aria-current="page" href="{% url 'administrador' %}">
                     <svg class="bi"><use xlink:href="#house-fill"/></svg>
                     Inicio
                   </a>
@@ -97,14 +97,14 @@
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center gap-2" href="/eventos">
+                  <a class="nav-link d-flex align-items-center gap-2" href="{% url 'eventos' %}">
                     <svg class="bi"><use xlink:href="#file-earmark"/></svg>
                     Eventos
                   </a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center gap-2" href="/oirs_inbox">
+                  <a class="nav-link d-flex align-items-center gap-2" href="{% url 'oirs_inbox' %}">
                     <svg class="bi"><use xlink:href="#people"/></svg>
                     OIRS
                   </a>
@@ -141,7 +141,7 @@
           </div>
 
           <div class="d-grid gap-2">
-            <a href="/crear_noticia" class="btn btn-success" type="button">Crear Noticia</a>
+            <a href="{% url 'crear_noticia' %}" class="btn btn-success" type="button">Crear Noticia</a>
           </div>
 
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -180,7 +180,7 @@
                             </div>
                             <!-- Agregar funcion editar y eliminar -->
                             <div class="d-flex justify-content-end align-items-end">
-                                <a href="/modificar_noticia/{{ noticia.id }}" class="btn btn-warning ms-3">Editar</a>
+                                <a href="{% url 'modificar_noticia' noticia.id %}" class="btn btn-warning ms-3">Editar</a>
                                 <button class="btn btn-danger ms-3" data-bs-toggle="modal" data-bs-target="#deleteModal{{ noticia.id }}">
                                   Eliminar
                               </button>
@@ -197,7 +197,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                            <a href="/eliminar_noticia/{{ noticia.id }}" class="btn btn-danger">Eliminar</a>
+                                            <a href="{% url 'eliminar_noticia' noticia.id %}" class="btn btn-danger">Eliminar</a>
                                         </div>
                                     </div>
                                 </div>

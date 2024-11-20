@@ -14,8 +14,8 @@ def index(request):
     noticias = Noticia.objects.all().order_by('-id')[:3]
     eventos = Evento.objects.all().order_by('fecha_inicio')[:3]
     fulleventos = Evento.objects.all()
-    campañas_mensuales = Evento.objects.filter(tipo_evento__startswith="Campaña-Mensual").order_by('-id')
-    campañas_semestrales = Evento.objects.filter(tipo_evento__startswith="Campaña-Semestral").order_by('-id')
+    campañas_mensuales = Evento.objects.filter(tipo_evento__startswith="Campaña-Mensual").order_by('-id')[:1]
+    campañas_semestrales = Evento.objects.filter(tipo_evento__startswith="Campaña-Semestral").order_by('-id')[:1]
     
     data = {
         'logosamu':'/static/img/logosamu.png',
@@ -87,6 +87,13 @@ def ver_noticias(request):
     }
     return render(request, 'todas_noticias.html',data)
 
+def ver_eventos(request):
+    eventos = Evento.objects.all().order_by('-id')
+    data = {
+        'todos_eventos' : eventos,
+    }
+    return render(request, 'todos_eventos.html',data)
+
 # VIEW ADMIN
 @admin_required
 def administrador(request):
@@ -144,7 +151,7 @@ def crear_noticia(request):
             form.save()
             return render(request, 'creacion_exitosa.html', {
                 'mensaje_exito': '¡Noticia creada correctamente!',
-                'url_volver': '/noticias/'  # Redirige a la página de noticias exitosa despues de la página de creación exitosa
+                'url_volver': '/administrador/noticias'  # Redirige a la página de noticias exitosa despues de la página de creación exitosa
             })
     else:
         form = NoticiaForm()
@@ -159,7 +166,7 @@ def modificar_noticia(request, id):
             form.save()
         return render(request, 'creacion_exitosa.html', {
             'mensaje_exito': 'Noticia modificada correctamente!',
-            'url_volver': '/noticias/'  # Redirige a la página de noticias exitosa despues de la página de creación exitosa
+            'url_volver': '/administrador/noticias'  # Redirige a la página de noticias exitosa despues de la página de creación exitosa
             })
     data={
         'form':form,
@@ -172,7 +179,7 @@ def eliminar_noticia(request, id):
     noticia.delete()
     return render(request, 'creacion_exitosa.html', {
         'mensaje_exito': 'Noticia eliminada correctamente!',
-        'url_volver': '/noticias/'  # Redirige a la página de noticias exitosa despues de la página de creación exitosa
+        'url_volver': '/administrador/noticias'  # Redirige a la página de noticias exitosa despues de la página de creación exitosa
         })
 
 def eventos(request):
@@ -186,7 +193,7 @@ def crear_evento(request):
             form.save()
             return render(request, 'creacion_exitosa.html', {
                 'mensaje_exito': '¡Evento creado correctamente!',
-                'url_volver': '/eventos/'  # Redirige a la página de eventos exitosa despues de la página de creación exitosa
+                'url_volver': '/administrador/eventos/'  # Redirige a la página de eventos exitosa despues de la página de creación exitosa
             })
     else:
         form = EventoForm()
@@ -202,7 +209,7 @@ def modificar_evento(request, id):
             form.save()
         return render(request, 'creacion_exitosa.html', {
             'mensaje_exito': 'Evento modificado correctamente!',
-            'url_volver': '/eventos/'  # Redirige a la página de eventos exitosa despues de la página de creación exitosa
+            'url_volver': '/administrador/eventos/'  # Redirige a la página de eventos exitosa despues de la página de creación exitosa
             })
     data={
         'form':form,
@@ -216,7 +223,7 @@ def eliminar_evento(request, id):
     evento.delete()
     return render(request, 'creacion_exitosa.html', {
         'mensaje_exito': 'Evento eliminado correctamente!',
-        'url_volver': '/eventos/'  # Redirige a la página de eventos exitosa despues de la página de creación exitosa
+        'url_volver': '/administrador/eventos/'  # Redirige a la página de eventos exitosa despues de la página de creación exitosa
         })
 
 def leer_noticia(request, id):
@@ -234,18 +241,6 @@ def leer_evento(request, id):
 def oirs_inbox(request):
     oirs = Oirs.objects.all().order_by('-fecha_envio')
     return render(request, 'oirs_inbox.html', {'oirs': oirs})
-
-@admin_required
-def eliminar_evento(request, id):
-    evento=Evento.objects.get(id=id)
-    evento.delete()
-    return redirect('/eventos')
-
-@admin_required
-def eliminar_noticia(request, id):
-    noticia=Noticia.objects.get(id=id)
-    noticia.delete()
-    return redirect('/noticias')
                 
 def login_view(request):
     if request.method == 'POST':
