@@ -84,10 +84,12 @@ WSGI_APPLICATION = 'Cesfam.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'CESFAM_BD',
-        'USER': 'root',
-        'PASSWORD':'',
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "db_test",
+        "USER": "inacap",
+        "PASSWORD": "asdf1234.",
+        "HOST": "db-test-1.cza2gokguzyb.us-east-1.rds.amazonaws.com",
+        "PORT": "5432",
     }
 }
 
