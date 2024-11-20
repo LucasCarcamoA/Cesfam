@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-7q9%ei)mjgd(()i!pqs!9p$ir3(wjff_et&l&r43z%hz_gtiy*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['cesfamangachilla-atamh6fac8dneuh2.brazilsouth-01.azurewebsites.net']
+ALLOWED_HOSTS = ['cesfamangachilla-atamh6fac8dneuh2.brazilsouth-01.azurewebsites.net', 'localhost', '127.0.0.1']
 
 #CSRF SOLUCION
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
