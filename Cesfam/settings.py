@@ -28,7 +28,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['cesfamangachilla-atamh6fac8dneuh2.brazilsouth-01.azurewebsites.net']
 
-#Posible solucion CSRF
+#CSRF SOLUCION
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 CSRF_COOKIE_SECURE = True  
 SESSION_COOKIE_SECURE = True
@@ -136,6 +136,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') #Posible solucion Estilos perdidos
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
