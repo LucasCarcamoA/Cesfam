@@ -199,6 +199,15 @@
     <div class="container my-3">
         <form method="post" enctype="multipart/form-data" class="row">
             {% csrf_token %}
+
+            {% if form.non_field_errors %}
+            <div class="col-12">
+                <div class="alert alert-danger">
+                    {{ form.non_field_errors }}
+                </div>
+            </div>
+            {% endif %}
+
             <div class="col-md-6 gy-3">
                 <label for="form_titulo" class="form-label">Título de la Noticia</label>
                 {{ form.titulo }}

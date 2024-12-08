@@ -181,6 +181,7 @@
                             </div>
                             <!-- Agregar funcion editar y eliminar -->
                             <div class="d-flex justify-content-end align-items-end">
+                                <a href="{% url 'leer_noticia' noticia.id %}" class="btn btn-info">Ver en página</a>
                                 <a href="{% url 'modificar_noticia' noticia.id %}" class="btn btn-warning ms-3">Editar</a>
                                 <button class="btn btn-danger ms-3" data-bs-toggle="modal" data-bs-target="#deleteModal{{ noticia.id }}">
                                   Eliminar
