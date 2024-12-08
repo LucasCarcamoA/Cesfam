@@ -80,7 +80,7 @@
             <p>Aquí encontrarás todos los eventos de Cesfam para que puedas ingresar a gusto!</p>
         </div>
         <hr>
-        <div id="fondotodasnoticias" class="container-noticias p-2 mb-3" style="overflow: hidden; height: 40rem; overflow-y: scroll; border: 1px solid black; background-color: blanchedalmond; border-radius: 5px;">
+        <div id="fondotodasnoticias" class="container-noticias p-2 mb-3" style="overflow: hidden; height: 45rem; overflow-y: scroll; border: 1px solid black; background-color: blanchedalmond; border-radius: 5px;">
             <div class="row">
                 {% for e in todos_eventos %}
                 <div class="col-sm-12 col-md-12 col-lg-3 p-5">
@@ -92,7 +92,7 @@
                             <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen campaña" class="img-fluid">
                             {% endif %}
                         </div>
-                        <div class="card-body text-center" style="height: 14rem; display: grid;">
+                        <div class="card-body text-center" style="height: 16rem; display: grid;">
                             <h5 class="card-title text-break">{{ e.titulo | slice:":25" }}</h5>
                             <p class="card-subtitle">{{ e.tipo_evento }}</p>
                             <p class="card-subtitle">Fecha: {{ e.fecha_inicio }} - {{ e.fecha_termino }}</p>

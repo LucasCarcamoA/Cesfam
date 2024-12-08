@@ -33,14 +33,14 @@ body {
 /*----  NavIndex   ----*/
 
 .button-container {
-    background-color: #f8c4cc;
+    background-color: #F0E960; /* #f8c4cc */
     padding: 10px;
     border-radius: 15px;
     display: flex;
     justify-content: space-around;
 }
 .btn-custom {
-    background-color: #e9e1fa;
+    background-color: #E7E05C; /* #e9e1fa */
     border-radius: 10px;
     padding: 15px 25px;
     font-size: 18px;
@@ -55,7 +55,7 @@ body {
     transition: background-color 0.3s ease;
 }
 .btn-custom:hover {
-    background-color: #d4c4eb;
+    background-color: #F1EC92;
 }
 .btn-custom i {
     font-size: 24px;
@@ -71,7 +71,7 @@ body {
 
 /*----   Estilo de Campañas en HTML   ----*/
 .campaign-section {
-    background-color: #f3e8ff;
+    background-color: #F1EC92;
     border-radius: 10px;
     padding: 40px;
 }

@@ -295,12 +295,12 @@
                             {% endif %}
                             
                         </div>
-                        <div class="card-body text-center" style="height: 14rem; display: grid;">
+                        <div class="card-body text-center" style="height: 17rem; display: grid;">
                             <h5 class="card-title">{{ e.titulo }}</h5>
                             <p class="card-subtitle">{{ e.tipo_evento }}</p>
                             <p class="card-subtitle">Fecha: {{ e.fecha_inicio }} - {{ e.fecha_termino }}</p>
                             <div class="contenedor-desc h-100">
-                                <p class="card-text justify-content-center" >{{ e.descripcion | safe | slice:":120" }}...</p>
+                                <p class="card-text justify-content-center" >{{ e.descripcion | safe | slice:":80" }}...</p>
                             </div>
                             <div class="contenedor-boton align-content-end">
                                 <a href="{% url 'leer_evento' e.id %}" class="btn btn-primary">Leer más</a>
