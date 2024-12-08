@@ -169,7 +169,7 @@
                         <h5 class="card-title text-break ">{{ i.titulo | slice:":70" }}</h5>
                         <p class="card-subtitle">Fecha: {{ i.fecha_creacion}}</p>
                         <div class="contenedor-desc h-100">
-                            <p class="ck-content card-text justify-content-center text-break">{{ i.descripcion| safe | slice:":80" }}...</p>
+                            <p class="ck-content card-text justify-content-center text-break">{{ i.descripcion| safe | slice:":60" }}...</p>
                         </div>
                         <div class="contenedor-boton align-content-end">
                             <a href="{% url 'leer_noticia' i.id %}" class="btn btn-primary">Leer más</a>

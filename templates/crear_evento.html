@@ -198,6 +198,15 @@
     <div class="container my-3">
         <form method="post" enctype="multipart/form-data" class="row">
             {% csrf_token %}
+            
+            {% if form.non_field_errors %}
+            <div class="col-12">
+                <div class="alert alert-danger">
+                    {{ form.non_field_errors }}
+                </div>
+            </div>
+            {% endif %}
+
             <div class="col-md-6 gy-3">
                 <label for="form_titulo" class="form-label">Título del Evento</label>
                 {{ form.titulo }}
@@ -211,11 +220,23 @@
             <div class="col-md-6 gy-3">
                 <label for="form_fecha_inicio" class="form-label">Fecha de Inicio</label>
                 {{ form.fecha_inicio }}
+
+                {% if form.fecha_inicio.errors %}
+                <div class="alert alert-danger">
+                    {{ form.fecha_inicio.errors }}
+                </div>
+                {% endif %}
             </div>
         
             <div class="col-md-6 gy-3">
                 <label for="form_fecha_termino" class="form-label">Fecha de Término</label>
                 {{ form.fecha_termino }}
+
+                {% if form.fecha_termino.errors %}
+                <div class="alert alert-danger">
+                    {{ form.fecha_termino.errors }}
+                </div>
+                {% endif %}
             </div>
 
             <div class="col-md-6 gy-3">

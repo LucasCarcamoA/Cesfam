@@ -47,6 +47,16 @@ class EventoForm(forms.ModelForm):
         self.fields['fecha_inicio'].widget.attrs['min'] = date.today().strftime('%Y-%m-%d')
         self.fields['fecha_termino'].widget.attrs['min'] = date.today().strftime('%Y-%m-%d')
         self.fields["descripcion"].required = False
+        
+    def clean(self):
+        cleaned_data = super().clean()
+        fecha_inicio = cleaned_data.get("fecha_inicio")
+        fecha_termino = cleaned_data.get("fecha_termino")
+
+        if fecha_inicio and fecha_termino and fecha_termino < fecha_inicio:
+            self.add_error('fecha_termino', "La fecha de término no puede ser anterior a la fecha de inicio.")
+        
+        return cleaned_data
 
 class NoticiaForm(forms.ModelForm):
     class Meta:
