@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from Cesfampage.views import index, logout_view ,login_view, trabaja_con_nosotros, ver_postulantes, sobre_nosotros, ubicacion, oirs, administrador, noticias, crear_noticia, eventos, crear_evento, ver_noticias, ver_eventos, leer_noticia, leer_evento, oirs_inbox, modificar_noticia, eliminar_noticia, modificar_evento, eliminar_evento
@@ -46,7 +46,7 @@ urlpatterns = [
     path('trabaja-con-nosotros/', trabaja_con_nosotros, name='trabaja_con_nosotros'),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
-    
+    path("ckeditor5/", include('django_ckeditor_5.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # Agrega las imagenes de la base de datos para ser mostradas en noticias.html y eventos.html
 

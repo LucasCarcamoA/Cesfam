@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link id="lightTheme" rel="stylesheet" href="{% static 'style/estilo.css' %}">
     <link id="darkTheme" rel="stylesheet" href="{% static 'style/estilo_oscuro.css' %}" disabled>
+    <link rel="stylesheet" href="{% static 'style/ckeditor.css' %}" type="text/css">
     <style>
     .card:hover {
         &:hover {
@@ -162,10 +163,10 @@
                         {% endif %}
                     </div>
                     <div class="card-body text-center" style="height: 14rem; display: grid;">
-                        <h5 class="card-title">{{ i.titulo }}</h5>
+                        <h5 class="card-title text-break ">{{ i.titulo | slice:":70" }}</h5>
                         <p class="card-subtitle">Fecha: {{ i.fecha_creacion}}</p>
                         <div class="contenedor-desc h-100">
-                            <p class="card-text justify-content-center">{{ i.descripcion }}</p>
+                            <p class="ck-content card-text justify-content-center text-break">{{ i.descripcion | safe | slice:":80" }}...</p>
                         </div>
                         <div class="contenedor-boton align-content-end">
                             <a href="{% url 'leer_noticia' i.id %}" class="btn btn-primary">Leer más</a>
@@ -213,9 +214,9 @@
                                 <div class="col-sm-12 col-md-12 col-lg-8">
                                     <div class="card-body">
                                         <a href="{% url 'leer_evento' campaña_s.id %}" class="text-decoration-none text-black">
-                                        <h5 class="card-title mt-2">{{ campaña_s.titulo }}</h5>
+                                        <h5 class="card-title mt-2">{{ campaña_s.titulo | slice:":35" }}</h5>
                                         <p class="text-muted">Duración: {{ campaña_s.fecha_inicio|date:"d-M-y" }} // {{ campaña_s.fecha_termino|date:"d-M-y" }}</p>
-                                        <p class="card-text">{{ campaña_s.descripcion }}</p></a>
+                                        <p class="ck-content card-text">{{ campaña_s.descripcion | safe | slice:":60" }}...</p></a>
                                     </div>
                                 </div>
                             </div>
@@ -254,9 +255,9 @@
                                 <div class="col-sm-12 col-md-12 col-lg-8">
                                     <div class="card-body">
                                         <a href="{% url 'leer_evento' campaña_m.id %}" class="text-decoration-none text-black">
-                                        <h5 class="card-title mt-2">{{ campaña_m.titulo }}</h5>
+                                        <h5 class="card-title mt-2">{{ campaña_m.titulo | slice:":35" }}</h5>
                                         <p class="text-muted">Duración: {{ campaña_m.fecha_inicio|date:"d-M-y" }} // {{ campaña_m.fecha_termino|date:"d-M-y" }}</p>
-                                        <p class="card-text">{{ campaña_m.descripcion }}</p></a>
+                                        <p class="ck-content card-text">{{ campaña_m.descripcion | safe | slice:":60" }}...</p></a>
                                     </div>
                                 </div>
                             </div>
@@ -296,7 +297,7 @@
                             <p class="card-subtitle">{{ e.tipo_evento }}</p>
                             <p class="card-subtitle">Fecha: {{ e.fecha_inicio }} - {{ e.fecha_termino }}</p>
                             <div class="contenedor-desc h-100">
-                                <p class="card-text justify-content-center" >{{ e.descripcion }}</p>
+                                <p class="card-text justify-content-center" >{{ e.descripcion | safe | slice:":120" }}...</p>
                             </div>
                             <div class="contenedor-boton align-content-end">
                                 <a href="{% url 'leer_evento' e.id %}" class="btn btn-primary">Leer más</a>

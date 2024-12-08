@@ -1,6 +1,8 @@
 from django import forms
 from .models import Noticia, Evento, Oirs, TrabajaConNosotros
 from datetime import date
+# Importa el widget CKEditor5Widget de la librería django-ckeditor-5
+from django_ckeditor_5.widgets import CKEditor5Widget
 
 TIPO_EVENTO = [
     ('Evento', 'Evento'),
@@ -36,7 +38,7 @@ class EventoForm(forms.ModelForm):
             'imagen': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'fecha_inicio': forms.DateInput(attrs={'class': 'form-control', 'type': 'date', 'min': date.today()}, format='%Y-%m-%d'),
             'fecha_termino': forms.DateInput(attrs={'class': 'form-control', 'type': 'date', 'min': date.today()}, format='%Y-%m-%d'),
-            'descripcion': forms.Textarea(attrs={'class': 'form-control', 'rows': 6, 'placeholder': 'Ingrese la descripción del evento'}),
+            'descripcion': CKEditor5Widget(attrs={'class': 'django_ckeditor_5', 'rows': 6, 'placeholder': 'Ingrese la descripción del evento'}, config_name='extends'),
             'tipo_evento': forms.Select(choices=TIPO_EVENTO, attrs={'class': 'form-select'}),
         }
     
@@ -44,6 +46,7 @@ class EventoForm(forms.ModelForm):
         super(EventoForm, self).__init__(*args, **kwargs)
         self.fields['fecha_inicio'].widget.attrs['min'] = date.today().strftime('%Y-%m-%d')
         self.fields['fecha_termino'].widget.attrs['min'] = date.today().strftime('%Y-%m-%d')
+        self.fields["descripcion"].required = False
 
 class NoticiaForm(forms.ModelForm):
     class Meta:
@@ -52,9 +55,13 @@ class NoticiaForm(forms.ModelForm):
         widgets = {
             'titulo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el título de la noticia'}),
             'imagen': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            'descripcion': forms.Textarea(attrs={'class': 'form-control', 'rows': 6, 'placeholder': 'Ingrese la descripción de la noticia'}),
+            'descripcion': CKEditor5Widget(attrs={'class': 'django_ckeditor_5', 'rows': 6, 'placeholder': 'Ingrese la descripción de la noticia'}, config_name='extends'),
+            #'descripcion': forms.Textarea(attrs={'class': 'form-control', 'rows': 6, 'placeholder': 'Ingrese la descripción de la noticia'}),
             'evento_relacionado': forms.Select(attrs={'class': 'form-select'})
         }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["descripcion"].required = False
         
 class OirsForm(forms.ModelForm):
     class Meta:

@@ -190,7 +190,11 @@
             </div>
             
         </div>
-        
+
+{% block header %}
+{{ form.media }}
+{% endblock %}
+
     <div class="container my-3">
         <form method="post" enctype="multipart/form-data" class="row">
             {% csrf_token %}
@@ -213,16 +217,18 @@
                 <label for="form_fecha_termino" class="form-label">Fecha de Término</label>
                 {{ form.fecha_termino }}
             </div>
-        
+
+            <div class="col-md-6 gy-3">
+              <label for="form_tipo_evento" class="form-label">Tipo de Evento</label>
+              {{ form.tipo_evento }}
+            </div>
+
             <div class="col-md-12 gy-3">
-                <label for="form_descripcion" class="form-label">Descripción</label>
+                <label for="form_descripcion" class="form-label">Descripción / Cuerpo del evento</label>
                 {{ form.descripcion }}
             </div>
         
-            <div class="col-md-6 gy-3">
-                <label for="form_tipo_evento" class="form-label">Tipo de Evento</label>
-                {{ form.tipo_evento }}
-            </div>
+
         
             <div class="d-grid my-5">
                 <button type="submit" class="btn {% if editar %}btn-warning{% else %}btn-success{% endif %}">

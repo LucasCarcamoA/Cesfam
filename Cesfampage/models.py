@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+# Importa CKEditor5Field de la librería django-ckeditor-5
+from django_ckeditor_5.fields import CKEditor5Field
 
 #pip install Pillow 
 # Create your models here.
@@ -34,7 +36,8 @@ class Evento(models.Model):
     fecha_creacion = models.DateTimeField(default=timezone.now)
     fecha_inicio = models.DateField()
     fecha_termino = models.DateField()
-    descripcion = models.TextField(max_length=900,null=True, blank=True)
+    descripcion = CKEditor5Field('Text', config_name='extends', null=True, blank=True)
+    #descripcion = models.TextField(max_length=900,null=True, blank=True)
     tipo_evento = models.CharField(max_length=50, choices=TIPO_EVENTO)
     
     def __str__(self):
@@ -43,7 +46,8 @@ class Evento(models.Model):
 class Noticia(models.Model):
     titulo = models.CharField(max_length=100)
     imagen = models.ImageField(upload_to='noticias/', blank=True)
-    descripcion = models.TextField(max_length=900,null=True, blank=True)
+    descripcion = CKEditor5Field('Text', config_name='extends', null=True, blank=True)
+    #descripcion = models.TextField(max_length=900,null=True, blank=True)
     evento_relacionado = models.ForeignKey(Evento, on_delete=models.CASCADE, null=True, blank=True)
     fecha_creacion = models.DateTimeField(default=timezone.now)
 

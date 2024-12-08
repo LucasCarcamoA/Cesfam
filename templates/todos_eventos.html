@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link id="lightTheme" rel="stylesheet" href="{% static 'style/estilo.css' %}">
     <link id="darkTheme" rel="stylesheet" href="{% static 'style/estilo_oscuro.css' %}" disabled>
+    <link rel="stylesheet" href="{% static 'style/ckeditor.css' %}" type="text/css">
 </head>
 <body style="overflow-x: hidden;">
     <nav class="navbar navbar-expand-lg navbar-custom p-3">
@@ -89,11 +90,11 @@
                             {% endif %}
                         </div>
                         <div class="card-body text-center" style="height: 14rem; display: grid;">
-                            <h5 class="card-title">{{ e.titulo }}</h5>
+                            <h5 class="card-title text-break">{{ e.titulo | slice:":25" }}</h5>
                             <p class="card-subtitle">{{ e.tipo_evento }}</p>
                             <p class="card-subtitle">Fecha: {{ e.fecha_inicio }} - {{ e.fecha_termino }}</p>
                             <div class="contenedor-desc h-100">
-                                <p class="card-text justify-content-center" >{{ e.descripcion }}</p>
+                                <p class="ck-content card-text justify-content-center text-break" >{{ e.descripcion | safe | slice:":30"}}...</p>
                             </div>
                             <div class="contenedor-boton align-content-end">
                                 <a href="{% url 'leer_evento' e.id %}" class="btn btn-primary">Leer más</a>

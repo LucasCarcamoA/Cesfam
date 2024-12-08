@@ -191,7 +191,11 @@
             </div>
             
         </div>
-        
+
+{% block header %}
+{{ form.media }}
+{% endblock %}
+
     <div class="container my-3">
         <form method="post" enctype="multipart/form-data" class="row">
             {% csrf_token %}
@@ -206,15 +210,14 @@
             </div>
         
             <div class="col-md-12 gy-3">
-                <label for="form_descripcion" class="form-label">Descripción</label>
-                {{ form.descripcion }}
-            </div>
-        
-            <div class="col-md-12 gy-3">
                 <label for="form_evento" class="form-label">Evento Relacionado</label>
                 {{ form.evento_relacionado }}
             </div>
-        
+
+            <div class="col-md-12 gy-3">
+              <label for="form_descripcion" class="form-label">Descripción / Cuerpo de la noticia</label>
+              {{ form.descripcion }}
+          </div>
             <div class="d-grid my-5">
                 <button type="submit" class="btn {% if editar %}btn-warning{% else %}btn-success{% endif %}">
                   {% if editar %}Modificar Noticia{% else %}Crear Noticia{% endif %}
