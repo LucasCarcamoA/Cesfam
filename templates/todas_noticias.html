@@ -80,31 +80,27 @@
             <p>Aquí encontrarás todas las noticias de Cesfam para que puedas ingresar a gusto!</p>
         </div>
         <hr>
-        <div id="fondotodasnoticias" class="container-noticias p-2 mb-3" style="overflow: hidden; height: 40rem; overflow-y: scroll; border: 1px solid black; background-color: blanchedalmond; border-radius: 5px;">
+        <div id="fondotodasnoticias" class="container-fluid mb-3" style="overflow: hidden; height: auto; border: 1px solid black; background-color: blanchedalmond; border-radius: 5px;">
             <div class="row">
                 {% for n in todas_noticias %}
-                <div class="col-sm-12 col-md-12 col-lg-3 p-5">
+                <div class="col-12 col-sm-6 col-lg-3 p-3">
                     <div class="card mb-4">
-                        <div class="news-img" style="display:flex; height: 19rem;">
+                        <div class="news-img" style="height: 19rem;">
                             {% if n.imagen %}
-                            <img src="{{ n.imagen.url }}" style="border-radius: 5px 5px 0 0; width: 100%; height: 100%;" class="img-fluid" alt="Imagen de la noticia">
+                            <img src="{{ n.imagen.url }}" style="border-radius: 5px 5px 0 0; width: 100%; height: 100%; object-fit: cover;" class="img-fluid" alt="Imagen de la noticia">
                             {% else %}
                             <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen campaña" class="img-fluid">
                             {% endif %}
                         </div>
-                        <div class="card-body text-center" style="height: 14rem; display: grid;">
+                        <div class="card-body text-center">
                             <h5 class="card-title text-break">{{ n.titulo | slice:":30" }}</h5>
-                            <p class="card-subtitle">Fecha: {{ n.fecha_creacion}}</p>
-                            <div class="contenedor-desc h-100">
-                                <p class="ck-content card-text justify-content-center text-break">{{ n.descripcion | safe | slice:":60"}}...</p>
-                            </div>
-                            <div class="contenedor-boton align-content-end">
-                                <a href="{% url 'leer_noticia' n.id %}" class="btn btn-primary">Leer más</a>
-                            </div>
+                            <p class="card-subtitle">Fecha: {{ n.fecha_creacion }}</p>
+                            <p class="card-text text-break">{{ n.descripcion | safe | slice:":60" }}...</p>
+                            <a href="{% url 'leer_noticia' n.id %}" class="btn btn-primary">Leer más</a>
                         </div>
                     </div>
                 </div>
-                {% endfor %} 
+                {% endfor %}
             </div>
         </div>
     </div>

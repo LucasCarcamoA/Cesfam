@@ -76,7 +76,7 @@
 
     <!-- CONTENIDO -->
     <div class="container p-4">
-        <div class="row g-5 mt-5 pt-2 mb-5 pb-5">
+        <div id="oirsfondo" class="row g-5 mt-5 pt-2 mb-5 pb-5" style="background-color: #FFEBA5; border-radius: 10px;">
             <!-- IMAGEN OIRS -->
             <div class="col-md-6" style="width: 39rem;">
                 <img src="{{ data.oirslogo }}" alt="LOGO OIRS">
@@ -84,39 +84,41 @@
             
 
             <!-- FORMULARIO -->
-            <div class="col-md-6" style="margin-left: 30px;">
-                <h4>¿Tienes alguna duda, reclamo o sugerencia? <br>
-                    ¡Llena el formulario y ponte en contacto con nuestro equipo!</h4>
-                    <br>
-                <form method="post" class="row">
-                    {% csrf_token %}
-                    <div class="mb-3">
-                        <label for="form_nombre" class="form-label">Nombre (*)</label>
-                        {{ form.nombre }}
-                    </div>
+            
+                <div class="col-md-6" style="margin-left: 30px;">
+                    <h4>¿Tienes alguna duda, reclamo o sugerencia? <br>
+                        ¡Llena el formulario y ponte en contacto con nuestro equipo!</h4>
+                        <br>
+                    <form method="post" class="row">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="form_nombre" class="form-label">Nombre (*)</label>
+                            {{ form.nombre }}
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="form_apellido" class="form-label">Apellido (*)</label>
-                        {{ form.apellido }}
-                    </div>
+                        <div class="mb-3">
+                            <label for="form_apellido" class="form-label">Apellido (*)</label>
+                            {{ form.apellido }}
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="form_correo" class="form-label">Correo Electrónico (*)</label>
-                        {{ form.correo }}
-                    </div>
+                        <div class="mb-3">
+                            <label for="form_correo" class="form-label">Correo Electrónico (*)</label>
+                            {{ form.correo }}
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="form_motivo" class="form-label">Motivo</label>
-                        {{ form.motivo }}
-                    </div>
+                        <div class="mb-3">
+                            <label for="form_motivo" class="form-label">Motivo</label>
+                            {{ form.motivo }}
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="form_mensaje" class="form-label">Mensaje</label>
-                        {{ form.mensaje }}
-                    </div>
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-                </form>
-            </div>
+                        <div class="mb-3">
+                            <label for="form_mensaje" class="form-label">Mensaje</label>
+                            {{ form.mensaje }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                
+                </div>
         </div>
     </div>
 

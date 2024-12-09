@@ -74,38 +74,33 @@
     </nav>
 
     <div class="row p-5">
-        
-        <div class="col-lg-12">
-            <h1>Todas los Eventos</h1>
-            <p>Aquí encontrarás todos los eventos de Cesfam para que puedas ingresar a gusto!</p>
+        <div class="col-12">
+            <h1 class="text-center">Todos los Eventos</h1>
+            <p class="text-center">Aquí encontrarás todos los eventos de Cesfam para que puedas ingresar a gusto!</p>
         </div>
         <hr>
-        <div id="fondotodasnoticias" class="container-noticias p-2 mb-3" style="overflow: hidden; height: 45rem; overflow-y: scroll; border: 1px solid black; background-color: blanchedalmond; border-radius: 5px;">
-            <div class="row">
+        <div id="fondotodasnoticias" class="container-noticias mb-3" style="overflow: hidden; height: 45rem; overflow-y: auto; border: 1px solid black; background-color: blanchedalmond; border-radius: 5px;">
+            <div class="row g-4">
                 {% for e in todos_eventos %}
-                <div class="col-sm-12 col-md-12 col-lg-3 p-5">
-                    <div class="card mb-4">
-                        <div class="news-img" style="display:flex; height: 19rem;">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="news-img" style="height: 19rem; display: flex;">
                             {% if e.imagen %}
-                            <img src="{{ e.imagen.url }}" style="border-radius: 5px 5px 0 0; width: 100%; height: 100%;" class="img-fluid" alt="Imagen de la noticia">
+                            <img src="{{ e.imagen.url }}" class="card-img-top img-fluid" alt="Imagen de la noticia">
                             {% else %}
-                            <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen campaña" class="img-fluid">
+                            <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="card-img-top img-fluid" alt="Imagen campaña">
                             {% endif %}
                         </div>
-                        <div class="card-body text-center" style="height: 16rem; display: grid;">
-                            <h5 class="card-title text-break">{{ e.titulo | slice:":25" }}</h5>
+                        <div class="card-body d-flex flex-column text-center">
+                            <h5 class="card-title text-truncate">{{ e.titulo | slice:":25" }}</h5>
                             <p class="card-subtitle">{{ e.tipo_evento }}</p>
                             <p class="card-subtitle">Fecha: {{ e.fecha_inicio }} - {{ e.fecha_termino }}</p>
-                            <div class="contenedor-desc h-100">
-                                <p class="ck-content card-text justify-content-center text-break" >{{ e.descripcion | safe | slice:":30"}}...</p>
-                            </div>
-                            <div class="contenedor-boton align-content-end">
-                                <a href="{% url 'leer_evento' e.id %}" class="btn btn-primary">Leer más</a>
-                            </div>
+                            <p class="card-text text-truncate">{{ e.descripcion | safe | slice:":30" }}...</p>
+                            <a href="{% url 'leer_evento' e.id %}" class="btn btn-primary mt-auto">Leer más</a>
                         </div>
                     </div>
                 </div>
-                {% endfor %} 
+                {% endfor %}
             </div>
         </div>
     </div>

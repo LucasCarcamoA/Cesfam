@@ -46,55 +46,50 @@
     <nav class="navbar navbar-expand-lg navbar-custom p-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="https://valdivia.municipalidad.digital.gob.cl/logos/dQVMhNdDA4eg7HMZQlbK.png" alt="Municipalidad Valdivia" class="logo"> <!-- Añade aquí tu logo -->
+                <img src="https://valdivia.municipalidad.digital.gob.cl/logos/dQVMhNdDA4eg7HMZQlbK.png" alt="Municipalidad Valdivia" class="logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <!-- Botón de accesibilidad -->
-                        <a class="nav-link btn btn-accessibility dropdown-toggle me-2" href="#" id="accessibilityDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-universal-access"></i> Accesibilidad
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobrenosotros/">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                                <path d="M13 7a3 3 0 1 0-2.54 1.46A4.5 4.5 0 0 0 16 12a4.5 4.5 0 0 0-3-4.25V7z"/>
+                                <path d="M5 7a3 3 0 1 0-2.54 1.46A4.5 4.5 0 0 0 8 12a4.5 4.5 0 0 0-3-4.25V7z"/>
+                            </svg> Nosotros
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="accessibilityDropdown">
-                            <li>
-                                <button class="dropdown-item h5" id="darkModeToggle">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16">
-                                        <path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"/>
-                                    </svg>
-                                    Tema oscuro
-                                </button>
-                            </li>
-                            <li>
-                                <button class="dropdown-item h5" id="increaseFontSize">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fonts" viewBox="0 0 16 16">
-                                        <path d="M12.258 3h-8.51l-.083 2.46h.479c.26-1.544.758-1.783 2.693-1.845l.424-.013v7.827c0 .663-.144.82-1.3.923v.52h4.082v-.52c-1.162-.103-1.306-.26-1.306-.923V3.602l.431.013c1.934.062 2.434.301 2.693 1.846h.479z"/>
-                                    </svg>
-                                    Aumentar Tamaño
-                                </button>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="sobrenosotros/"><i class="fa-solid fa-people-group"></i> Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ubicacion/"><i class="fas fa-map-marker-alt"></i> Ubicación</a>
+                        <a class="nav-link" href="ubicacion/">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                <path d="M8 0a6 6 0 0 0-6 6c0 1.7.54 3.319 1.522 4.571l.007.009 4.466 5.67c.334.424.958.424 1.292 0l4.466-5.67.007-.009A6.001 6.001 0 0 0 8 0zm0 7.5A1.5 1.5 0 1 1 8 4a1.5 1.5 0 0 1 0 3.5z"/>
+                            </svg> Ubicación
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="trabaja-con-nosotros/"><i class="fas fa-briefcase"></i> Trabaja con nosotros</a>
+                        <a class="nav-link" href="trabaja-con-nosotros/">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-briefcase" viewBox="0 0 16 16">
+                                <path d="M6 3h4v1H6V3z"/>
+                                <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6H0V4.5zM0 7h16v5.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5V7z"/>
+                            </svg> Trabaja con nosotros
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="oirs/"><i class="fas fa-clipboard"></i> OIRS</a>
+                        <a class="nav-link" href="oirs/">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                                <path d="M5 1a2 2 0 0 0-2 2h10a2 2 0 0 0-2-2H5z"/>
+                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4z"/>
+                            </svg> OIRS
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="tel:+569 63 222 0316"><i class="fas fa-phone"></i> +(56) 63 222 0316</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'administrador' %}"><i class="fa-solid fa-right-to-bracket"></i></a>
+                        <a class="nav-link" href="tel:+569632220316">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                                <path d="M1.884 1.511A1.745 1.745 0 0 1 3.468.687c.607.012 1.016.317 1.516.812.5.495.747.876.85 1.456.018.101.031.2.038.299C5.939 3.508 6.38 5.504 6.5 6.5c.059.493-.236 1.282-.707 1.853-.212.253-.496.536-.85.812-.76.602-.903.827-1.516 1.416-.614.589-.842.788-1.322 1.384-.088.112-.15.191-.267.355-.235.312-.346.551-.486.708a.801.801 0 0 0-.057.769c.146.322.464.655.87.84a1.746 1.746 0 0 1 .67.42 1.746 1.746 0 0 1 .42.67c.185.406.518.724.84.87.213.072.513.003.77-.057a3.058 3.058 0 0 0 .708-.486c.163-.117.243-.179.355-.267.596-.48.795-.708 1.384-1.322.59-.614.814-.756 1.416-1.516.276-.354.559-.638.812-.85.571-.471 1.36-.766 1.853-.707.996.12 2.992.561 3.735.838.099.007.198.02.299.038.58.103.96.35 1.456.85.495.5.8.909.812 1.516a1.746 1.746 0 0 1-.824 1.584z"/>
+                            </svg> +(56) 63 222 0316
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -130,16 +125,16 @@
 
     <!-- CONTENIDO NAVINDEX -->
     <div class="container mt-4">
-        <div class="button-container">
-            <a href="#Noticias" class="btn btn-custom">
+        <div class="button-container d-flex flex-wrap justify-content-center gap-3">
+            <a href="#Noticias" class="btn btn-custom" style="gap: 0.5rem;">
                 <i class="fas fa-bullhorn"></i>
                 Noticias
             </a>
-            <a href="#Campañas" class="btn btn-custom">
+            <a href="#Campañas" class="btn btn-custom" style="gap: 0.5rem;">
                 <i class="fas fa-globe"></i>
                 Campañas
             </a>
-            <a href="#Eventos" class="btn btn-custom">
+            <a href="#Eventos" class="btn btn-custom" style="gap: 0.5rem;">
                 <i class="fas fa-map"></i>
                 Eventos
             </a>
@@ -147,48 +142,34 @@
     </div>
 
     <!-- NOTICIAS -->
-    <div class="container my-5">
-        <h1 class="text-center mb-3" id="Noticias">Noticias Cesfam</h1>
-        <p class="text-center">Infórmate sobre lo que sucede en nuestra sede</p>
-        
-        <div class="row justify-content-center">
-            <!-- PRIMERA NOTICIA -->
-            {% if noticias %} 
+    <div class="container mt-5">
+        <h1 class="text-center mb-4" id="Noticias">Noticias Cesfam</h1>
+        <div class="row justify-content-center g-3">
+            {% if noticias %}
             {% for i in noticias %}
-
-            <div class="col-sm-12 col-md-12 col-lg-4">
-                <div class="card mb-4">
-                    <div class="news-img" style="display:flex; height: 19rem;">
-                        {% if i.imagen %}
-                            <img src="{{ i.imagen.url }}" style="border-radius: 5px 5px 0 0; width: 100%; height: 100%;" class="img-fluid" alt="Imagen de la noticia">
-                        {% else %}
-                            <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen de la noticia" class="img-fluid">
-                        {% endif %}
-                    </div>
-                    <div class="card-body text-center" style="height: 14rem; display: grid;">
-                        <h5 class="card-title text-break ">{{ i.titulo | slice:":70" }}</h5>
-                        <p class="card-subtitle">Fecha: {{ i.fecha_creacion}}</p>
-                        <div class="contenedor-desc h-100">
-                            <p class="ck-content card-text justify-content-center text-break">{{ i.descripcion| safe | slice:":60" }}...</p>
-                        </div>
-                        <div class="contenedor-boton align-content-end">
-                            <a href="{% url 'leer_noticia' i.id %}" class="btn btn-primary">Leer más</a>
-
-                        </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 d-flex align-items-stretch">
+                <div class="card">
+                    {% if i.imagen %}
+                    <img src="{{ i.imagen.url }}" class="card-img-top" alt="Imagen de la noticia">
+                    {% else %}
+                    <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="card-img-top" alt="Imagen de la noticia">
+                    {% endif %}
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ i.titulo | slice:":70" }}</h5>
+                        <p class="card-text">{{ i.descripcion | safe | slice:":60" }}...</p>
+                        <a href="{% url 'leer_noticia' i.id %}" class="btn btn-primary">Leer más</a>
                     </div>
                 </div>
             </div>
             {% endfor %}
             {% else %}
-            <div class="bg-warning " style="text-align: center; border-radius: 8px;">
-                <h1> NO HAY NOTICIAS</h1>
-                <p class="text-muted"> Por ahora...</p>
+            <div class="col-12">
+                <div class="alert alert-warning text-center">No hay noticias por ahora...</div>
             </div>
             {% endif %}
         </div>
-    
         <div class="text-end mt-4">
-            <a href="todas_noticias/" class="btn btn-secondary">Ver Más...</a> <!-- ENLACE PARA VER TODAS LAS NOTICIAS-->
+            <a href="todas_noticias/" class="btn btn-secondary">Ver Más...</a>
         </div>
     </div>
 
@@ -295,7 +276,7 @@
                             {% endif %}
                             
                         </div>
-                        <div class="card-body text-center" style="height: 17rem; display: grid;">
+                        <div class="card-body text-center" style="display: grid;">
                             <h5 class="card-title">{{ e.titulo }}</h5>
                             <p class="card-subtitle">{{ e.tipo_evento }}</p>
                             <p class="card-subtitle">Fecha: {{ e.fecha_inicio }} - {{ e.fecha_termino }}</p>
@@ -326,30 +307,34 @@
     <!-- FOOTER -->
     <footer>
         <div id="footerdiv" class="text-center p-3" style="font-size: large; background-color: #FEE9A0;">
-            <div class="row" style="text-align: center;align-items: center; padding-left: 8rem;padding-right: 8rem; padding-top: 2rem;">
-                <div class="col-md-4" style=" text-align: left;"><a class="navbar-brand" href="#">
-                    <img src="https://valdivia.municipalidad.digital.gob.cl/logos/dQVMhNdDA4eg7HMZQlbK.png" alt="Logo" width="126" height="99" class="d-inline-block align-text-top">
-                </a></div>
-                <div class="col-md-4" style=" text-align: center; align-items: center;">
-                    <ul class="list-unstyled">
-                    <li>
-                        <a href="https://www.instagram.com" style="text-decoration: none;" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
-                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.facebook.com" style="text-decoration: none;" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
-                                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
-                            </svg>
-                        </a>
-                    </li></ul>
+            <div class="row text-center align-items-center mx-3 py-3">
+                <div class="col-12 col-md-4 text-md-start mb-3 mb-md-0">
+                    <a class="navbar-brand" href="#">
+                        <img src="https://valdivia.municipalidad.digital.gob.cl/logos/dQVMhNdDA4eg7HMZQlbK.png" alt="Logo" width="126" height="99" class="d-inline-block align-text-top">
+                    </a>
                 </div>
-                <div class="col-md-4" style=" text-align: right;"><b>© 2024 Cesfam Angachilla.</b></div>
+                <div class="col-12 col-md-4 mb-3 mb-md-0">
+                    <ul class="list-unstyled d-flex justify-content-center gap-3">
+                        <li>
+                            <a href="https://www.instagram.com" style="text-decoration: none;" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.facebook.com" style="text-decoration: none;" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-4 text-md-end">
+                    <b>© 2024 Cesfam Angachilla.</b>
+                </div>
             </div>
-            
         </div>
-    </footer> 
+    </footer>
     
 </body>
 <script>
