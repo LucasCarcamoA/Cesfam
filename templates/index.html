@@ -189,7 +189,7 @@
                             <div class="row g-0">
 
                                 <div class="col-sm-12 col-md-12 col-lg-4">
-                                    {% if campaña.s.imagen %}
+                                    {% if campaña_s.imagen %}
                                     <img src="{{ campaña_s.imagen.url }}" alt="Imagen campaña" class="img-fluid">
                                     {% else %}
                                     <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen campaña" class="img-fluid">
@@ -266,6 +266,7 @@
         <div class="row justify-content-center" >
             {% if eventos %}
                 {% for e in eventos %}
+                {% if e.tipo_evento != "Campaña-Semestral" and e.tipo_evento != "Campaña-Mensual" %}
                 <div class="col-sm-12 col-md-12 col-lg-4">
                     <div class="card mb-4">
                         <div class="news-img" style="display:flex; height: 19rem;">
@@ -289,6 +290,7 @@
                         </div>
                     </div>
                 </div>
+                {% endif %}
                 {% endfor %}
             {% endif %}
             
