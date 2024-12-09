@@ -198,7 +198,7 @@
                                 <div class="col-sm-12 col-md-12 col-lg-8">
                                     <div class="card-body">
                                         <a href="{% url 'leer_evento' campaña_s.id %}" class="text-decoration-none text-black">
-                                        <h5 class="card-title mt-2">{{ campaña_s.titulo | slice:":35" }}</h5>
+                                        <h5 class="card-title mt-2">{{ campaña_s.titulo | slice:":50" }}</h5>
                                         <p class="text-muted">Duración: {{ campaña_s.fecha_inicio|date:"d-M-y" }} // {{ campaña_s.fecha_termino|date:"d-M-y" }}</p>
                                         <p class="ck-content card-text">{{ campaña_s.descripcion | safe | slice:":60" }}...</p></a>
                                     </div>
@@ -239,7 +239,7 @@
                                 <div class="col-sm-12 col-md-12 col-lg-8">
                                     <div class="card-body">
                                         <a href="{% url 'leer_evento' campaña_m.id %}" class="text-decoration-none text-black">
-                                        <h5 class="card-title mt-2">{{ campaña_m.titulo | slice:":35" }}</h5>
+                                        <h5 class="card-title mt-2">{{ campaña_m.titulo | slice:":50" }}</h5>
                                         <p class="text-muted">Duración: {{ campaña_m.fecha_inicio|date:"d-M-y" }} // {{ campaña_m.fecha_termino|date:"d-M-y" }}</p>
                                         <p class="ck-content card-text">{{ campaña_m.descripcion | safe | slice:":60" }}...</p></a>
                                     </div>

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Cesfampage',
     'django_ckeditor_5',
+    'captcha'
 ]
 
 MIDDLEWARE = [
@@ -238,3 +239,6 @@ CKEDITOR_5_CONFIGS = {
 CKEDITOR_5_USER_LANGUAGE=True
 # Define a constant in settings.py to specify file upload permissions
 CKEDITOR_5_FILE_UPLOAD_PERMISSION = "authenticated"  # Possible values: "staff", "authenticated", "any"
+
+#Captcha
+CAPTCHA_FONT_SIZE=40

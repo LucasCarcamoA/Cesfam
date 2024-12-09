@@ -91,6 +91,15 @@
                         <br>
                     <form method="post" class="row">
                         {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                        <div class="col-12">
+                            <div class="alert alert-danger">
+                                {{ form.non_field_errors }}
+                            </div>
+                        </div>
+                        {% endif %}
+
                         <div class="mb-3">
                             <label for="form_nombre" class="form-label">Nombre (*)</label>
                             {{ form.nombre }}
@@ -114,6 +123,16 @@
                         <div class="mb-3">
                             <label for="form_mensaje" class="form-label">Mensaje</label>
                             {{ form.mensaje }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="form_captcha" class="form-label">Captcha</label>
+                            {{ form.captcha }}
+
+                            {% if form.captcha.errors %}
+                            <div class="alert alert-danger">
+                                {{ form.captcha.errors }}
+                            </div>
+                            {% endif %}
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>

@@ -82,6 +82,15 @@
                 <div class="col-md-6">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                <div class="col-12">
+                    <div class="alert alert-danger">
+                        {{ form.non_field_errors }}
+                    </div>
+                </div>
+                {% endif %}
+
                 <div class="mb-3">
                     <label for="{{ form.nombre.id_for_label }}" class="form-label">Nombre</label>
                     {{ form.nombre }}
@@ -97,10 +106,26 @@
                 <div class="mb-3">
                     <label for="{{ form.curriculum.id_for_label }}" class="form-label">Curriculum (PDF)</label>
                     {{ form.curriculum }}
+
+                    {% if form.curriculum.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.curriculum.errors }}
+                    </div>
+                    {% endif %}
                 </div>
                 <div class="mb-3">
                     <label for="{{ form.mensaje.id_for_label }}" class="form-label">Mensaje</label>
                     {{ form.mensaje }}
+                </div>
+                <div class="mb-3">
+                    <label for="form_captcha" class="form-label">Captcha</label>
+                    {{ form.captcha }}
+
+                    {% if form.captcha.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.captcha.errors }}
+                    </div>
+                    {% endif %}
                 </div>
                 <button type="submit" class="btn btn-primary mb-3">Enviar</button>
             </form>

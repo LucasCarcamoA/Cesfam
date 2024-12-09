@@ -64,7 +64,7 @@ class TrabajaConNosotros(models.Model):
     correo = models.EmailField()
     area_postulacion = models.CharField(max_length=50, choices=AREAS)
     curriculum = models.FileField(upload_to='curriculums/', null=True, blank=True)
-    mensaje = models.TextField()
+    mensaje = models.TextField(max_length=300)
     fecha_envio = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

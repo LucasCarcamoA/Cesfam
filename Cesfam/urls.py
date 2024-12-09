@@ -47,6 +47,7 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
     path("ckeditor5/", include('django_ckeditor_5.urls')),
+    path('captcha/', include('captcha.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # Agrega las imagenes de la base de datos para ser mostradas en noticias.html y eventos.html
 

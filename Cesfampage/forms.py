@@ -3,6 +3,8 @@ from .models import Noticia, Evento, Oirs, TrabajaConNosotros
 from datetime import date
 # Importa el widget CKEditor5Widget de la librería django-ckeditor-5
 from django_ckeditor_5.widgets import CKEditor5Widget
+# Importa el captcha de la librería django-simple-captcha
+from captcha.fields import CaptchaField
 
 TIPO_EVENTO = [
     ('Evento', 'Evento'),
@@ -74,9 +76,10 @@ class NoticiaForm(forms.ModelForm):
         self.fields["descripcion"].required = False
         
 class OirsForm(forms.ModelForm):
+    captcha = CaptchaField()
     class Meta:
         model = Oirs
-        fields = ['nombre', 'apellido', 'correo', 'motivo', 'mensaje']
+        fields = ['nombre', 'apellido', 'correo', 'motivo', 'mensaje', 'captcha']
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese su nombre'}),
             'apellido': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese su apellido'}),
@@ -85,9 +88,10 @@ class OirsForm(forms.ModelForm):
             'mensaje': forms.Textarea(attrs={'class': 'form-control', 'rows': 6, 'placeholder': 'Ingrese su mensaje'}),
         }
 class TrabajaConNosotrosForm(forms.ModelForm):
+    captcha = CaptchaField()
     class Meta:
         model = TrabajaConNosotros
-        fields = ['nombre', 'correo', 'mensaje', 'area_postulacion', 'curriculum']
+        fields = ['nombre', 'correo', 'mensaje', 'area_postulacion', 'curriculum', 'captcha']
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese su nombre'}),
             'correo': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese su correo electrónico'}),
