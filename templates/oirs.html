@@ -113,6 +113,11 @@
                         <div class="mb-3">
                             <label for="form_correo" class="form-label">Correo Electrónico (*)</label>
                             {{ form.correo }}
+                            {% if form.correo.errors %}
+                            <div class="alert alert-danger">
+                                {{ form.correo.errors }}
+                            </div>
+                            {% endif %}
                         </div>
 
                         <div class="mb-3">
