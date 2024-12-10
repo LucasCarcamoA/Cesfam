@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Cesfampage',
+    'django_ckeditor_5',
+    'captcha',
+    'django.contrib.admindocs',
 ]
 
 MIDDLEWARE = [
@@ -49,7 +52,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_auto_logout.middleware.auto_logout',
 ]
+
+AUTO_LOGOUT = {
+    'IDLE_TIME': 1800,  # Cierra sesión después de 30 minutos de inactividad
+    'MESSAGE': 'Tu sesión ha expirado. Por favor, inicia sesión nuevamente para continuar.',
+    'REDIRECT_TO_LOGIN_IMMEDIATELY': True,
+}
 
 ROOT_URLCONF = 'Cesfam.urls'
 
@@ -76,9 +86,13 @@ WSGI_APPLICATION = 'Cesfam.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "db_test",
+        "USER": "inacap",
+        "PASSWORD": "asdf1234.",
+        "HOST": "db-test-1.cza2gokguzyb.us-east-1.rds.amazonaws.com",
+        "PORT": "5432",
     }
 }
 
@@ -105,9 +119,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Santiago' #Cambiar zona horaria a Chile
 
 USE_I18N = True
 
@@ -124,3 +138,87 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Define la carpeta media (crearla si es necesario) para guardar las fotos ingresadas en crear noticia y evento
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# Configuración de sesiones
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 1800  # 30 minutos en segundos
+
+LOGIN_URL = 'login'
+
+#Django CKEditor configuraciones
+customColorPalette = [
+    {
+        'color': 'hsl(4, 90%, 58%)',
+        'label': 'Red'
+    },
+    {
+        'color': 'hsl(340, 82%, 52%)',
+        'label': 'Pink'
+    },
+    {
+        'color': 'hsl(291, 64%, 42%)',
+        'label': 'Purple'
+    },
+    {
+        'color': 'hsl(262, 52%, 47%)',
+        'label': 'Deep Purple'
+    },
+    {
+        'color': 'hsl(231, 48%, 48%)',
+        'label': 'Indigo'
+    },
+    {
+        'color': 'hsl(207, 90%, 54%)',
+        'label': 'Blue'
+    },
+]
+
+# CKEDITOR_5_CUSTOM_CSS = 'path_to.css' # optional
+CKEDITOR_5_FILE_STORAGE = 'Cesfampage.storage.CustomStorage' # optional
+CKEDITOR_5_CONFIGS = {
+'default': {
+    'toolbar': ['heading', '|', 'bold', 'italic', 'link',
+                'bulletedList', 'numberedList', 'blockQuote', 'imageUpload', ],'language': 'es',
+
+},
+'extends': {
+    'blockToolbar': [
+        'bulletedList', 'numberedList',
+        '|',
+        'blockQuote',
+    ],
+    'toolbar': ['outdent', 'indent', '|', 'bold', 'italic', 'link', 'underline', 'strikethrough'
+                , '|', 'insertImage',
+                'bulletedList', 'numberedList', '|',  'blockQuote', 'imageUpload', '|',
+                'fontBackgroundColor', 'mediaEmbed', 'removeFormat',],
+    'image': {
+        'toolbar': ['imageTextAlternative', '|', 'imageStyle:alignLeft',
+                    'imageStyle:alignRight', 'imageStyle:alignCenter', 'imageStyle:side',  '|'],
+        'styles': [
+            'full',
+            'side',
+            'alignLeft',
+            'alignRight',
+            'alignCenter',
+        ]
+
+    }
+},
+'list': {
+    'properties': {
+        'styles': 'true',
+        'startIndex': 'true',
+        'reversed': 'true',
+    }
+}
+}
+CKEDITOR_5_USER_LANGUAGE=True
+# Define a constant in settings.py to specify file upload permissions
+CKEDITOR_5_FILE_UPLOAD_PERMISSION = "authenticated"  # Possible values: "staff", "authenticated", "any"
+
+#Captcha
+CAPTCHA_FONT_SIZE=40

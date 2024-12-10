@@ -1,0 +1,94 @@
+/* Sidebar */
+.sidebar {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para los botones del sidebar */
+.sidebar .nav-link {
+  padding: 12px 20px;
+  color: #333;
+  border-radius: 8px;
+  margin: 4px 10px;
+  transition: all 0.3s ease;
+  position: relative;
+  font-weight: 500;
+}
+
+.sidebar .nav-link:hover {
+  background-color: #f8f9fa;
+  color: #0d6efd;
+  transform: translateX(5px);
+}
+
+/* Estilo para el botón activo o página activa*/
+.sidebar .nav-link.active {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.sidebar .nav-link.active:hover {
+  background-color: #0b5ed7;
+  color: white;
+}
+
+/* Estilos para los íconos */
+.sidebar .nav-link svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+
+.sidebar .nav-link:hover svg {
+  transform: scale(1.1);
+}
+
+.sidebar .nav-link.active svg {
+  fill: white;
+}
+
+/* Botón de cerrar sesión o*/
+.sidebar .nav-link[href*="logout"] {
+  background-color: #f8d7da;
+  color: #dc3545;
+}
+
+.sidebar .nav-link[href*="logout"]:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+.sidebar .nav-link[href*="logout"]:hover svg {
+  fill: white;
+}
+
+/* hr que separa el cerrar sesión */
+.sidebar hr {
+  margin: 1rem 10px;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* titulo del sidebar */
+.offcanvas-title {
+  font-weight: 600;
+  color: #0d6efd;
+}
+
+/* responsive  */
+@media (max-width: 768px) {
+  .sidebar .nav-link {
+      margin: 2px 5px;
+      padding: 10px 15px;
+  }
+}
+
+.offcanvas-end {
+  transition: transform 0.4s ease-in-out;
+}
+
+#desc {
+  text-overflow: ellipsis; 
+  overflow: hidden;
+  white-space: normal;
+  word-wrap: break-word;
+}

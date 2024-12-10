@@ -1,40 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load static %}
+
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CESFAM Angachilla</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link id="lightTheme" rel="stylesheet" href="{% static 'style/estilo.css' %}">
+    <link id="darkTheme" rel="stylesheet" href="{% static 'style/estilo_oscuro.css' %}" disabled>
+    <link rel="stylesheet" href="{% static 'style/ckeditor.css' %}" type="text/css">
+    <style>
+    .card:hover {
+        &:hover {
+            transition: all 0.2s ease-out;
+            box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+            top: -4px;
+            border: 1px solid #cccccc;
+            background-color: white;
+       }
+        &:before {
+            position: absolute;
+            z-index: -1;
+            top: -16px;
+            right: -16px;
+            height: 32px;
+            width: 32px;
+            border-radius: 32px;
+            transform: scale(2);
+            transform-origin: 50% 50%;
+            transition: transform 0.15s ease-out;
+        }
+        &:hover:before {
+    transform: scale(2.15);
+  }
+  
+    }
+    </style>
+    
 </head>
 <body>
     <!-- CABEZERA NAVBAR -->
-    <div class="header col-lg-12 col-sm-12">
-        <nav class="navbar bg-body-tertiary p-0">
-            <div class="left-container container-fluid p-3" style="background-color: #FEE9A0;">
-                <a class="navbar-brand" href="#">
-                    <img src="https://valdivia.municipalidad.digital.gob.cl/logos/dQVMhNdDA4eg7HMZQlbK.png" alt="Logo" width="126" height="99" class="d-inline-block align-text-top">
-                </a>
-                <a><svg xmlns="http://www.w3.org/2000/svg" width="37" height="32" fill="currentColor" class="bi bi-universal-access-circle" viewBox="0 0 16 16"> <!-- IGNORAR viewBox-->
-                    <path d="M8 4.143A1.071 1.071 0 1 0 8 2a1.071 1.071 0 0 0 0 2.143m-4.668 1.47 3.24.316v2.5l-.323 4.585A.383.383 0 0 0 7 13.14l.826-4.017c.045-.18.301-.18.346 0L9 13.139a.383.383 0 0 0 .752-.125L9.43 8.43v-2.5l3.239-.316a.38.38 0 0 0-.047-.756H3.379a.38.38 0 0 0-.047.756Z"></path>
-                    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8"></path>
-                  </svg>
-                    Accesibilidad</a>
-                <hr>
-                <hr>
-                <hr>
-                <hr>
-                <a href="" style="text-decoration: none; color: black;">Nosotros</a>
-                <a href="" style="text-decoration: none; color: black;">Ubicacion</a>
-                <a href="" style="text-decoration: none; color: black;">Contáctenos</a>
-                <a href="" style="text-decoration: none; color: black;">Trabaje con nosotros</a>
-                <a href="" style="padding: 8px; text-decoration: none; color: black;">OIRS</a>
+    <nav class="navbar navbar-expand-lg navbar-custom p-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="https://valdivia.municipalidad.digital.gob.cl/logos/dQVMhNdDA4eg7HMZQlbK.png" alt="Municipalidad Valdivia" class="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobrenosotros/">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                                <path d="M13 7a3 3 0 1 0-2.54 1.46A4.5 4.5 0 0 0 16 12a4.5 4.5 0 0 0-3-4.25V7z"/>
+                                <path d="M5 7a3 3 0 1 0-2.54 1.46A4.5 4.5 0 0 0 8 12a4.5 4.5 0 0 0-3-4.25V7z"/>
+                            </svg> Nosotros
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ubicacion/">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                <path d="M8 0a6 6 0 0 0-6 6c0 1.7.54 3.319 1.522 4.571l.007.009 4.466 5.67c.334.424.958.424 1.292 0l4.466-5.67.007-.009A6.001 6.001 0 0 0 8 0zm0 7.5A1.5 1.5 0 1 1 8 4a1.5 1.5 0 0 1 0 3.5z"/>
+                            </svg> Ubicación
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="trabaja-con-nosotros/">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-briefcase" viewBox="0 0 16 16">
+                                <path d="M6 3h4v1H6V3z"/>
+                                <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6H0V4.5zM0 7h16v5.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5V7z"/>
+                            </svg> Trabaja con nosotros
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="oirs/">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                                <path d="M5 1a2 2 0 0 0-2 2h10a2 2 0 0 0-2-2H5z"/>
+                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4z"/>
+                            </svg> OIRS
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tel:+569632220316">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                                <path d="M1.884 1.511A1.745 1.745 0 0 1 3.468.687c.607.012 1.016.317 1.516.812.5.495.747.876.85 1.456.018.101.031.2.038.299C5.939 3.508 6.38 5.504 6.5 6.5c.059.493-.236 1.282-.707 1.853-.212.253-.496.536-.85.812-.76.602-.903.827-1.516 1.416-.614.589-.842.788-1.322 1.384-.088.112-.15.191-.267.355-.235.312-.346.551-.486.708a.801.801 0 0 0-.057.769c.146.322.464.655.87.84a1.746 1.746 0 0 1 .67.42 1.746 1.746 0 0 1 .42.67c.185.406.518.724.84.87.213.072.513.003.77-.057a3.058 3.058 0 0 0 .708-.486c.163-.117.243-.179.355-.267.596-.48.795-.708 1.384-1.322.59-.614.814-.756 1.416-1.516.276-.354.559-.638.812-.85.571-.471 1.36-.766 1.853-.707.996.12 2.992.561 3.735.838.099.007.198.02.299.038.58.103.96.35 1.456.85.495.5.8.909.812 1.516a1.746 1.746 0 0 1-.824 1.584z"/>
+                            </svg> +(56) 63 222 0316
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'administrador' %}"><i class="fa-solid fa-right-to-bracket"></i></a>
+                    </li>
+                </ul>
             </div>
-        </nav> 
-    </div>
+        </div>
+    </nav>
 
     <!-- FOTO PRINCIPAL-->
-    <div id="carouselExample" class="carousel slide">
+    <div id="carouselExample" class="carousel slide" style="background-color: #faa14287;">
         <div class="carousel-inner" style="height: 630px; opacity: 0.5;">
           <div class="carousel-item active" >
             <img style="height: 630px;" src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="d-block w-100" alt="...">
@@ -48,7 +114,7 @@
         </div>
         <div class="static-text" style="position: absolute;top: 50%; left: 50%; transform: translate(-50%, -50%);">
             <h1 style="font-size: 5rem">CESFAM Angachilla</h1>
-            <p style="text-align: center; font-size: 2rem;color: gray;"> Centro de Salud Familiar</p>
+            <b><p style="text-align: center; font-size: 2rem;color: rgb(0, 0, 0);"> Centro de Salud Familiar</p></b>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -60,253 +126,259 @@
         </button>
       </div>
 
-    <!-- CONTENIDO a -->
-    <div class="container p-4">
-        <!-- NOTICIAS -->
-        <h1>Noticias</h1>
-        <div class="row p-2" style="overflow-x: auto; white-space: nowrap; height: 25rem; display: flex; flex-wrap: nowrap;">
-            
-            <div class="card p-3 m-3" style="border: 2px solid black; width: 18rem; display: inline-block; white-space: normal;">
-                <div class="container" style="width: 15rem; height: 10rem;">
-                    <img style="width: 100%; height: 100%;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body" style="height: 7.5rem; overflow: hidden;">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text" style="display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis;overflow: hidden;white-space: normal;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, vel esse voluptas veritatis unde ea odit a dolor dicta corrupti doloremque reprehenderit repellat nobis sint ipsam, consectetur laudantium eligendi illum? Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-
-            <div class="card p-3 m-3" style="border: 2px solid black; width: 18rem; display: inline-block; white-space: normal;">
-                <div class="container" style="width: 15rem; height: 10rem;">
-                    <img style="width: 100%; height: 100%;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body" style="height: 7.5rem; overflow: hidden;">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text" style="display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis;overflow: hidden;white-space: normal;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, vel esse voluptas veritatis unde ea odit a dolor dicta corrupti doloremque reprehenderit repellat nobis sint ipsam, consectetur laudantium eligendi illum? Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-
-            <div class="card p-3 m-3" style="border: 2px solid black; width: 18rem; display: inline-block; white-space: normal;">
-                <div class="container" style="width: 15rem; height: 10rem;">
-                    <img style="width: 100%; height: 100%;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body" style="height: 7.5rem; overflow: hidden;">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text" style="display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis;overflow: hidden;white-space: normal;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, vel esse voluptas veritatis unde ea odit a dolor dicta corrupti doloremque reprehenderit repellat nobis sint ipsam, consectetur laudantium eligendi illum? Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-
-            <div class="card p-3 m-3" style="border: 2px solid black; width: 18rem; display: inline-block; white-space: normal;">
-                <div class="container" style="width: 15rem; height: 10rem;">
-                    <img style="width: 100%; height: 100%;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body" style="height: 7.5rem; overflow: hidden;">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text" style="display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis;overflow: hidden;white-space: normal;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, vel esse voluptas veritatis unde ea odit a dolor dicta corrupti doloremque reprehenderit repellat nobis sint ipsam, consectetur laudantium eligendi illum? Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-
-            <div class="card p-3 m-3" style="border: 2px solid black; width: 18rem; display: inline-block; white-space: normal;">
-                <div class="container" style="width: 15rem; height: 10rem;">
-                    <img style="width: 100%; height: 100%;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body" style="height: 7.5rem; overflow: hidden;">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text" style="display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis;overflow: hidden;white-space: normal;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, vel esse voluptas veritatis unde ea odit a dolor dicta corrupti doloremque reprehenderit repellat nobis sint ipsam, consectetur laudantium eligendi illum? Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-
-            <div class="card p-3 m-3" style="border: 2px solid black; width: 18rem; display: inline-block; white-space: normal;">
-                <div class="container" style="width: 15rem; height: 10rem;">
-                    <img style="width: 100%; height: 100%;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body" style="height: 7.5rem; overflow: hidden;">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text" style="display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis;overflow: hidden;white-space: normal;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, vel esse voluptas veritatis unde ea odit a dolor dicta corrupti doloremque reprehenderit repellat nobis sint ipsam, consectetur laudantium eligendi illum? Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-
-            <div class="card p-3 m-3" style="border: 2px solid black; width: 18rem; display: inline-block; white-space: normal;">
-                <div class="container" style="width: 15rem; height: 10rem;">
-                    <img style="width: 100%; height: 100%;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body" style="height: 7.5rem; overflow: hidden;">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text" style="display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis;overflow: hidden;white-space: normal;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, vel esse voluptas veritatis unde ea odit a dolor dicta corrupti doloremque reprehenderit repellat nobis sint ipsam, consectetur laudantium eligendi illum? Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-
+    <!-- CONTENIDO NAVINDEX -->
+    <div class="container mt-4">
+        <div class="button-container d-flex flex-wrap justify-content-center gap-3">
+            <a href="#Noticias" class="btn btn-custom" style="gap: 0.5rem;">
+                <i class="fas fa-bullhorn"></i>
+                Noticias
+            </a>
+            <a href="#Campañas" class="btn btn-custom" style="gap: 0.5rem;">
+                <i class="fas fa-globe"></i>
+                Campañas
+            </a>
+            <a href="#Eventos" class="btn btn-custom" style="gap: 0.5rem;">
+                <i class="fas fa-map"></i>
+                Eventos
+            </a>
         </div>
+    </div>
 
+    <!-- NOTICIAS -->
+    <div class="container mt-5">
+        <h1 class="text-center mb-4" id="Noticias">Noticias Cesfam</h1>
+        <div class="row justify-content-center g-3">
+            {% if noticias %}
+            {% for i in noticias %}
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 d-flex align-items-stretch">
+                <div class="card">
+                    {% if i.imagen %}
+                    <img src="{{ i.imagen.url }}" class="card-img-top" alt="Imagen de la noticia">
+                    {% else %}
+                    <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="card-img-top" alt="Imagen de la noticia">
+                    {% endif %}
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ i.titulo }}</h5>
+                        <p class="card-text">{{ i.descripcion | safe | truncatewords:12 }}</p>
+                        <a href="{% url 'leer_noticia' i.id %}" class="btn btn-primary">Leer más</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col-12">
+                <div class="alert alert-warning text-center">No hay noticias por ahora...</div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="text-end mt-4">
+            <a href="todas_noticias/" class="btn btn-secondary">Ver Más...</a>
+        </div>
+    </div>
+
+    <!-- CAMPAÑAS -->
+    <div class="container my-5"  id="Campañas">
+        <div class="campaign-section text-center">
+            <h2 class="campaign-header">Campaña</h2>
+            <p>Conoce y participa en nuevas campañas</p>
+            <div class="row">
+                
+                <!-- Campaña Semestral -->
+                <div class="col-md-5">
+                    <h5 class="mb-3 p-2">Campaña Semestral</h5>
+                    {% if campañas_semestrales %}
+                    {% for campaña_s in campañas_semestrales %}
+                        <div class="campaign-card">
+                            <div class="row g-0">
+
+                                <div class="col-sm-12 col-md-12 col-lg-4">
+                                    {% if campaña_s.imagen %}
+                                    <img src="{{ campaña_s.imagen.url }}" alt="Imagen campaña" class="img-fluid">
+                                    {% else %}
+                                    <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen campaña" class="img-fluid">
+                                    {% endif %}
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-8">
+                                    <div class="card-body">
+                                        <a href="{% url 'leer_evento' campaña_s.id %}" class="text-decoration-none text-black">
+                                        <h5 class="card-title mt-2">{{ campaña_s.titulo | slice:":50" }}</h5>
+                                        <p class="text-muted">Duración: {{ campaña_s.fecha_inicio|date:"d-M-y" }} // {{ campaña_s.fecha_termino|date:"d-M-y" }}</p>
+                                        <p class="ck-content card-text">{{ campaña_s.descripcion | safe | truncatewords:6 }}</p></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% else %}
+                    <div class="alert alert-info " style="text-align: center; border-radius: 8px;">
+                        <h1> NO HAY CAMPAÑA SEMESTRAL</h1>
+                        <p class="text-muted"> Por ahora...</p>
+                    </div>
+                    {% endif %}
+                    
+                    
+                </div>
+    
+                <!-- Separador vertical -->
+                <div class="col-md-2 d-flex justify-content-center align-items-center">
+                    <div class="divider"></div>
+                </div>
+    
+                <!-- Campaña Mensual -->
+                <div class="col-md-5">
+                    <h5 class="mb-3 p-2">Campaña Mensual</h5>
+                    {% if campañas_mensuales %}
+                    {% for campaña_m in campañas_mensuales %}
+                        <div class="campaign-card">
+                            <div class="row g-0">
+
+                                <div class="col-sm-12 col-md-12 col-lg-4">
+                                    {% if campaña_m.imagen %}
+                                    <img src="{{ campaña_m.imagen.url }}" alt="Imagen campaña" class="img-fluid">
+                                    {% else %}
+                                    <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen campaña" class="img-fluid">
+                                    {% endif %}
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-8">
+                                    <div class="card-body">
+                                        <a href="{% url 'leer_evento' campaña_m.id %}" class="text-decoration-none text-black">
+                                        <h5 class="card-title mt-2">{{ campaña_m.titulo | slice:":50" }}</h5>
+                                        <p class="text-muted">Duración: {{ campaña_m.fecha_inicio|date:"d-M-y" }} // {{ campaña_m.fecha_termino|date:"d-M-y" }}</p>
+                                        <p class="ck-content card-text">{{ campaña_m.descripcion | safe | truncatewords:6 }}</p></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% else %}
+                    <div class="alert alert-info " style="text-align: center; border-radius: 8px;">
+                        <h1> NO HAY CAMPAÑA MENSUAL</h1>
+                        <p class="text-muted"> Por ahora...</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVENTOS -->
+    <div class="container my-5">
+        <h1 class="text-center mb-3" id="Eventos">Eventos</h1>
+        <p class="text-center">Encuentra Eventos o Talleres para asistir y apoyarnos!</p>
         
-    </div>
-    <div class="container p-4">
-        <!-- EVENTOS -->
-        <h1>Eventos</h1>
-        <div class="row p-2" style="overflow-x: auto; white-space: nowrap; height: 25rem; display: flex; flex-wrap: nowrap;">
+        <div class="row justify-content-center" >
+            {% if eventos %}
+                {% for e in eventos %}
+                {% if e.tipo_evento != "Campaña-Semestral" and e.tipo_evento != "Campaña-Mensual" %}
+                <div class="col-sm-12 col-md-12 col-lg-4">
+                    <div class="card mb-4">
+                        <div class="news-img" style="display:flex; height: 19rem;">
+                            {% if e.imagen %}
+                                <img src="{{ e.imagen.url }}" style="border-radius: 5px 5px 0 0; width: 100%; height: 100%;" class="img-fluid" alt="Imagen de la noticia">
+                            {% else %}
+                                <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen campaña" class="img-fluid">
+                            {% endif %}
+                            
+                        </div>
+                        <div class="card-body text-center" style="display: grid;">
+                            <h5 class="card-title">{{ e.titulo }}</h5>
+                            <p class="card-subtitle">{{ e.tipo_evento }}</p>
+                            <p class="card-subtitle">Fecha: {{ e.fecha_inicio }} - {{ e.fecha_termino }}</p>
+                            <div class="contenedor-desc h-100">
+                                <p class="card-text justify-content-center" >{{ e.descripcion | safe | truncatewords:12 }}</p>
+                            </div>
+                            <div class="contenedor-boton align-content-end">
+                                <a href="{% url 'leer_evento' e.id %}" class="btn btn-primary">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
             
-            <div class="card p-3 m-3" style="border: 2px solid black; width: 18rem; display: inline-block; white-space: normal;">
-                <div class="container" style="width: 15rem; height: 10rem;">
-                    <img style="width: 100%; height: 100%;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body" style="height: 7.5rem; overflow: hidden;">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text" style="display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis;overflow: hidden;white-space: normal;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, vel esse voluptas veritatis unde ea odit a dolor dicta corrupti doloremque reprehenderit repellat nobis sint ipsam, consectetur laudantium eligendi illum? Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-
-            <div class="card p-3 m-3" style="border: 2px solid black; width: 18rem; display: inline-block; white-space: normal;">
-                <div class="container" style="width: 15rem; height: 10rem;">
-                    <img style="width: 100%; height: 100%;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body" style="height: 7.5rem; overflow: hidden;">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text" style="display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis;overflow: hidden;white-space: normal;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, vel esse voluptas veritatis unde ea odit a dolor dicta corrupti doloremque reprehenderit repellat nobis sint ipsam, consectetur laudantium eligendi illum? Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-
-            <div class="card p-3 m-3" style="border: 2px solid black; width: 18rem; display: inline-block; white-space: normal;">
-                <div class="container" style="width: 15rem; height: 10rem;">
-                    <img style="width: 100%; height: 100%;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body" style="height: 7.5rem; overflow: hidden;">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text" style="display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis;overflow: hidden;white-space: normal;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, vel esse voluptas veritatis unde ea odit a dolor dicta corrupti doloremque reprehenderit repellat nobis sint ipsam, consectetur laudantium eligendi illum? Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-
-            <div class="card p-3 m-3" style="border: 2px solid black; width: 18rem; display: inline-block; white-space: normal;">
-                <div class="container" style="width: 15rem; height: 10rem;">
-                    <img style="width: 100%; height: 100%;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body" style="height: 7.5rem; overflow: hidden;">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text" style="display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis;overflow: hidden;white-space: normal;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, vel esse voluptas veritatis unde ea odit a dolor dicta corrupti doloremque reprehenderit repellat nobis sint ipsam, consectetur laudantium eligendi illum? Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-
-            <div class="card p-3 m-3" style="border: 2px solid black; width: 18rem; display: inline-block; white-space: normal;">
-                <div class="container" style="width: 15rem; height: 10rem;">
-                    <img style="width: 100%; height: 100%;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body" style="height: 7.5rem; overflow: hidden;">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text" style="display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis;overflow: hidden;white-space: normal;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, vel esse voluptas veritatis unde ea odit a dolor dicta corrupti doloremque reprehenderit repellat nobis sint ipsam, consectetur laudantium eligendi illum? Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-
-            <div class="card p-3 m-3" style="border: 2px solid black; width: 18rem; display: inline-block; white-space: normal;">
-                <div class="container" style="width: 15rem; height: 10rem;">
-                    <img style="width: 100%; height: 100%;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body" style="height: 7.5rem; overflow: hidden;">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text" style="display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis;overflow: hidden;white-space: normal;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, vel esse voluptas veritatis unde ea odit a dolor dicta corrupti doloremque reprehenderit repellat nobis sint ipsam, consectetur laudantium eligendi illum? Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-
-            <div class="card p-3 m-3" style="border: 2px solid black; width: 18rem; display: inline-block; white-space: normal;">
-                <div class="container" style="width: 15rem; height: 10rem;">
-                    <img style="width: 100%; height: 100%;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body" style="height: 7.5rem; overflow: hidden;">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text" style="display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis;overflow: hidden;white-space: normal;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, vel esse voluptas veritatis unde ea odit a dolor dicta corrupti doloremque reprehenderit repellat nobis sint ipsam, consectetur laudantium eligendi illum? Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
+    
+            <!-- SEGUNDO EVENTO -->
+            
+        </div>
+    
+        <div class="text-end mt-4">
+            <a href="todos_eventos/" class="btn btn-secondary">Ver Más...</a> <!-- ENLACE PARA VER TODOS LOS EVENTOS-->
         </div>
     </div>
-
-
 
 
 
     <!-- FOOTER -->
-    <footer style="background-color: #FEE9A0;">
-        <div class="container p-4">
-            <div class="row">
-
-                <div class="col-md-6 col-sm-12 col-lg-3 mb-4">
-
-                    <ul class="list-unstyled">
+    <footer>
+        <div id="footerdiv" class="text-center p-3" style="font-size: large; background-color: #FEE9A0;">
+            <div class="row text-center align-items-center mx-3 py-3">
+                <div class="col-12 col-md-4 text-md-start mb-3 mb-md-0">
+                    <a class="navbar-brand" href="#">
+                        <img src="https://valdivia.municipalidad.digital.gob.cl/logos/dQVMhNdDA4eg7HMZQlbK.png" alt="Logo" width="126" height="99" class="d-inline-block align-text-top">
+                    </a>
+                </div>
+                <div class="col-12 col-md-4 mb-3 mb-md-0">
+                    <ul class="list-unstyled d-flex justify-content-center gap-3">
                         <li>
-                            <a class="navbar-brand" style="text-decoration: none;" href="#">
-                                <img style="text-decoration: none;" src="https://valdivia.municipalidad.digital.gob.cl/logos/dQVMhNdDA4eg7HMZQlbK.png" alt="Logo" width="64" height="50" class="d-inline-block align-text-top">
-                            </a>
-                            <h5 class="text-uppercase">Redes sociales</h5>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com" style="text-decoration: none;" target="_blank">
-                                <img style="height: 25px; width: 25px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
+                            <a href="https://www.instagram.com" style="text-decoration: none;" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+                                </svg>
                             </a>
                             <a href="https://www.facebook.com" style="text-decoration: none;" target="_blank">
-                                <img style="height: 25px; width: 25px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
-                            </a>
-                            <a href="https://www.facebook.com" style="text-decoration: none;" target="_blank">
-                                <img style="height: 25px; width: 25px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
-                            </a>
-                            <a href="https://www.facebook.com" style="text-decoration: none;" target="_blank">
-                                <img style="height: 25px; width: 25px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                                </svg>
                             </a>
                         </li>
                     </ul>
                 </div>
-                
-                <div class="col-md-6 col-sm-12 col-lg-3 mb-4">
-                    <h5 class="text-uppercase">Campañas</h5>
-                    <p><i class="fas fa-home"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-envelope"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-phone"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-phone"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-phone"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-phone"></i> Texto de ejemplo</p>
-                </div>
-
-                <div class="col-md-6 col-sm-12 col-lg-3 mb-4">
-
-                    <h5 class="text-uppercase">Enlaces de interés</h5>
-                    <p><i class="fas fa-home"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-envelope"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-phone"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-phone"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-phone"></i> Texto de ejemplo</p>
-                    <p><i class="fas fa-phone"></i> Texto de ejemplo</p>
-                </div>
-    
-                <div class="col-md-6 col-sm-12 col-lg-3 mb-4">
-
-                    <h5 class="text-uppercase">Emergencias</h5>
-                    <p>
-                        <img style="height: 29px; width: 29px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
-                        131 - Ambulancia
-                    </p>
-                    <p>
-                        <img style="height: 29px; width: 29px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
-                        132 - Bomberos
-                    </p>
-                    <p>
-                        <img style="height: 29px; width: 29px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
-                        133 - Carabineros
-                    </p>
-                    <p>
-                        <img style="height: 29px; width: 29px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
-                        134 - Policía de Investigaciones
-                    </p>
-                    <p>
-                        <img style="height: 29px; width: 29px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
-                        135 - Fono Drogas</p>
-                    <p>
-                        <img style="height: 29px; width: 29px;" src="https://getbootstrap.ru/docs/5.3/assets/brand/bootstrap-social.png" alt="">
-                        137 - Rescate Marítimo
-                    </p>
+                <div class="col-12 col-md-4 text-md-end">
+                    <b>© 2024 Cesfam Angachilla.</b>
                 </div>
             </div>
         </div>
-    
-        <div class="text-center p-3" style="background-color: #FEE9A0;">
-            © 2024 Cesfam Angachilla, Todos los derechos reservados.
-        </div>
-    </footer> 
+    </footer>
     
 </body>
+<script>
+    //Script Tema oscuro
+document.getElementById("darkModeToggle").addEventListener("click", () => {
+    const lightTheme = document.getElementById("lightTheme");
+    const darkTheme = document.getElementById("darkTheme");
+    const button = document.getElementById("darkModeToggle");
+
+    // Activa el modo oscuro y desactiva el modo claro
+    if (darkTheme.disabled) {
+        darkTheme.disabled = false; 
+        lightTheme.disabled = true; 
+        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"/></svg> Tema Claro'; // Cambia el texto y mantiene el svg
+    } else {
+        // Desactiva el modo oscuro y activa el modo claro
+        darkTheme.disabled = true; 
+        lightTheme.disabled = false; 
+        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"/></svg> Tema Oscuro'; // Cambia el texto y mantiene el svg
+    }
+});
+
+// Selecciona el botón para aumentar el tamaño de fuente
+const increaseFontSize = document.getElementById("increaseFontSize");
+
+// Aumentar fuente
+increaseFontSize.addEventListener("click", () => {
+    const elements = document.querySelectorAll("body, p, h1, h5");
+    const maxFontSize = 32; 
+
+    elements.forEach((element) => {
+        // Obtener el tamaño de fuente actual
+        const currentSize = parseFloat(window.getComputedStyle(element).fontSize);
+
+        // Aumenta el tamaño hasta el maxFontSize definido
+        if (currentSize < maxFontSize) {
+            element.style.fontSize = `${currentSize + 2}px`;
+        }
+    });
+});
+</script>
 </html>
