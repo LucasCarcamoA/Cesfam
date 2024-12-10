@@ -158,8 +158,8 @@
                     <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="card-img-top" alt="Imagen de la noticia">
                     {% endif %}
                     <div class="card-body text-center">
-                        <h5 class="card-title">{{ i.titulo | slice:":70" }}</h5>
-                        <p class="card-text">{{ i.descripcion | safe | slice:":60" }}...</p>
+                        <h5 class="card-title">{{ i.titulo }}</h5>
+                        <p class="card-text">{{ i.descripcion | safe | truncatewords:12 }}</p>
                         <a href="{% url 'leer_noticia' i.id %}" class="btn btn-primary">Leer más</a>
                     </div>
                 </div>
@@ -203,7 +203,7 @@
                                         <a href="{% url 'leer_evento' campaña_s.id %}" class="text-decoration-none text-black">
                                         <h5 class="card-title mt-2">{{ campaña_s.titulo | slice:":50" }}</h5>
                                         <p class="text-muted">Duración: {{ campaña_s.fecha_inicio|date:"d-M-y" }} // {{ campaña_s.fecha_termino|date:"d-M-y" }}</p>
-                                        <p class="ck-content card-text">{{ campaña_s.descripcion | safe | slice:":60" }}...</p></a>
+                                        <p class="ck-content card-text">{{ campaña_s.descripcion | safe | truncatewords:6 }}</p></a>
                                     </div>
                                 </div>
                             </div>
@@ -244,7 +244,7 @@
                                         <a href="{% url 'leer_evento' campaña_m.id %}" class="text-decoration-none text-black">
                                         <h5 class="card-title mt-2">{{ campaña_m.titulo | slice:":50" }}</h5>
                                         <p class="text-muted">Duración: {{ campaña_m.fecha_inicio|date:"d-M-y" }} // {{ campaña_m.fecha_termino|date:"d-M-y" }}</p>
-                                        <p class="ck-content card-text">{{ campaña_m.descripcion | safe | slice:":60" }}...</p></a>
+                                        <p class="ck-content card-text">{{ campaña_m.descripcion | safe | truncatewords:6 }}</p></a>
                                     </div>
                                 </div>
                             </div>
@@ -285,7 +285,7 @@
                             <p class="card-subtitle">{{ e.tipo_evento }}</p>
                             <p class="card-subtitle">Fecha: {{ e.fecha_inicio }} - {{ e.fecha_termino }}</p>
                             <div class="contenedor-desc h-100">
-                                <p class="card-text justify-content-center" >{{ e.descripcion | safe | slice:":80" }}...</p>
+                                <p class="card-text justify-content-center" >{{ e.descripcion | safe | truncatewords:12 }}</p>
                             </div>
                             <div class="contenedor-boton align-content-end">
                                 <a href="{% url 'leer_evento' e.id %}" class="btn btn-primary">Leer más</a>

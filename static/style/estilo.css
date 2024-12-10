@@ -89,10 +89,16 @@ body {
     height: 100%;
 }
 
+.card-title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+}
+
 .card-text {
     display: -webkit-box;
     -webkit-box-orient: vertical; 
-    -webkit-line-clamp: 2; 
+    -webkit-line-clamp: 1; 
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: normal;

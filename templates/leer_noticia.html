@@ -159,7 +159,7 @@
                         <div class="col-sm-12 col-md-12 col-lg-8">
                             <div class="card-body">
                                 <a href="{% url 'leer_noticia' noticia.id %}" class="text-decoration-none text-black">
-                                <h5 class="card-title mt-2">{{ noticia.titulo | slice:":25" }}</h5>
+                                <h5 class="card-title mt-2">{{ noticia.titulo | truncatewords:6 }}</h5>
                                 </a>
                                 <p class="card-subtitle">{{ noticia.fecha_creacion }}</p>
                             </div>
