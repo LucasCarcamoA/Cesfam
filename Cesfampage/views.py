@@ -1,3 +1,36 @@
+"""
+views.py
+
+Este módulo contiene las vistas para la aplicación Django, gestionando diversas funcionalidades como la presentación de noticias, eventos,
+OIRS (Oficina de Información, Reclamos y Sugerencias), y un portal administrativo. Las vistas están diseñadas para manejar solicitudes HTTP
+y devolver respuestas apropiadas a las plantillas correspondientes.
+
+Funciones:
+----------
+- index(request): Renderiza la página principal con noticias y eventos destacados.
+- sobre_nosotros(request): Muestra información sobre el equipo del proyecto.
+- ubicacion(request): Presenta información sobre la ubicación y logos relacionados.
+- trabaja_con_nosotros(request): Gestiona el formulario para postulaciones laborales.
+- ver_noticias(request): Muestra todas las noticias publicadas.
+- ver_eventos(request): Lista todos los eventos creados.
+- administrador(request): Página administrativa con datos de eventos, mensajes y postulantes.
+- ver_postulantes(request): Muestra una lista de postulantes laborales.
+- noticias(request): Lista las noticias disponibles para administradores.
+- oirs(request): Gestiona el formulario de OIRS y sus envíos.
+- crear_noticia(request): Permite la creación de noticias a través de un formulario.
+- modificar_noticia(request, id): Modifica una noticia existente identificada por su ID.
+- eliminar_noticia(request, id): Elimina una noticia específica según su ID.
+- eventos(request): Lista los eventos disponibles para administradores.
+- crear_evento(request): Permite la creación de eventos a través de un formulario.
+- modificar_evento(request, id): Modifica un evento existente identificado por su ID.
+- eliminar_evento(request, id): Elimina un evento específico según su ID.
+- leer_noticia(request, id): Renderiza una noticia específica con sus detalles.
+- leer_evento(request, id): Renderiza un evento específico con sus detalles.
+- oirs_inbox(request): Muestra todos los mensajes enviados a través de OIRS.
+- login_view(request): Maneja la autenticación de usuarios administrativos.
+- logout_view(request): Cierra la sesión del usuario autenticado.
+"""
+
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import NoticiaForm, EventoForm, OirsForm, TrabajaConNosotrosForm
 from .models import Noticia, Evento, Oirs, TrabajaConNosotros

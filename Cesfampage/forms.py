@@ -1,9 +1,32 @@
+"""
+Formularios personalizados para gestionar modelos del sistema.
+
+Este módulo contiene formularios basados en `ModelForm` para interactuar con los modelos
+`Evento`, `Noticia`, `Oirs`, y `TrabajaConNosotros`. Se configuran widgets y validaciones
+específicas para facilitar la interacción del usuario final con el sistema.
+
+Importaciones:
+    - `forms.ModelForm`: Clase base para formularios basados en modelos.
+    - `CKEditor5Widget`: Widget para campos de texto enriquecido con CKEditor5.
+    - `CaptchaField`: Campo para implementar un captcha de validación.
+    - `date`: Proporciona funcionalidad para trabajar con fechas.
+
+Clases:
+    - `EventoForm`: Gestiona la creación y validación de eventos.
+    - `NoticiaForm`: Gestiona la creación y validación de noticias.
+    - `OirsForm`: Gestiona la recepción y validación de mensajes OIRS.
+    - `TrabajaConNosotrosForm`: Gestiona la recepción y validación de postulaciones laborales.
+
+Constantes:
+    - `TIPO_EVENTO`: Tipos disponibles para clasificar eventos.
+    - `MOTIVO`: Razones disponibles para clasificar mensajes OIRS.
+    - `AREAS`: Áreas disponibles para clasificar postulaciones laborales.
+"""
+
 from django import forms
 from .models import Noticia, Evento, Oirs, TrabajaConNosotros
 from datetime import date
-# Importa el widget CKEditor5Widget de la librería django-ckeditor-5
 from django_ckeditor_5.widgets import CKEditor5Widget
-# Importa el captcha de la librería django-simple-captcha
 from captcha.fields import CaptchaField
 
 TIPO_EVENTO = [
@@ -32,6 +55,26 @@ AREAS = [
 ]
 
 class EventoForm(forms.ModelForm):
+    
+    """
+    Formulario para gestionar eventos.
+
+    Este formulario permite crear y validar eventos, asegurando que:
+    - La fecha de término no sea anterior a la fecha de inicio.
+    - Los campos personalizados usen widgets amigables.
+
+    Campos:
+        - titulo: Título del evento.
+        - imagen: Imagen representativa del evento.
+        - fecha_inicio: Fecha de inicio del evento.
+        - fecha_termino: Fecha de término del evento.
+        - descripcion: Descripción del evento en formato enriquecido.
+        - tipo_evento: Tipo de evento seleccionado.
+
+    Método:
+        - clean: Valida que la fecha de término no sea anterior a la de inicio.
+    """
+
     class Meta:
         model = Evento
         fields = ['titulo', 'imagen', 'fecha_inicio', 'fecha_termino', 'descripcion', 'tipo_evento']
@@ -44,13 +87,24 @@ class EventoForm(forms.ModelForm):
             'tipo_evento': forms.Select(choices=TIPO_EVENTO, attrs={'class': 'form-select'}),
         }
     
+
     def __init__(self, *args, **kwargs):
+        
+        """
+        Inicializa el formulario y establece validaciones dinámicas.
+        """
+
         super(EventoForm, self).__init__(*args, **kwargs)
         self.fields['fecha_inicio'].widget.attrs['min'] = date.today().strftime('%Y-%m-%d')
         self.fields['fecha_termino'].widget.attrs['min'] = date.today().strftime('%Y-%m-%d')
         self.fields["descripcion"].required = False
         
     def clean(self):
+        
+        """
+        Valida las fechas de inicio y término para evitar inconsistencias.
+        """
+
         cleaned_data = super().clean()
         fecha_inicio = cleaned_data.get("fecha_inicio")
         fecha_termino = cleaned_data.get("fecha_termino")
@@ -61,6 +115,20 @@ class EventoForm(forms.ModelForm):
         return cleaned_data
 
 class NoticiaForm(forms.ModelForm):
+
+    """
+    Formulario para gestionar noticias.
+
+    Este formulario permite crear y validar noticias, vinculándolas
+    opcionalmente con un evento relacionado.
+
+    Campos:
+        - titulo: Título de la noticia.
+        - imagen: Imagen ilustrativa de la noticia.
+        - descripcion: Descripción en formato enriquecido.
+        - evento_relacionado: Relación opcional con un evento.
+    """
+    
     class Meta:
         model = Noticia
         fields = ['titulo', 'imagen', 'descripcion', 'evento_relacionado']
@@ -72,10 +140,31 @@ class NoticiaForm(forms.ModelForm):
             'evento_relacionado': forms.Select(attrs={'class': 'form-select'})
         }
     def __init__(self, *args, **kwargs):
+
+        """
+        Inicializa el formulario, permitiendo descripciones opcionales.
+        """
+
         super().__init__(*args, **kwargs)
         self.fields["descripcion"].required = False
         
 class OirsForm(forms.ModelForm):
+    
+    """
+    Formulario para gestionar mensajes OIRS.
+
+    Este formulario recoge los datos necesarios para consultas, sugerencias,
+    reclamos y otros mensajes, integrando un campo captcha para mayor seguridad.
+
+    Campos:
+        - nombre: Nombre del remitente.
+        - apellido: Apellido del remitente.
+        - correo: Correo electrónico del remitente (obligatorio).
+        - motivo: Motivo del mensaje.
+        - mensaje: Contenido del mensaje.
+        - captcha: Verificación de seguridad.
+    """
+    
     captcha = CaptchaField()
     class Meta:
         model = Oirs
@@ -88,6 +177,22 @@ class OirsForm(forms.ModelForm):
             'mensaje': forms.Textarea(attrs={'class': 'form-control', 'rows': 6, 'placeholder': 'Ingrese su mensaje'}),
         }
 class TrabajaConNosotrosForm(forms.ModelForm):
+    
+    """
+    Formulario para gestionar postulaciones laborales.
+
+    Este formulario permite a los usuarios enviar información de contacto,
+    el área de postulación, un archivo de CV y un mensaje adicional.
+
+    Campos:
+        - nombre: Nombre del postulante.
+        - correo: Correo electrónico del postulante.
+        - area_postulacion: Área a la que aplica.
+        - curriculum: Archivo del currículum vitae.
+        - mensaje: Mensaje adicional del postulante.
+        - captcha: Verificación de seguridad.
+    """
+
     captcha = CaptchaField()
     class Meta:
         model = TrabajaConNosotros
