@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Cesfampage',
     'django_ckeditor_5',
-    'captcha'
+    'captcha',
+    'django.contrib.admindocs',
 ]
 
 MIDDLEWARE = [

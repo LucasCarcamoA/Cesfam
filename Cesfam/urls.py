@@ -23,6 +23,7 @@ from django.contrib.auth.decorators import login_required
 from Cesfampage.decorators import admin_required
 
 urlpatterns = [
+    path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('sobrenosotros/', sobre_nosotros),
