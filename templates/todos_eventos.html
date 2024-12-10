@@ -95,7 +95,7 @@
                             <h5 class="card-title text-truncate">{{ e.titulo | slice:":25" }}</h5>
                             <p class="card-subtitle">{{ e.tipo_evento }}</p>
                             <p class="card-subtitle">Fecha: {{ e.fecha_inicio }} - {{ e.fecha_termino }}</p>
-                            <p class="card-text text-truncate">{{ e.descripcion | safe | slice:":30" }}...</p>
+                            <p class="card-text text-truncate">{{ e.descripcion | safe | truncatewords:8 }}</p>
                             <a href="{% url 'leer_evento' e.id %}" class="btn btn-primary mt-auto">Leer más</a>
                         </div>
                     </div>

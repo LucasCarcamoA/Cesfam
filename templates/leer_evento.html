@@ -144,7 +144,7 @@
                         <div class="col-sm-12 col-md-12 col-lg-8">
                             <div class="card-body">
                                 <a href="{% url 'leer_evento' evento.id %}" class="text-decoration-none text-black">
-                                <h5 class="card-title mt-2">{{ evento.titulo | slice:":40" }}</h5>
+                                <h5 class="card-title mt-2">{{ evento.titulo | truncatewords:8 }}</h5>
                                 {% if evento.tipo_evento == "Campaña-Mensual" %}
                                 <p class="text-muted">Campaña mensual</p>
                                 {% elif evento.tipo_evento == "Campaña-Semestral" %}

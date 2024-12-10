@@ -85,3 +85,10 @@
 .offcanvas-end {
   transition: transform 0.4s ease-in-out;
 }
+
+#desc {
+  text-overflow: ellipsis; 
+  overflow: hidden;
+  white-space: normal;
+  word-wrap: break-word;
+}

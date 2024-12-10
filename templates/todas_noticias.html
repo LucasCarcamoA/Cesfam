@@ -95,7 +95,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title text-break">{{ n.titulo | slice:":30" }}</h5>
                             <p class="card-subtitle">Fecha: {{ n.fecha_creacion }}</p>
-                            <p class="card-text text-break">{{ n.descripcion | safe | slice:":60" }}...</p>
+                            <p class="card-text text-break">{{ n.descripcion | safe | truncatewords:10 }}</p>
                             <a href="{% url 'leer_noticia' n.id %}" class="btn btn-primary">Leer más</a>
                         </div>
                     </div>
