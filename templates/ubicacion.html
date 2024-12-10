@@ -172,23 +172,39 @@
     
 </body>
 <script>
-    //Script Tema oscuro
-document.getElementById("darkModeToggle").addEventListener("click", () => {
+// Script Tema oscuro
+document.addEventListener("DOMContentLoaded", () => {
     const lightTheme = document.getElementById("lightTheme");
     const darkTheme = document.getElementById("darkTheme");
     const button = document.getElementById("darkModeToggle");
 
-    // Activa el modo oscuro y desactiva el modo claro
-    if (darkTheme.disabled) {
-        darkTheme.disabled = false; 
-        lightTheme.disabled = true; 
-        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"/></svg> Tema Claro'; // Cambia el texto y mantiene el svg
+    // Verifica en localStorage el tema guardado
+    const isDarkMode = localStorage.getItem("darkMode") === "true";
+
+    if (isDarkMode) {
+        darkTheme.disabled = false;
+        lightTheme.disabled = true;
+        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"/></svg> Tema Claro';
     } else {
-        // Desactiva el modo oscuro y activa el modo claro
-        darkTheme.disabled = true; 
-        lightTheme.disabled = false; 
-        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"/></svg> Tema Oscuro'; // Cambia el texto y mantiene el svg
+        darkTheme.disabled = true;
+        lightTheme.disabled = false;
+        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"/></svg> Tema Oscuro';
     }
+
+    // Toggle del tema al hacer clic
+    document.getElementById("darkModeToggle").addEventListener("click", () => {
+        if (darkTheme.disabled) {
+            darkTheme.disabled = false; 
+            lightTheme.disabled = true; 
+            localStorage.setItem("darkMode", "true"); // Guarda la variable en localStorage
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"/></svg> Tema Claro';
+        } else {
+            darkTheme.disabled = true; 
+            lightTheme.disabled = false; 
+            localStorage.setItem("darkMode", "false"); // Guarda la variable en localStorage
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"/></svg> Tema Oscuro';
+        }
+    });
 });
 
 // Selecciona el botón para aumentar el tamaño de fuente
