@@ -97,7 +97,6 @@ class EventoForm(forms.ModelForm):
         super(EventoForm, self).__init__(*args, **kwargs)
         self.fields['fecha_inicio'].widget.attrs['min'] = date.today().strftime('%Y-%m-%d')
         self.fields['fecha_termino'].widget.attrs['min'] = date.today().strftime('%Y-%m-%d')
-        self.fields["descripcion"].required = False
         
     def clean(self):
         
@@ -140,13 +139,7 @@ class NoticiaForm(forms.ModelForm):
             'evento_relacionado': forms.Select(attrs={'class': 'form-select'})
         }
     def __init__(self, *args, **kwargs):
-
-        """
-        Inicializa el formulario, permitiendo descripciones opcionales.
-        """
-
         super().__init__(*args, **kwargs)
-        self.fields["descripcion"].required = False
         
 class OirsForm(forms.ModelForm):
     

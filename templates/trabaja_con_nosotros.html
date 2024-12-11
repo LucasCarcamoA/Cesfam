@@ -92,19 +92,19 @@
                 {% endif %}
 
                 <div class="mb-3">
-                    <label for="{{ form.nombre.id_for_label }}" class="form-label">Nombre</label>
+                    <label for="{{ form.nombre.id_for_label }}" class="form-label">Nombre (*)</label>
                     {{ form.nombre }}
                 </div>
                 <div class="mb-3">
-                    <label for="{{ form.correo.id_for_label }}" class="form-label">Correo Electrónico</label>
+                    <label for="{{ form.correo.id_for_label }}" class="form-label">Correo Electrónico (*)</label>
                     {{ form.correo }}
                 </div>
                 <div class="mb-3">
-                    <label for="{{ form.area_postulacion.id_for_label }}" class="form-label">Área de Postulación</label>
+                    <label for="{{ form.area_postulacion.id_for_label }}" class="form-label">Área de Postulación (*)</label>
                     {{ form.area_postulacion }}
                 </div>
                 <div class="mb-3">
-                    <label for="{{ form.curriculum.id_for_label }}" class="form-label">Curriculum (PDF)</label>
+                    <label for="{{ form.curriculum.id_for_label }}" class="form-label">Curriculum (PDF) (*)</label>
                     {{ form.curriculum }}
 
                     {% if form.curriculum.errors %}
@@ -114,10 +114,11 @@
                     {% endif %}
                 </div>
                 <div class="mb-3">
-                    <label for="{{ form.mensaje.id_for_label }}" class="form-label">Mensaje</label>
+                    <label for="{{ form.mensaje.id_for_label }}" class="form-label">Mensaje (*)</label>
                     {{ form.mensaje }}
                 </div>
                 <div class="mb-3">
+                    <p class="">Verificación de seguridad: por favor, escribe las letras que ves en la imagen en el cuadro de texto. </p>
                     <label for="form_captcha" class="form-label">Captcha</label>
                     {{ form.captcha }}
 
@@ -169,23 +170,39 @@
     
 </body>
 <script>
-    //Script Tema oscuro
-document.getElementById("darkModeToggle").addEventListener("click", () => {
+// Script Tema oscuro
+document.addEventListener("DOMContentLoaded", () => {
     const lightTheme = document.getElementById("lightTheme");
     const darkTheme = document.getElementById("darkTheme");
     const button = document.getElementById("darkModeToggle");
 
-    // Activa el modo oscuro y desactiva el modo claro
-    if (darkTheme.disabled) {
-        darkTheme.disabled = false; 
-        lightTheme.disabled = true; 
+    // Verifica en localStorage el tema guardado
+    const isDarkMode = localStorage.getItem("darkMode") === "true";
+
+    if (isDarkMode) {
+        darkTheme.disabled = false;
+        lightTheme.disabled = true;
         button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"/></svg> Tema Claro';
     } else {
-        // Desactiva el modo oscuro y activa el modo claro
-        darkTheme.disabled = true; 
-        lightTheme.disabled = false; 
+        darkTheme.disabled = true;
+        lightTheme.disabled = false;
         button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"/></svg> Tema Oscuro';
     }
+
+    // Toggle del tema al hacer clic
+    document.getElementById("darkModeToggle").addEventListener("click", () => {
+        if (darkTheme.disabled) {
+            darkTheme.disabled = false; 
+            lightTheme.disabled = true; 
+            localStorage.setItem("darkMode", "true"); // Guarda la variable en localStorage
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"/></svg> Tema Claro';
+        } else {
+            darkTheme.disabled = true; 
+            lightTheme.disabled = false; 
+            localStorage.setItem("darkMode", "false"); // Guarda la variable en localStorage
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"/></svg> Tema Oscuro';
+        }
+    });
 });
 
 // Selecciona el botón para aumentar el tamaño de fuente
