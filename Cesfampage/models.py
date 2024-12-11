@@ -41,16 +41,29 @@ AREAS = [
 class Evento(models.Model):
 
     """
+    Class Evento
+    
     Representa un evento dentro del sistema.
 
-    Attributes:
+    Atributos:
         titulo (str): El título del evento.
+
         imagen (ImageField): Imagen asociada al evento.
+        
         fecha_creacion (datetime): Fecha de creación del evento.
+        
         fecha_inicio (date): Fecha de inicio del evento.
+        
         fecha_termino (date): Fecha de término del evento.
+        
         descripcion (CKEditor5Field): Descripción detallada del evento.
+        
         tipo_evento (str): Tipo del evento (Evento, Taller, Campaña, etc.).
+
+    Método:
+
+        __str__(self): retorna el titulo del evento
+
     """
 
     titulo = models.CharField(max_length=100)
@@ -62,11 +75,6 @@ class Evento(models.Model):
     tipo_evento = models.CharField(max_length=50, choices=TIPO_EVENTO)
     
     def __str__(self):
-
-        """
-        Retorna una representación legible del Titulo del objeto Evento.
-        """
-
         return self.titulo
 
 class Noticia(models.Model):
@@ -74,12 +82,17 @@ class Noticia(models.Model):
     """
     Representa una noticia publicada en el sistema.
 
-    Attributes:
+    Atributos:
         titulo (str): El título de la noticia.
+        
         imagen (ImageField): Imagen asociada a la noticia.
+
         descripcion (CKEditor5Field): Descripción detallada de la noticia.
+
         evento_relacionado (ForeignKey): Evento asociado con la noticia, si aplica.
+
         fecha_creacion (datetime): Fecha de creación de la noticia.
+
     """
 
     titulo = models.CharField(max_length=100)
@@ -93,12 +106,17 @@ class Oirs(models.Model):
     """
     Representa un formulario de contacto de la OIRS.
 
-    Attributes:
+    Atributos:
         nombre (str): Nombre del remitente.
+
         apellido (str): Apellido del remitente.
+        
         correo (EmailField): Correo electrónico del remitente.
+        
         motivo (str): Motivo del contacto (Reclamo, Consulta, etc.).
+        
         mensaje (TextField): Mensaje enviado por el remitente.
+        
         fecha_envio (datetime): Fecha de envío del formulario.
     """
 
@@ -114,13 +132,23 @@ class TrabajaConNosotros(models.Model):
     """
     Representa una postulación al área de recursos humanos.
 
-    Attributes:
+    Atributos:
         nombre (str): Nombre del postulante.
+
         correo (EmailField): Correo del postulante.
+        
         area_postulacion (str): Área a la que postula el candidato.
+        
         curriculum (FileField): Archivo del currículum adjunto.
+        
         mensaje (TextField): Mensaje adicional del postulante.
+        
         fecha_envio (datetime): Fecha de envío de la postulación.
+
+    Métodos:
+
+        __str__(self): retorna el nombre y el area seleccionada para 
+        la postulación
     """
 
     nombre = models.CharField(max_length=100)
@@ -131,9 +159,4 @@ class TrabajaConNosotros(models.Model):
     fecha_envio = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        
-        """
-        Retorna una representación legible del nombre y objeto TrabajaConNosotros.
-        """
-
         return f"{self.nombre} - {self.area_postulacion}"
