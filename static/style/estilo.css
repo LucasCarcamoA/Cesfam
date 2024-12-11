@@ -5,6 +5,10 @@ body {
     background-color: #FCF5D6;
 }
 
+#fondo_leer {
+    background-color: #fef9e5;
+}
+
 /* ----   Header NavBar   -----*/
 
 .navbar-custom {
@@ -80,7 +84,7 @@ body {
     margin-bottom: 30px;
 }
 .campaign-card {
-    background-color: #e3d4f9;
+    background-color: #eed084;
     padding: 20px;
     border-radius: 10px;
 }
