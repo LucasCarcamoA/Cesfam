@@ -107,10 +107,10 @@
             <img style="height: 630px;" src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="d-block w-100" alt="...">
+            <img style="height: 630px;" src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="d-block w-100" alt="...">
+            <img style="height: 630px;" src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" class="d-block w-100" alt="...">
           </div>
         </div>
         <div class="static-text" style="position: absolute;top: 50%; left: 50%; transform: translate(-50%, -50%);">
@@ -273,20 +273,25 @@
                 {% if e.tipo_evento != "Campaña-Semestral" and e.tipo_evento != "Campaña-Mensual" %}
                 <div class="col-sm-12 col-md-12 col-lg-4">
                     <div class="card mb-4">
-                        <div class="news-img" style="display:flex; height: 19rem;">
+                        <div class="news-img" style="display: flex; height: 19rem;">
                             {% if e.imagen %}
-                                <img src="{{ e.imagen.url }}" style="border-radius: 5px 5px 0 0; width: 100%; height: 100%;" class="img-fluid" alt="Imagen de la noticia">
+                                <img src="{{ e.imagen.url }}" 
+                                     class="img-fluid w-100 h-100" 
+                                     style="border-radius: 5px 5px 0 0; object-fit: cover;" 
+                                     alt="Imagen de la noticia">
                             {% else %}
-                                <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" alt="Imagen campaña" class="img-fluid">
+                                <img src="https://cdn.elnaveghable.cl/sites/elnaveghable.cl/files/imagecache/380x285/imagen_noticia/consultorio_angachilla.jpg" 
+                                     class="img-fluid w-100 h-auto" 
+                                     style="border-radius: 5px 5px 0 0; object-fit: cover;" 
+                                     alt="Imagen campaña">
                             {% endif %}
-                            
                         </div>
                         <div class="card-body text-center" style="display: grid;">
                             <h5 class="card-title">{{ e.titulo }}</h5>
                             <p class="card-subtitle">{{ e.tipo_evento }}</p>
                             <p class="card-subtitle">Fecha: {{ e.fecha_inicio }} - {{ e.fecha_termino }}</p>
                             <div class="contenedor-desc h-100">
-                                <p class="card-text justify-content-center" >{{ e.descripcion | safe | truncatewords:12 }}</p>
+                                <p class="card-text justify-content-center">{{ e.descripcion | safe | truncatewords:12 }}</p>
                             </div>
                             <div class="contenedor-boton align-content-end">
                                 <a href="{% url 'leer_evento' e.id %}" class="btn btn-primary">Leer más</a>
@@ -294,6 +299,7 @@
                         </div>
                     </div>
                 </div>
+                
                 {% endif %}
                 {% endfor %}
             {% endif %}

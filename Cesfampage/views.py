@@ -25,7 +25,7 @@ def index(request):
     """
 
     noticias = Noticia.objects.all().order_by('-id')[:3]
-    eventos = Evento.objects.all().order_by('fecha_inicio')[:3]
+    eventos = Evento.objects.all().filter(tipo_evento__in=["Evento", "Taller"]).order_by('fecha_inicio')[:3]
     fulleventos = Evento.objects.all()
     campañas_mensuales = Evento.objects.filter(tipo_evento__startswith="Campaña-Mensual").order_by('-id')[:1]
     campañas_semestrales = Evento.objects.filter(tipo_evento__startswith="Campaña-Semestral").order_by('-id')[:1]
