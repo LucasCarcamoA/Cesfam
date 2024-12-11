@@ -157,7 +157,7 @@
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed text-break" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ evento.id }}" aria-controls="collapse{{ evento.id }}">
-                        ID: {{ evento.id }} | Título: {{ evento.titulo }} | Fecha de inicio: {{ evento.fecha_inicio }} | Fecha de término: {{ evento.fecha_termino }} | Fecha de publicación: {{ evento.fecha_creacion }}
+                        ID: {{ evento.id }} | Título:  <strong>  {{ evento.titulo }}</strong> | Fecha de inicio: {{ evento.fecha_inicio|date:"d-M-y" }} | Fecha de término: {{ evento.fecha_termino|date:"d-M-y" }} | Fecha de publicación: {{ evento.fecha_creacion }}
                     </button>
                 </h2>
                 <div id="collapse{{ evento.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
