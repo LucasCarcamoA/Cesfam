@@ -121,16 +121,18 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="form_motivo" class="form-label">Motivo</label>
+                            <label for="form_motivo" class="form-label">Motivo (*)</label>
                             {{ form.motivo }}
                         </div>
 
                         <div class="mb-3">
-                            <label for="form_mensaje" class="form-label">Mensaje</label>
+                            <label for="form_mensaje" class="form-label">Mensaje (*)</label>
                             {{ form.mensaje }}
                         </div>
                         <div class="mb-3">
+                            <p class="">Verificación de seguridad: por favor, escribe las letras que ves en la imagen en el cuadro de texto. </p>
                             <label for="form_captcha" class="form-label">Captcha</label>
+
                             {{ form.captcha }}
 
                             {% if form.captcha.errors %}
