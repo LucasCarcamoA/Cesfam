@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2024 at 12:19 AM
+-- Generation Time: Dec 11, 2024 at 05:00 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -92,10 +92,22 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (26, 'Can change evento', 7, 'change_evento'),
 (27, 'Can delete evento', 7, 'delete_evento'),
 (28, 'Can view evento', 7, 'view_evento'),
-(29, 'Can add noticia', 8, 'add_noticia'),
-(30, 'Can change noticia', 8, 'change_noticia'),
-(31, 'Can delete noticia', 8, 'delete_noticia'),
-(32, 'Can view noticia', 8, 'view_noticia');
+(29, 'Can add oirs', 8, 'add_oirs'),
+(30, 'Can change oirs', 8, 'change_oirs'),
+(31, 'Can delete oirs', 8, 'delete_oirs'),
+(32, 'Can view oirs', 8, 'view_oirs'),
+(33, 'Can add trabaja con nosotros', 9, 'add_trabajaconnosotros'),
+(34, 'Can change trabaja con nosotros', 9, 'change_trabajaconnosotros'),
+(35, 'Can delete trabaja con nosotros', 9, 'delete_trabajaconnosotros'),
+(36, 'Can view trabaja con nosotros', 9, 'view_trabajaconnosotros'),
+(37, 'Can add noticia', 10, 'add_noticia'),
+(38, 'Can change noticia', 10, 'change_noticia'),
+(39, 'Can delete noticia', 10, 'delete_noticia'),
+(40, 'Can view noticia', 10, 'view_noticia'),
+(41, 'Can add captcha store', 11, 'add_captchastore'),
+(42, 'Can change captcha store', 11, 'change_captchastore'),
+(43, 'Can delete captcha store', 11, 'delete_captchastore'),
+(44, 'Can view captcha store', 11, 'view_captchastore');
 
 -- --------------------------------------------------------
 
@@ -116,6 +128,13 @@ CREATE TABLE `auth_user` (
   `is_active` tinyint(1) NOT NULL,
   `date_joined` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `auth_user`
+--
+
+INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
+(1, 'pbkdf2_sha256$720000$jAXz2g816V73ckf2ECIFld$UCMYPePqeqCDzEy5GGsBz84+Rbaz/Z35a6I+2y8jRxo=', '2024-12-11 03:13:21.931634', 1, 'cesfam', '', '', 'cesfam@cesfam.cl', 1, 1, '2024-12-11 03:13:07.954357');
 
 -- --------------------------------------------------------
 
@@ -144,6 +163,57 @@ CREATE TABLE `auth_user_user_permissions` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `captcha_captchastore`
+--
+
+CREATE TABLE `captcha_captchastore` (
+  `id` int(11) NOT NULL,
+  `challenge` varchar(32) NOT NULL,
+  `response` varchar(32) NOT NULL,
+  `hashkey` varchar(40) NOT NULL,
+  `expiration` datetime(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `captcha_captchastore`
+--
+
+INSERT INTO `captcha_captchastore` (`id`, `challenge`, `response`, `hashkey`, `expiration`) VALUES
+(1, 'GOWK', 'gowk', '1f63cb9b1e897acef613882c9158d1a7790f04b4', '2024-12-11 03:26:49.272028'),
+(2, 'XMFK', 'xmfk', 'b06f68a66ee1bc04bccc42ae3cc655753d6c5a8d', '2024-12-11 03:27:45.113076'),
+(3, 'ARXI', 'arxi', '7a0faf2375471ac7970039acce0202292f38b345', '2024-12-11 03:27:45.792077'),
+(4, 'KIPM', 'kipm', 'ec75d99cba834c4188d88d10fd694f1f79c17096', '2024-12-11 03:27:46.873913'),
+(5, 'UVPW', 'uvpw', '5f701d71813d383fcde1d8486238d4bcc1ec74aa', '2024-12-11 03:28:04.013345'),
+(6, 'SZOY', 'szoy', '20cf676a30136c0947540daff919a6dff2915d98', '2024-12-11 03:28:04.564261'),
+(7, 'XUBN', 'xubn', '20642aa12ea36e4b4366814db5698b34e3713477', '2024-12-11 03:28:05.008513'),
+(8, 'NPAI', 'npai', '3ff55ebf9eea5a6e5b99960860af4341dafd1009', '2024-12-11 03:28:05.337776'),
+(9, 'VQPI', 'vqpi', '095992138250bf91c5e4a947cf22dbc428311676', '2024-12-11 03:28:05.629980'),
+(10, 'FMAJ', 'fmaj', 'b1b3be85d49592303484b9f6d3ad174de985b197', '2024-12-11 03:28:05.867411'),
+(11, 'EQAY', 'eqay', '833a8abb5979671a56505fce64e341df25f7f825', '2024-12-11 03:28:06.188224'),
+(12, 'RJEM', 'rjem', '1a08254df274817c35c826caa50fd1feaefec312', '2024-12-11 03:28:06.445587'),
+(13, 'EBEY', 'ebey', 'd4d3c7bf1d706532757c9890bec1a68ee7168d99', '2024-12-11 03:28:06.700905'),
+(14, 'JLRG', 'jlrg', 'df721d98246981a169f2917172cf79322414675f', '2024-12-11 03:28:07.025530'),
+(15, 'VGXT', 'vgxt', 'c7c71072dbdd10fed27ebc598d04cd2705259f26', '2024-12-11 03:28:07.286778'),
+(16, 'POZZ', 'pozz', 'f05dc32f876ffe936d5f94a04a85ea27041e50ee', '2024-12-11 03:28:07.456850'),
+(17, 'LRWM', 'lrwm', 'ff9751ee0342caadaaed01b1a274f5c880f18e08', '2024-12-11 03:28:07.721347'),
+(18, 'IKTE', 'ikte', '78aea7ca7391dd63c691610f4bc891e0bee6e7d6', '2024-12-11 03:28:07.917628'),
+(19, 'IGXT', 'igxt', '60e99769157c53bf70954232845d1f34a83fdce0', '2024-12-11 03:28:08.117695'),
+(20, 'RNTV', 'rntv', '8fb03e2ee3a1d9c8793ce1feb12255c74d48a470', '2024-12-11 03:28:51.860351'),
+(21, 'FAVQ', 'favq', 'da3ec6c5c1acafd8aea9a02cc540ee5f2a47c8ad', '2024-12-11 03:30:02.848222'),
+(22, 'ZKCV', 'zkcv', '553c4e5a56b81be73c91a7158ec1d65657856d3a', '2024-12-11 03:30:03.077770'),
+(23, 'ETLA', 'etla', '85275162ac8baab3af1ac2baae4cd8689477f1bc', '2024-12-11 03:30:03.260376'),
+(24, 'PDQO', 'pdqo', 'bdd3b2840b2bb6f8704846a4484994fb133bb6ba', '2024-12-11 03:30:32.276867'),
+(25, 'IQVB', 'iqvb', '345416ade21b0c2321f36e314542e6173942b85d', '2024-12-11 03:30:35.762617'),
+(26, 'XTNW', 'xtnw', '3b7a1a95493adf240ec0bfa835c26261ba9f66ce', '2024-12-11 03:30:53.832203'),
+(27, 'LWWS', 'lwws', '606adb7f28837465a9d518ad1fe448862b4825cc', '2024-12-11 03:35:10.880428'),
+(28, 'JBAE', 'jbae', 'bc2a13cbe0570d15f30b03b8d82185963e9cc55b', '2024-12-11 03:35:12.909810'),
+(29, 'BNUS', 'bnus', '006055cbcc0506eb3a25c91f00a4da6bdabcc66e', '2024-12-11 03:38:56.869443'),
+(30, 'SMJS', 'smjs', 'f2a32cc577f3db488bf0da48f71915decddd3f54', '2024-12-11 03:38:58.606163'),
+(31, 'UUJN', 'uujn', '3af33a978d239a8492e295cf86be492c1bc57129', '2024-12-11 03:38:59.544611');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cesfampage_evento`
 --
 
@@ -154,7 +224,7 @@ CREATE TABLE `cesfampage_evento` (
   `fecha_creacion` datetime(6) NOT NULL,
   `fecha_inicio` date NOT NULL,
   `fecha_termino` date NOT NULL,
-  `descripcion` longtext DEFAULT NULL,
+  `descripcion` longtext NOT NULL,
   `tipo_evento` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -168,9 +238,41 @@ CREATE TABLE `cesfampage_noticia` (
   `id` bigint(20) NOT NULL,
   `titulo` varchar(100) NOT NULL,
   `imagen` varchar(100) NOT NULL,
-  `descripcion` longtext DEFAULT NULL,
+  `descripcion` longtext NOT NULL,
   `fecha_creacion` datetime(6) NOT NULL,
-  `evento_relacionado_id` bigint(20) NOT NULL
+  `evento_relacionado_id` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cesfampage_oirs`
+--
+
+CREATE TABLE `cesfampage_oirs` (
+  `id` bigint(20) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `apellido` varchar(50) NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  `motivo` varchar(50) NOT NULL,
+  `mensaje` longtext NOT NULL,
+  `fecha_envio` datetime(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cesfampage_trabajaconnosotros`
+--
+
+CREATE TABLE `cesfampage_trabajaconnosotros` (
+  `id` bigint(20) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `correo` varchar(254) NOT NULL,
+  `area_postulacion` varchar(50) NOT NULL,
+  `curriculum` varchar(100) DEFAULT NULL,
+  `mensaje` longtext NOT NULL,
+  `fecha_envio` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -211,8 +313,11 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (3, 'auth', 'group'),
 (2, 'auth', 'permission'),
 (4, 'auth', 'user'),
+(11, 'captcha', 'captchastore'),
 (7, 'Cesfampage', 'evento'),
-(8, 'Cesfampage', 'noticia'),
+(10, 'Cesfampage', 'noticia'),
+(8, 'Cesfampage', 'oirs'),
+(9, 'Cesfampage', 'trabajaconnosotros'),
 (5, 'contenttypes', 'contenttype'),
 (6, 'sessions', 'session');
 
@@ -234,25 +339,27 @@ CREATE TABLE `django_migrations` (
 --
 
 INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
-(1, 'Cesfampage', '0001_initial', '2024-10-22 22:18:35.799751'),
-(2, 'contenttypes', '0001_initial', '2024-10-22 22:18:35.841341'),
-(3, 'auth', '0001_initial', '2024-10-22 22:18:36.347582'),
-(4, 'admin', '0001_initial', '2024-10-22 22:18:36.477192'),
-(5, 'admin', '0002_logentry_remove_auto_add', '2024-10-22 22:18:36.503374'),
-(6, 'admin', '0003_logentry_add_action_flag_choices', '2024-10-22 22:18:36.511887'),
-(7, 'contenttypes', '0002_remove_content_type_name', '2024-10-22 22:18:36.583057'),
-(8, 'auth', '0002_alter_permission_name_max_length', '2024-10-22 22:18:36.659841'),
-(9, 'auth', '0003_alter_user_email_max_length', '2024-10-22 22:18:36.675384'),
-(10, 'auth', '0004_alter_user_username_opts', '2024-10-22 22:18:36.683428'),
-(11, 'auth', '0005_alter_user_last_login_null', '2024-10-22 22:18:36.733541'),
-(12, 'auth', '0006_require_contenttypes_0002', '2024-10-22 22:18:36.736562'),
-(13, 'auth', '0007_alter_validators_add_error_messages', '2024-10-22 22:18:36.747584'),
-(14, 'auth', '0008_alter_user_username_max_length', '2024-10-22 22:18:36.782900'),
-(15, 'auth', '0009_alter_user_last_name_max_length', '2024-10-22 22:18:36.801954'),
-(16, 'auth', '0010_alter_group_name_max_length', '2024-10-22 22:18:36.818457'),
-(17, 'auth', '0011_update_proxy_permissions', '2024-10-22 22:18:36.829492'),
-(18, 'auth', '0012_alter_user_first_name_max_length', '2024-10-22 22:18:36.844830'),
-(19, 'sessions', '0001_initial', '2024-10-22 22:18:36.882411');
+(1, 'Cesfampage', '0001_initial', '2024-12-11 03:12:40.502061'),
+(2, 'contenttypes', '0001_initial', '2024-12-11 03:12:40.580633'),
+(3, 'auth', '0001_initial', '2024-12-11 03:12:41.333737'),
+(4, 'admin', '0001_initial', '2024-12-11 03:12:41.502427'),
+(5, 'admin', '0002_logentry_remove_auto_add', '2024-12-11 03:12:41.511603'),
+(6, 'admin', '0003_logentry_add_action_flag_choices', '2024-12-11 03:12:41.522641'),
+(7, 'contenttypes', '0002_remove_content_type_name', '2024-12-11 03:12:41.696700'),
+(8, 'auth', '0002_alter_permission_name_max_length', '2024-12-11 03:12:41.791486'),
+(9, 'auth', '0003_alter_user_email_max_length', '2024-12-11 03:12:41.813172'),
+(10, 'auth', '0004_alter_user_username_opts', '2024-12-11 03:12:41.825243'),
+(11, 'auth', '0005_alter_user_last_login_null', '2024-12-11 03:12:41.895068'),
+(12, 'auth', '0006_require_contenttypes_0002', '2024-12-11 03:12:41.899067'),
+(13, 'auth', '0007_alter_validators_add_error_messages', '2024-12-11 03:12:41.910137'),
+(14, 'auth', '0008_alter_user_username_max_length', '2024-12-11 03:12:41.936339'),
+(15, 'auth', '0009_alter_user_last_name_max_length', '2024-12-11 03:12:41.953968'),
+(16, 'auth', '0010_alter_group_name_max_length', '2024-12-11 03:12:41.975413'),
+(17, 'auth', '0011_update_proxy_permissions', '2024-12-11 03:12:41.990470'),
+(18, 'auth', '0012_alter_user_first_name_max_length', '2024-12-11 03:12:42.010047'),
+(19, 'captcha', '0001_initial', '2024-12-11 03:12:42.047908'),
+(20, 'captcha', '0002_alter_captchastore_id', '2024-12-11 03:12:42.055132'),
+(21, 'sessions', '0001_initial', '2024-12-11 03:12:42.104101');
 
 -- --------------------------------------------------------
 
@@ -265,6 +372,13 @@ CREATE TABLE `django_session` (
   `session_data` longtext NOT NULL,
   `expire_date` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `django_session`
+--
+
+INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
+('4hsw4mvhhd7qjwajgu4knz0oquhredw0', '.eJxVjj1TxCAURf-Kk9Zdhs8QKO23s2ce8LJBYxgD2Dj-d8mYwm3vvee89z04aHVxreDuUhzswIbL_8xDeMftKOIbbPdMQt7qnjw5JuRsC7nliOvLuX0QLFCWTk-MCSlwNGaeYJSgRwzS-6j0xEMAJaSfPM4zcmli0D5EDCzwMEfTY9Bd-vfAoc5uzffcqluhVLfjZ8NS-xFOubwyfmXslQqrJis50YIKo54ptZR2SVtr-gD3lUqq8IA8HYi2ghKq2Ej5ifz8Apv5Woo:1tLDs2:6ZqiD5PXNfWbz5y_ylhM7LpEJoSB6umkvZaM9HcGoDY', '2024-12-11 04:28:42.731900');
 
 --
 -- Indexes for dumped tables
@@ -316,6 +430,13 @@ ALTER TABLE `auth_user_user_permissions`
   ADD KEY `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` (`permission_id`);
 
 --
+-- Indexes for table `captcha_captchastore`
+--
+ALTER TABLE `captcha_captchastore`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `hashkey` (`hashkey`);
+
+--
 -- Indexes for table `cesfampage_evento`
 --
 ALTER TABLE `cesfampage_evento`
@@ -327,6 +448,18 @@ ALTER TABLE `cesfampage_evento`
 ALTER TABLE `cesfampage_noticia`
   ADD PRIMARY KEY (`id`),
   ADD KEY `Cesfampage_noticia_evento_relacionado_i_f9a3808f_fk_Cesfampag` (`evento_relacionado_id`);
+
+--
+-- Indexes for table `cesfampage_oirs`
+--
+ALTER TABLE `cesfampage_oirs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cesfampage_trabajaconnosotros`
+--
+ALTER TABLE `cesfampage_trabajaconnosotros`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `django_admin_log`
@@ -376,13 +509,13 @@ ALTER TABLE `auth_group_permissions`
 -- AUTO_INCREMENT for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `auth_user_groups`
@@ -397,6 +530,12 @@ ALTER TABLE `auth_user_user_permissions`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `captcha_captchastore`
+--
+ALTER TABLE `captcha_captchastore`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
 -- AUTO_INCREMENT for table `cesfampage_evento`
 --
 ALTER TABLE `cesfampage_evento`
@@ -406,6 +545,18 @@ ALTER TABLE `cesfampage_evento`
 -- AUTO_INCREMENT for table `cesfampage_noticia`
 --
 ALTER TABLE `cesfampage_noticia`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `cesfampage_oirs`
+--
+ALTER TABLE `cesfampage_oirs`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `cesfampage_trabajaconnosotros`
+--
+ALTER TABLE `cesfampage_trabajaconnosotros`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
@@ -418,13 +569,13 @@ ALTER TABLE `django_admin_log`
 -- AUTO_INCREMENT for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables
